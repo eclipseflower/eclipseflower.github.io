@@ -1,18 +1,71 @@
 /*
-Sass::SyntaxError: "html .gist .gist-file .gist-meta" failed to @extend ".sans".
-The selector ".sans" was not found.
-Use "@extend .sans !optional" if the extend should be able to fail.
-
+Error: Undefined variable: "$sans".
+        on line 39 of e:/octopress/sass/plugins/_flickr.scss
+        from line 3 of e:/octopress/sass/screen.scss
+        from line 8 of e:/octopress/sass/screen.scss
 
 Backtrace:
-e:/octopress/sass/base/_syntax.scss:74
-e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/extend.rb:65:in `block in check_extends_fired!'
-e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/util/subset_map.rb:106:in `block in each_value'
-e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/util/subset_map.rb:106:in `each'
-e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/util/subset_map.rb:106:in `each_value'
-e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/extend.rb:50:in `check_extends_fired!'
-e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/extend.rb:16:in `visit'
-e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/root_node.rb:39:in `css_tree'
+e:/octopress/sass/plugins/_flickr.scss:39
+e:/octopress/sass/screen.scss:3
+e:/octopress/sass/screen.scss:8
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/script/tree/variable.rb:49:in `_perform'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/script/tree/node.rb:50:in `perform'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:394:in `visit_prop'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `block (2 levels) in visit_rule'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `map'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `block in visit_rule'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:428:in `visit_rule'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:325:in `map'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:88:in `block in with_import'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:88:in `with_import'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:325:in `map'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:88:in `block in with_import'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:88:in `with_import'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `map'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:157:in `visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:8:in `visit'
+e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/root_node.rb:36:in `css_tree'
 e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/root_node.rb:20:in `render'
 e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/engine.rb:268:in `render'
 e:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
@@ -34,4 +87,4 @@ e:/Ruby193/bin/compass:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: \"html .gist .gist-file .gist-meta\" failed to @extend \".sans\".\A The selector \".sans\" was not found.\A Use \"@extend .sans !optional\" if the extend should be able to fail.\A "; }
+  content: "Error: Undefined variable: \"$sans\".\A         on line 39 of e:/octopress/sass/plugins/_flickr.scss\A         from line 3 of e:/octopress/sass/screen.scss\A         from line 8 of e:/octopress/sass/screen.scss"; }

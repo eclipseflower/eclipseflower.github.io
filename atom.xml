@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://eclipseflower.github.io/atom.xml" rel="self"/>
   <link href="http://eclipseflower.github.io/"/>
-  <updated>2015-03-09T00:04:05+08:00</updated>
+  <updated>2015-03-09T00:19:48+08:00</updated>
   <id>http://eclipseflower.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -12,5 +12,14 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[test]]></title>
+    <link href="http://eclipseflower.github.io/blog/2015/03/09/test/"/>
+    <updated>2015-03-09T00:18:20+08:00</updated>
+    <id>http://eclipseflower.github.io/blog/2015/03/09/test</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
 </feed>

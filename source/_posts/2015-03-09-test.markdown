@@ -3,5 +3,5 @@ layout: post
 title: "test"
 date: 2015-03-09 00:18:20 +0800
 comments: true
-categories: 
+categories: [test, test2]
 ---

@@ -9,7 +9,7 @@
 	</h2>
     <div class="entry-content">
     <div class="meta">
-      <div class="date">Published on: {% include post/date.html %}{{ time }}</div>
+      <div class="date">Published on: {% include post/date.html %}{{ date | date: '%B %e, %Y %H:%M' }}</div>
       <div class="tags">Tags: {% include post/categories.html %}</div>
     </div>
 		{{ content | excerpt }}

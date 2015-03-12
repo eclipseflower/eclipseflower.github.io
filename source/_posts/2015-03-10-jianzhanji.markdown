@@ -71,11 +71,11 @@ tocstartlv: 2
 
 3、主题
 
-本博客使用的主题为[fabric](https://github.com/panks/fabric#tapirgo-search)，并在此基础上进行修改。
+本博客使用的主题为[fabric](https://github.com/panks/fabric)，并在此基础上进行修改。
 
 4、目录插件
 
-Octopress的markdown解释器不带目录，我又懒得换，所以找了插件来用。教程见[Octopress易筋经，目录表ToC](http://khaos.github.io/blog/2012/12/05/generating-toc-in-octopress/#jquerytoc)。
+Octopress的markdown解释器不带目录，我又懒得换，所以找了插件来用。教程见[Octopress易筋经，目录表ToC](http://khaos.github.io/blog/2012/12/05/generating-toc-in-octopress/)。
 
 ##问题整理
 ###1.执行rake generate命令时出现的"invalid bad byte sequences in UTF-8"错误

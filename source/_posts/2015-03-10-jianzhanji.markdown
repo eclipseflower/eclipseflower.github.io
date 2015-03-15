@@ -5,7 +5,7 @@ date: 2015-03-10 15:11:02 +0800
 description: "使用Octopress + GitHub Pages搭建博客"
 keywords: octopress, github, eclipseflower, 博客
 comments: true
-categories: octopress
+categories: Octopress
 toc: true
 tocstartlv: 2
 ---

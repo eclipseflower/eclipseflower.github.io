@@ -1,0 +1,689 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="技术宅拯救世界。" />
+
+
+
+  <meta name="keywords" content="Java,读书笔记," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'hide'
+  };
+</script>
+
+
+
+
+  <title> Java编程思想读书笔记（第七章） // EclipseFlower's Studio </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">EclipseFlower's Studio</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            <i class="menu-item-icon icon-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '66doyQhmcopeBUqrUVN8','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Java编程思想读书笔记（第七章）
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-04-21
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/Java/">Java</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/04/21/thinkinginjava-chap7/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/21/thinkinginjava-chap7/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>参考书目：《Java编程思想》（第四版，中文版）</p>
+<h4 id="7-2_继承语法">7.2 继承语法</h4><p>我们可以为每个类都创建一个main()方法。这种在每个类中都设置一个main()方法的技术可使每个类的单元测试都变得简易可行。</p>
+<h5 id="7-2-1_初始化基类">7.2.1 初始化基类</h5><p>Java会自动在导出类的构造器（<strong>无论是否带参</strong>）中插入对基类构造器的调用。<br><a id="more"></a><br><figure class="highlight java"><figcaption><span>Cartoon.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: reusing/Cartoon.java</span></span><br><span class="line"><span class="comment">// Constructor calls during inheritance.</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> net.mindview.util.Print.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Art</span> </span>&#123;</span><br><span class="line">	Art() &#123; print(<span class="string">"Art constructor"</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Drawing</span> <span class="keyword">extends</span> <span class="title">Art</span> </span>&#123;</span><br><span class="line">	Drawing() &#123; print(<span class="string">"Drawing constructor"</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cartoon</span> <span class="keyword">extends</span> <span class="title">Drawing</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Cartoon</span><span class="params">()</span> </span>&#123; print(<span class="string">"Cartoon constructor"</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Cartoon x = <span class="keyword">new</span> Cartoon();</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">/* Output:</span><br><span class="line">Art constructor</span><br><span class="line">Drawing constructor</span><br><span class="line">Cartoon constructor</span><br><span class="line">*/</span><span class="comment">//:~</span></span><br></pre></td></tr></table></figure></p>
+<p>但是，如果没有默认的构造器，或者想调用一个带参数的基类构造器，就必须用关键字super显式地编写调用基类构造器的语句，并且配以恰当的参数列表：</p>
+<figure class="highlight java"><figcaption><span>Chess.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: reusing/Chess.java</span></span><br><span class="line"><span class="comment">// Inheritance, constructors and arguments.</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> net.mindview.util.Print.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Game</span> </span>&#123;</span><br><span class="line">	Game(<span class="keyword">int</span> i) &#123;</span><br><span class="line">		print(<span class="string">"Game constructor"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BoardGame</span> <span class="keyword">extends</span> <span class="title">Game</span> </span>&#123;</span><br><span class="line">	BoardGame(<span class="keyword">int</span> i) &#123;</span><br><span class="line">		<span class="keyword">super</span>(i);</span><br><span class="line">		print(<span class="string">"BoardGame constructor"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chess</span> <span class="keyword">extends</span> <span class="title">BoardGame</span> </span>&#123;</span><br><span class="line">	Chess() &#123;</span><br><span class="line">		<span class="keyword">super</span>(<span class="number">11</span>);</span><br><span class="line">		print(<span class="string">"Chess constructor"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Chess x = <span class="keyword">new</span> Chess();</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">/* Output:</span><br><span class="line">Game constructor</span><br><span class="line">BoardGame constructor</span><br><span class="line">Chess constructor</span><br><span class="line">*/</span><span class="comment">//:~</span></span><br></pre></td></tr></table></figure>
+<p>如果不在BoardGame()中调用基类构造器，编译器将“抱怨”无法找到符合Game()形式的构造器。而且，调用基类构造器必须是你在导出类构造器中要做的第一件事。</p>
+<h4 id="7-3_代理">7.3 代理</h4><p>我们将一个成员对象置于所要构造的类中（就像组合），但与此同时我们在新类中暴露了该成员对象的所有方法（就像继承）。例如，太空船需要一个控制模块：</p>
+<figure class="highlight java"><figcaption><span>SpaceShipControls.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: reusing/SpaceShipControls.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpaceShipControls</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">up</span><span class="params">(<span class="keyword">int</span> velocity)</span> </span>&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">down</span><span class="params">(<span class="keyword">int</span> velocity)</span> </span>&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">left</span><span class="params">(<span class="keyword">int</span> velocity)</span> </span>&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">right</span><span class="params">(<span class="keyword">int</span> velocity)</span> </span>&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">forward</span><span class="params">(<span class="keyword">int</span> velocity)</span> </span>&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">back</span><span class="params">(<span class="keyword">int</span> velocity)</span> </span>&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">turboBoost</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125; <span class="comment">///:~</span></span><br></pre></td></tr></table></figure>
+<p>我们通过代理来构造太空船。</p>
+<figure class="highlight java"><figcaption><span>SpaceShipDelegation.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: reusing/SpaceShipDelegation.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpaceShipDelegation</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> SpaceShipControls controls =</span><br><span class="line">	<span class="keyword">new</span> SpaceShipControls();</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SpaceShipDelegation</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// Delegated methods:</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">back</span><span class="params">(<span class="keyword">int</span> velocity)</span> </span>&#123;</span><br><span class="line">		controls.back(velocity);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">down</span><span class="params">(<span class="keyword">int</span> velocity)</span> </span>&#123;</span><br><span class="line">		controls.down(velocity);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">forward</span><span class="params">(<span class="keyword">int</span> velocity)</span> </span>&#123;</span><br><span class="line">		controls.forward(velocity);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">left</span><span class="params">(<span class="keyword">int</span> velocity)</span> </span>&#123;</span><br><span class="line">		controls.left(velocity);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">right</span><span class="params">(<span class="keyword">int</span> velocity)</span> </span>&#123;</span><br><span class="line">		controls.right(velocity);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turboBoost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		controls.turboBoost();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">up</span><span class="params">(<span class="keyword">int</span> velocity)</span> </span>&#123;</span><br><span class="line">		controls.up(velocity);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpaceShipDelegation protector =</span><br><span class="line">		<span class="keyword">new</span> SpaceShipDelegation(<span class="string">"NSEA Protector"</span>);</span><br><span class="line">		protector.forward(<span class="number">100</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">///:~</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，上面的方法是如何转递给了底层的controls对象，而接口由此也就与使用继承得到的接口相同了。但是，我们使用代理时可以拥有更多的控制力，因为我们可以选择只提供在成员对象中的方法的某个子集。</p>
+<h4 id="7-4_结合使用组合和继承">7.4 结合使用组合和继承</h4><h5 id="7-4-2_名称屏蔽">7.4.2 名称屏蔽</h5><p>如果Java的基类拥有某个已被多次重载的方法名称，那么在导出类中重新定义该方法名称并不会屏蔽其在基类中的任何版本（这一点与C++不同）。来看下面的两个例子：</p>
+<figure class="highlight c++"><figcaption><span>test.app</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> A &#123;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> A::f() &#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"hello from A"</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> B : <span class="keyword">public</span> A &#123;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> B::f(<span class="keyword">int</span> x) &#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"hello from B"</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	B b;</span><br><span class="line"><span class="comment">//	b.f();</span></span><br><span class="line">	b.f(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>C++中，导出类如果定义与基类相同名称的方法，基类的方法相对于导出类而言是不可见的，即使在参数不同的情况下。</p>
+<figure class="highlight java"><figcaption><span>Hide.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: reusing/Hide.java</span></span><br><span class="line"><span class="comment">// Overloading a base-class method name in a derived</span></span><br><span class="line"><span class="comment">// class does not hide the base-class versions.</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> net.mindview.util.Print.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Homer</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">char</span> <span class="title">doh</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">		print(<span class="string">"doh(char)"</span>);</span><br><span class="line">		<span class="keyword">return</span> ‘d’;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">float</span> <span class="title">doh</span><span class="params">(<span class="keyword">float</span> f)</span> </span>&#123;</span><br><span class="line">		print(<span class="string">"doh(float)"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1.0f</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Milhouse</span> </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bart</span> <span class="keyword">extends</span> <span class="title">Homer</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">doh</span><span class="params">(Milhouse m)</span> </span>&#123;</span><br><span class="line">		print(<span class="string">"doh(Milhouse)"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hide</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Bart b = <span class="keyword">new</span> Bart();</span><br><span class="line">		b.doh(<span class="number">1</span>);</span><br><span class="line">		b.doh(‘x’);</span><br><span class="line">		b.doh(<span class="number">1.0f</span>);</span><br><span class="line">		b.doh(<span class="keyword">new</span> Milhouse());</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">/* Output:</span><br><span class="line">doh(float)</span><br><span class="line">doh(char)</span><br><span class="line">doh(float)</span><br><span class="line">doh(Milhouse)</span><br><span class="line">*/</span><span class="comment">//:~</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，虽然Bart引入了一个新的重载方法，但是在Bart中Homer的所有重载方法都是可用的。</p>
+<p>当然，为了避免犯错误，Java提供了@Override注解，在你不留心<strong>重载</strong>而并非<strong>覆写</strong>了该方法时，编译器就会生出一条错误信息：</p>
+<figure class="highlight java"><figcaption><span>Lisa.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: reusing/Lisa.java</span></span><br><span class="line"><span class="comment">// &#123;CompileTimeError&#125; (Won’t compile)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Lisa</span> <span class="keyword">extends</span> <span class="title">Homer</span> </span>&#123;</span><br><span class="line">	<span class="annotation">@Override</span> <span class="function"><span class="keyword">void</span> <span class="title">doh</span><span class="params">(Milhouse m)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"doh(Milhouse)"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">///:~</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-8_final关键字">7.8 final关键字</h4><h5 id="7-8-1_final数据">7.8.1 final数据</h5><p>有时数据的恒定不变是很有用的，比如：</p>
+<ol>
+<li>一个永不改变的编译时常量</li>
+<li>一个在运行时被初始化的值，而你不希望它被改变</li>
+</ol>
+<p>在Java中，编译时常量必须为<strong>基本数据类型</strong>，并且以关键字final表示。</p>
+<p>当对对象引用而不是基本类型运用final时，final使引用恒定不变。一旦引用被初始化指向一个对象，就无法再把它改为指向另一个对象。然而，对象其自身却是可以被修改的。（与C++的const pointer类似）</p>
+<p>另外，Java允许生成“空白final”，所谓空白final是指被声明为final但又未给定初值的域。无论什么情况，编译器都确保空白final在<strong>使用前必须被初始化</strong>。（这样的设计可以提供更大的灵活性，一个类中的final域可以做到根据对象而有所不同，却又保持其恒定不变的特性。）例如：</p>
+<figure class="highlight java"><figcaption><span>BlankFinal.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: reusing/BlankFinal.java</span></span><br><span class="line"><span class="comment">// "Blank" final fields.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Poppet</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> i;</span><br><span class="line">	Poppet(<span class="keyword">int</span> ii) &#123; i = ii; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BlankFinal</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> i = <span class="number">0</span>; <span class="comment">// Initialized final</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> j; <span class="comment">// Blank final</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Poppet p; <span class="comment">// Blank final reference</span></span><br><span class="line">	<span class="comment">// Blank finals MUST be initialized in the constructor:</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">BlankFinal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		j = <span class="number">1</span>; <span class="comment">// Initialize blank final</span></span><br><span class="line">		p = <span class="keyword">new</span> Poppet(<span class="number">1</span>); <span class="comment">// Initialize blank final reference</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">BlankFinal</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">		j = x; <span class="comment">// Initialize blank final</span></span><br><span class="line">		p = <span class="keyword">new</span> Poppet(x); <span class="comment">// Initialize blank final reference</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">new</span> BlankFinal();</span><br><span class="line">		<span class="keyword">new</span> BlankFinal(<span class="number">47</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">///:~</span></span><br></pre></td></tr></table></figure>
+<h5 id="7-8-2_final方法">7.8.2 final方法</h5><p>使用final方法的原因有两个。第一个原因是把方法锁定，以防任何继承类修改它的含义。第二个原因是效率。在Java的早期实现中，如果将一个方法指明为final，就是同意编译器将针对该方法的所有调用都转为内嵌调用。</p>
+<h5 id="7-8-3_final类">7.8.3 final类</h5><p>当将某个类的整体定义为final时，表明你不打算继承该类，而且也不允许别人这样做。</p>
+<h4 id="7-9_初始化及类的加载">7.9 初始化及类的加载</h4><h5 id="7-9-1_继承与初始化">7.9.1 继承与初始化</h5><p>首先是一个例子：</p>
+<figure class="highlight java"><figcaption><span>Beetle.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: reusing/Beetle.java</span></span><br><span class="line"><span class="comment">// The full process of initialization.</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> net.mindview.util.Print.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Insect</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> i = <span class="number">9</span>;</span><br><span class="line">	<span class="keyword">protected</span> <span class="keyword">int</span> j;</span><br><span class="line">	Insect() &#123;</span><br><span class="line">		print(<span class="string">"i = "</span> + i + <span class="string">", j = "</span> + j);</span><br><span class="line">		j = <span class="number">39</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> x1 =</span><br><span class="line">	printInit(<span class="string">"static Insect.x1 initialized"</span>);</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">printInit</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">		print(s);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">47</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Beetle</span> <span class="keyword">extends</span> <span class="title">Insect</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> k = printInit(<span class="string">"Beetle.k initialized"</span>);</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Beetle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		print(<span class="string">"k = "</span> + k);</span><br><span class="line">		print(<span class="string">"j = "</span> + j);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> x2 =</span><br><span class="line">	printInit(<span class="string">"static Beetle.x2 initialized"</span>);</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		print(<span class="string">"Beetle constructor"</span>);</span><br><span class="line">		Beetle b = <span class="keyword">new</span> Beetle();</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">/* Output:</span><br><span class="line">static Insect.x1 initialized</span><br><span class="line">static Beetle.x2 initialized</span><br><span class="line">Beetle constructor</span><br><span class="line">i = 9, j = 0</span><br><span class="line">Beetle.k initialized</span><br><span class="line">k = 47</span><br><span class="line">j = 39</span><br><span class="line">*/</span><span class="comment">//:~</span></span><br></pre></td></tr></table></figure>
+<p>在Beetle上运行Java时，所发生的第一件事情就是试图访问Beetle.main()（一个static方法），于是加载器开始启动并找出Beetle类的编译代码（在名为Beetle.class的文件之中）。在对它进行加载的过程中，编译器注意到它有一个基类，于是它继续进行加载（不管是否产生基类的对象）。</p>
+<p>然后，根基类中的static初始化会被执行，如输出所示。可以看到，两个static初始化在main函数刚开始调用的时候就执行了。</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/"> #Java </a>
+          
+            <a href="/tags/读书笔记/"> #读书笔记 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/04/23/linuxmark/">Linux问题备忘</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/14/xinbiaorilesson4/">新标日初级读书笔记（第 4 课）</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="2015/04/21/thinkinginjava-chap7/"
+               data-title="Java编程思想读书笔记（第七章）" data-url="http://eclipseflower.github.io/2015/04/21/thinkinginjava-chap7/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="EclipseFlower" />
+          <p class="site-author-name">EclipseFlower</p>
+        </div>
+        <p class="site-description motion-element">技术宅拯救世界。</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/eclipseflower" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/u/2196543012/" target="_blank">weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.douban.com/people/59170101/" target="_blank">douban</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://6carol6.github.io/" target="_blank">6carol6</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://chuan92.com/" target="_blank">chuan92</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://luvinahlc.github.io/" target="_blank">luvina</a>
+              </span>
+            
+          
+        </div>
+        
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2_继承语法"><span class="nav-number">1.</span> <span class="nav-text">7.2 继承语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-2-1_初始化基类"><span class="nav-number">1.1.</span> <span class="nav-text">7.2.1 初始化基类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-3_代理"><span class="nav-number">2.</span> <span class="nav-text">7.3 代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-4_结合使用组合和继承"><span class="nav-number">3.</span> <span class="nav-text">7.4 结合使用组合和继承</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-4-2_名称屏蔽"><span class="nav-number">3.1.</span> <span class="nav-text">7.4.2 名称屏蔽</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-8_final关键字"><span class="nav-number">4.</span> <span class="nav-text">7.8 final关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-8-1_final数据"><span class="nav-number">4.1.</span> <span class="nav-text">7.8.1 final数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-8-2_final方法"><span class="nav-number">4.2.</span> <span class="nav-text">7.8.2 final方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-8-3_final类"><span class="nav-number">4.3.</span> <span class="nav-text">7.8.3 final类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-9_初始化及类的加载"><span class="nav-number">5.</span> <span class="nav-text">7.9 初始化及类的加载</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-9-1_继承与初始化"><span class="nav-number">5.1.</span> <span class="nav-text">7.9.1 继承与初始化</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">EclipseFlower</span>
+</div>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"eclipseflower"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+  
+  <!-- lazyload -->
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+      <script type="text/javascript">
+        jQuery(function() {          
+            jQuery("#posts img").lazyload({
+              placeholder:"http://www.arao.me/loading.gif",  
+                effect:"fadeIn"
+              });
+            });
+    </script>   
+</body>
+</html>

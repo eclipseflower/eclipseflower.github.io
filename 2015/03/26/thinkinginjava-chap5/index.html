@@ -1,0 +1,692 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="技术宅拯救世界。" />
+
+
+
+  <meta name="keywords" content="Java,读书笔记," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'hide'
+  };
+</script>
+
+
+
+
+  <title> Java编程思想读书笔记（第五章） // EclipseFlower's Studio </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">EclipseFlower's Studio</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            <i class="menu-item-icon icon-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '66doyQhmcopeBUqrUVN8','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Java编程思想读书笔记（第五章）
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-03-26
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/Java/">Java</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/03/26/thinkinginjava-chap5/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/26/thinkinginjava-chap5/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>参考书目：《Java编程思想》（第四版，中文版）</p>
+<h4 id="5-2_方法重载">5.2 方法重载</h4><p>大多数程序设计语言（尤其是C）要求为每个方法（在这些语言中经常称为函数）都提供一个独一无二的标识符。<strong>C无重载。</strong><br><a id="more"></a></p>
+<h4 id="5-4_this关键字">5.4 this关键字</h4><figure class="highlight java"><figcaption><span>BananaPeel.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: initialization/BananaPeel.java</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Banana</span> </span>&#123; <span class="function"><span class="keyword">void</span> <span class="title">peel</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; <span class="comment">/* ... */</span> &#125; &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BananaPeel</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Banana a = <span class="keyword">new</span> Banana(),</span><br><span class="line">		b = <span class="keyword">new</span> Banana();</span><br><span class="line">		a.peel(<span class="number">1</span>);</span><br><span class="line">		b.peel(<span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">///:~</span></span><br></pre></td></tr></table></figure>
+<p>如果只有一个peel()方法，它如何知道是被a还是被b所调用的呢？</p>
+<p>编译器做了一些幕后工作。它暗自把“所操作对象的引用”作为第一个参数传递给peel()。所以上述两个方法的调用就变成了这样：</p>
+<pre><code><span class="keyword">Banana.peel(a, </span><span class="number">1</span>)<span class="comment">;</span>
+<span class="keyword">Banana.peel(a, </span><span class="number">2</span>)<span class="comment">;</span>
+</code></pre><p>this关键字只能在方法内部使用。 </p>
+<h5 id="5-4-1_在构造器中调用构造器">5.4.1 在构造器中调用构造器</h5><figure class="highlight java"><figcaption><span>Flower.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: initialization/Flower.java</span></span><br><span class="line"><span class="comment">// Calling constructors with "this"</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> net.mindview.util.Print.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Flower</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> petalCount = <span class="number">0</span>;</span><br><span class="line">	String s = <span class="string">"initial value"</span>;</span><br><span class="line">	Flower(<span class="keyword">int</span> petals) &#123;</span><br><span class="line">	petalCount = petals;</span><br><span class="line">	print(<span class="string">"Constructor w/ int arg only, petalCount= "</span></span><br><span class="line">	+ petalCount);</span><br><span class="line">&#125;</span><br><span class="line">Flower(String ss) &#123;</span><br><span class="line">	print(<span class="string">"Constructor w/ String arg only, s = "</span> + ss);</span><br><span class="line">	s = ss;</span><br><span class="line">&#125;</span><br><span class="line">Flower(String s, <span class="keyword">int</span> petals) &#123;</span><br><span class="line">	<span class="keyword">this</span>(petals);</span><br><span class="line">	<span class="comment">//! this(s); // Can’t call two!</span></span><br><span class="line">	<span class="keyword">this</span>.s = s; <span class="comment">// Another use of "this"</span></span><br><span class="line">	print(<span class="string">"String &amp; int args"</span>);</span><br><span class="line">&#125;</span><br><span class="line">Flower() &#123;</span><br><span class="line">	<span class="keyword">this</span>(<span class="string">"hi"</span>, <span class="number">47</span>);</span><br><span class="line">	print(<span class="string">"default constructor (no args)"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printPetalCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//! this(11); // Not inside non-constructor!</span></span><br><span class="line">	print(<span class="string">"petalCount = "</span> + petalCount + <span class="string">" s = "</span>+ s);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	Flower x = <span class="keyword">new</span> Flower();</span><br><span class="line">	x.printPetalCount();</span><br><span class="line">&#125;</span><br><span class="line">&#125; <span class="comment">/* Output:</span><br><span class="line">Constructor w/ int arg only, petalCount= 47</span><br><span class="line">String &amp; int args</span><br><span class="line">default constructor (no args)</span><br><span class="line">petalCount = 47 s = hi</span><br><span class="line">*/</span><span class="comment">//:~</span></span><br></pre></td></tr></table></figure>
+<p>构造器Flower(String s, int petals)表明：尽管可以用this调用一个构造器，但却不能调用两个。此外，必须将构造器调用置于最开始处，否则编译器会报错。</p>
+<p>printPetalCount()方法表明，除构造器之外，编译器禁止在其他任何方法中调用构造器。</p>
+<h4 id="5-7_构造器初始化">5.7 构造器初始化</h4><p>牢记：无法阻止自动初始化的进行，它将在构造器被调用之前发生。</p>
+<figure class="highlight java"><figcaption><span>Counter.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: initialization/Counter.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Counter</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	Counter() &#123; i = <span class="number">7</span>; &#125;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125; <span class="comment">///:~</span></span><br></pre></td></tr></table></figure>
+<p>那么i首先会被置为0，然后变成7。</p>
+<h5 id="5-7-2_静态数据的初始化">5.7.2 静态数据的初始化</h5><p>初始化的顺序是先<em>静态</em>对象，而后是“非静态”对象。</p>
+<p>总结一下对象的创建过程，假如有个名为Dog的类：</p>
+<ol>
+<li>即使没有显式地使用static关键字，构造器实际上也是静态方法。因此，当首次创建类型为Dog的对象时（构造器可以看成静态方法），或者Dog类的静态方法/静态域（<strong>比如public static void main</strong>）首次被访问时，Java解释器必须查找类路径，以定位Dog.class文件。</li>
+<li>然后载入Dog.class（创建一个Class对象），有关静态初始化的所有动作都会执行。因此，静态初始化只在Class对象首次加载的时候进行一次。</li>
+<li>当用new Dog()创建对象的时候，首先将在堆上为Dog对象分配足够的存储空间。</li>
+<li>这块存储空间会被清零。</li>
+<li>执行所有出现于字段定义处的初始化动作。</li>
+<li>执行构造器。</li>
+</ol>
+<h5 id="5-7-3_显式的静态初始化">5.7.3 显式的静态初始化</h5><figure class="highlight java"><figcaption><span>Spoon.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: initialization/Spoon.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Spoon</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		i = <span class="number">47</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">///:~</span></span><br></pre></td></tr></table></figure>
+<p>与其他静态初始化动作一样，这段代码仅执行一次：当首次生成这个类的一个对象时，或者首次访问属于那个类的静态数据成员时（即便从未生成过那个类的对象）。</p>
+<h5 id="5-7-4_非静态实例初始化">5.7.4 非静态实例初始化</h5><p>实例初始化子句是在两个构造器之前执行的。</p>
+<h4 id="5-8_数组初始化">5.8 数组初始化</h4><h5 id="5-8-1_可变参数列表">5.8.1 可变参数列表</h5><p>Java SE5之后可以产生可变的参数列表。</p>
+<figure class="highlight java"><figcaption><span>NewVarArgs.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: initialization/NewVarArgs.java</span></span><br><span class="line"><span class="comment">// Using array syntax to create variable argument lists.</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NewVarArgs</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printArray</span><span class="params">(Object... args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(Object obj : args)</span><br><span class="line">			System.out.print(obj + <span class="string">" "</span>);</span><br><span class="line">		System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// Can take individual elements:</span></span><br><span class="line">		printArray(<span class="keyword">new</span> Integer(<span class="number">47</span>), <span class="keyword">new</span> Float(<span class="number">3.14</span>),</span><br><span class="line">		<span class="keyword">new</span> Double(<span class="number">11.11</span>));</span><br><span class="line">		printArray(<span class="number">47</span>, <span class="number">3.14F</span>, <span class="number">11.11</span>);</span><br><span class="line">		printArray(<span class="string">"one"</span>, <span class="string">"two"</span>, <span class="string">"three"</span>);</span><br><span class="line">		printArray(<span class="keyword">new</span> A(), <span class="keyword">new</span> A(), <span class="keyword">new</span> A());</span><br><span class="line">		<span class="comment">// Or an array:</span></span><br><span class="line">		printArray((Object[])<span class="keyword">new</span> Integer[]&#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> &#125;);</span><br><span class="line">		printArray(); <span class="comment">// Empty list is OK</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">/* Output: (75% match)</span><br><span class="line">47 3.14 11.11</span><br><span class="line">47 3.14 11.11</span><br><span class="line">one two three</span><br><span class="line">A@1bab50a A@c3c749 A@150bd4d</span><br><span class="line">1 2 3 4</span><br><span class="line">*/</span><span class="comment">//:~</span></span><br></pre></td></tr></table></figure>
+<p>当你指定参数时，编译器实际上会为你去填充数组。你获取的仍旧是一个数组。将0个参数传递给可变参数列表是可行的。</p>
+<h4 id="5-9_枚举类型">5.9 枚举类型</h4><p>一个简单的例子：</p>
+<figure class="highlight java"><figcaption><span>Spiciness.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: initialization/Spiciness.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Spiciness &#123;</span><br><span class="line">	NOT, MILD, MEDIUM, HOT, FLAMING</span><br><span class="line">&#125; <span class="comment">///:~</span></span><br></pre></td></tr></table></figure>
+<p>toString()方法：显示某个enum实例的名字</p>
+<figure class="highlight java"><figcaption><span>SimpleEnumUse.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: initialization/SimpleEnumUse.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleEnumUse</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Spiciness howHot = Spiciness.MEDIUM;</span><br><span class="line">		System.out.println(howHot);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">/* Output:</span><br><span class="line">MEDIUM</span><br><span class="line">*/</span><span class="comment">//:~</span></span><br></pre></td></tr></table></figure>
+<p>ordinal()方法：表示某个特定enum常量的声明顺序<br>static values()方法：按照enum常量的声明顺序，产生由这些常量值构成的数组</p>
+<figure class="highlight java"><figcaption><span>EnumOrder.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: initialization/EnumOrder.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EnumOrder</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(Spiciness s : Spiciness.values())</span><br><span class="line">			System.out.println(s + <span class="string">", ordinal "</span> + s.ordinal());</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">/* Output:</span><br><span class="line">NOT, ordinal 0</span><br><span class="line">MILD, ordinal 1</span><br><span class="line">MEDIUM, ordinal 2</span><br><span class="line">HOT, ordinal 3</span><br><span class="line">FLAMING, ordinal 4</span><br><span class="line">*/</span><span class="comment">//:~</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/"> #Java </a>
+          
+            <a href="/tags/读书笔记/"> #读书笔记 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/03/30/xinbiaorilesson3/">新标日初级读书笔记（第 3 课）</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/03/19/xinbiaorilesson2/">新标日初级读书笔记（第 2 课）</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="2015/03/26/thinkinginjava-chap5/"
+               data-title="Java编程思想读书笔记（第五章）" data-url="http://eclipseflower.github.io/2015/03/26/thinkinginjava-chap5/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="EclipseFlower" />
+          <p class="site-author-name">EclipseFlower</p>
+        </div>
+        <p class="site-description motion-element">技术宅拯救世界。</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/eclipseflower" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/u/2196543012/" target="_blank">weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.douban.com/people/59170101/" target="_blank">douban</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://6carol6.github.io/" target="_blank">6carol6</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://chuan92.com/" target="_blank">chuan92</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://luvinahlc.github.io/" target="_blank">luvina</a>
+              </span>
+            
+          
+        </div>
+        
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2_方法重载"><span class="nav-number">1.</span> <span class="nav-text">5.2 方法重载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4_this关键字"><span class="nav-number">2.</span> <span class="nav-text">5.4 this关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-4-1_在构造器中调用构造器"><span class="nav-number">2.1.</span> <span class="nav-text">5.4.1 在构造器中调用构造器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-7_构造器初始化"><span class="nav-number">3.</span> <span class="nav-text">5.7 构造器初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-7-2_静态数据的初始化"><span class="nav-number">3.1.</span> <span class="nav-text">5.7.2 静态数据的初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-7-3_显式的静态初始化"><span class="nav-number">3.2.</span> <span class="nav-text">5.7.3 显式的静态初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-7-4_非静态实例初始化"><span class="nav-number">3.3.</span> <span class="nav-text">5.7.4 非静态实例初始化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-8_数组初始化"><span class="nav-number">4.</span> <span class="nav-text">5.8 数组初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-8-1_可变参数列表"><span class="nav-number">4.1.</span> <span class="nav-text">5.8.1 可变参数列表</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-9_枚举类型"><span class="nav-number">5.</span> <span class="nav-text">5.9 枚举类型</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">EclipseFlower</span>
+</div>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"eclipseflower"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+  
+  <!-- lazyload -->
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+      <script type="text/javascript">
+        jQuery(function() {          
+            jQuery("#posts img").lazyload({
+              placeholder:"http://www.arao.me/loading.gif",  
+                effect:"fadeIn"
+              });
+            });
+    </script>   
+</body>
+</html>

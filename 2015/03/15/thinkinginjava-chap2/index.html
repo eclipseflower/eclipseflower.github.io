@@ -1,11 +1,15 @@
 <!doctype html>
 <html class="theme-next use-motion theme-next-mist">
 <head>
-  
+    
 
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -17,7 +21,7 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.4"/>
 
 
     <meta name="description" content="技术宅拯救世界。" />
@@ -30,28 +34,47 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
 
+
+<meta name="description" content="参考书目：《Java编程思想》（第四版，中文版）
+2.3 永远不需要销毁对象2.3.2 对象的作用域Java对象不具备和基本类型一样的生命周期。当用new创建一个Java对象时，它可以存活于作用域之外。例如：
+{
+    String s = new String(&quot;a string&quot;);
+} // End of scope
+不过与C++不同的是，在外界引用该Java对象时，不用担心它被销毁，就是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java编程思想读书笔记（第二章）">
+<meta property="og:url" content="http://eclipseflower.github.io/2015/03/15/thinkinginjava-chap2/index.html">
+<meta property="og:site_name" content="EclipseFlower's Studio">
+<meta property="og:description" content="参考书目：《Java编程思想》（第四版，中文版）
+2.3 永远不需要销毁对象2.3.2 对象的作用域Java对象不具备和基本类型一样的生命周期。当用new创建一个Java对象时，它可以存活于作用域之外。例如：
+{
+    String s = new String(&quot;a string&quot;);
+} // End of scope
+不过与C++不同的是，在外界引用该Java对象时，不用担心它被销毁，就是">
+<meta property="og:updated_time" content="2015-05-18T12:47:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java编程思想读书笔记（第二章）">
+<meta name="twitter:description" content="参考书目：《Java编程思想》（第四版，中文版）
+2.3 永远不需要销毁对象2.3.2 对象的作用域Java对象不具备和基本类型一样的生命周期。当用new创建一个Java对象时，它可以存活于作用域之外。例如：
+{
+    String s = new String(&quot;a string&quot;);
+} // End of scope
+不过与C++不同的是，在外界引用该Java对象时，不用担心它被销毁，就是">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    analytics: {
-      google: ''
-    },
     sidebar: 'hide'
   };
 </script>
 
-
-
-
-  <title> Java编程思想读书笔记（第二章） // EclipseFlower's Studio </title>
+    <title> Java编程思想读书笔记（第二章） // EclipseFlower's Studio </title>
 </head>
-
-<body>
-  <!--[if lte IE 8]>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
       <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
@@ -61,14 +84,15 @@
   </div>
 <![endif]-->
 
-  <div class="container one-column page-post-detail">
-    <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+
+
+<div class="container one-column page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
         <i class="icon-logo"></i>
       </span>
@@ -85,7 +109,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -93,7 +117,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
+          <a href="/" rel="section">
             <i class="menu-item-icon icon-home"></i> <br />
             首页
           </a>
@@ -101,7 +125,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories">
+          <a href="/categories" rel="section">
             <i class="menu-item-icon icon-categories"></i> <br />
             分类
           </a>
@@ -109,7 +133,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
+          <a href="/archives" rel="section">
             <i class="menu-item-icon icon-archives"></i> <br />
             归档
           </a>
@@ -117,7 +141,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
+          <a href="/tags" rel="section">
             <i class="menu-item-icon icon-tags"></i> <br />
             标签
           </a>
@@ -145,26 +169,26 @@
 <div class="site-search-toggle"></div>
     </div>
   
-</div>
+</nav>
 
 
-      </div>
-    </div>
+        </div>
+    </header>
 
-    <div id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content">
-          
+    <main id="main" class="main">
+        <div class="main-inner">
+            <div id="content" class="content">
+                
 
   <div id="posts" class="posts-expand">
     
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
@@ -176,14 +200,17 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-03-15
+          发表于
+          <time itemprop="dateCreated" datetime="2015-03-15T19:11:02+08:00" content="2015-03-15">
+            2015-03-15
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/Java/">Java</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
 
               
               
@@ -195,15 +222,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/03/15/thinkinginjava-chap2/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/15/thinkinginjava-chap2/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/03/15/thinkinginjava-chap2/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/15/thinkinginjava-chap2/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -211,7 +238,7 @@
       
 
       
-        <p>参考书目：《Java编程思想》（第四版，中文版）</p>
+        <span itemprop="articleBody"><p>参考书目：《Java编程思想》（第四版，中文版）</p>
 <h4 id="2-3_永远不需要销毁对象">2.3 永远不需要销毁对象</h4><h5 id="2-3-2_对象的作用域">2.3.2 对象的作用域</h5><p>Java对象不具备和基本类型一样的生命周期。当用<em>new</em>创建一个Java对象时，它可以存活于作用域之外。例如：</p>
 <pre><code>{
     <span class="built_in">String</span> s = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"a string"</span>);
@@ -219,17 +246,17 @@
 </code></pre><p>不过与C++不同的是，在外界引用该Java对象时，不用担心它被销毁，就是说，这样做是安全的。由<em>new</em>创建的对象，只要你需要，就会一直保留下去。<br><a id="more"></a></p>
 <h4 id="2-8_注释和嵌入式文档">2.8 注释和嵌入式文档</h4><h5 id="2-8-2_语法">2.8.2 语法</h5><p>所有javadoc命令都只能在“/**“注释中出现，和通常一样，注释结束于“*/”。<em>文档标签</em>是一些以“@”字符开头的命令。</p>
 <h5 id="2-8-5_文档示例">2.8.5 文档示例</h5><figure class="highlight java"><figcaption><span>HelloDate.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: object/HelloDate.java</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="comment">/** The first Thinking in Java example program.</span><br><span class="line">* Displays a string and today’s date.</span><br><span class="line">* <span class="doctag">@author</span> Bruce Eckel</span><br><span class="line">* <span class="doctag">@author</span> www.MindView.net</span><br><span class="line">* <span class="doctag">@version</span> 4.0</span><br><span class="line">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloDate</span> </span>&#123;</span><br><span class="line"><span class="comment">/** Entry point to class &amp; application.</span><br><span class="line">* <span class="doctag">@param</span> args array of string arguments</span><br><span class="line">* <span class="doctag">@throws</span> exceptions No exceptions thrown</span><br><span class="line">*/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Hello, it’s: "</span>);</span><br><span class="line">		System.out.println(<span class="keyword">new</span> Date());</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="comment">/* Output: (55% match)</span><br><span class="line">Hello, it’s:</span><br><span class="line">Wed Oct 05 14:39:36 MDT 2005</span><br><span class="line">*/</span><span class="comment">//:~</span></span><br></pre></td></tr></table></figure>
-
+</span>
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/Java/"> #Java </a>
+            <a href="/tags/Java/" rel="tag">#Java</a>
           
-            <a href="/tags/读书笔记/"> #读书笔记 </a>
+            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
           
         </div>
       
@@ -238,13 +265,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/03/16/xinbiaoripre/">新标日初级读书笔记（入门单元）</a>
+              <a href="/2015/03/16/xinbiaoripre/" rel="prev">新标日初级读书笔记（入门单元）</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/03/10/jianzhanji/">博客诞生记</a>
+              <a href="/2015/03/10/jianzhanji/" rel="next">博客诞生记</a>
             
           </div>
         </div>
@@ -252,34 +279,33 @@
 
       
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
 
     <div class="post-spread">
       
     </div>
-
-    
-      <div class="comments" id="comments">
-        
-          <div class="ds-thread" data-thread-key="2015/03/15/thinkinginjava-chap2/"
-               data-title="Java编程思想读书笔记（第二章）" data-url="http://eclipseflower.github.io/2015/03/15/thinkinginjava-chap2/">
-          </div>
-        
-      </div>
-    
   </div>
 
 
+            </div>
+
+            
+
+            
+              <div class="comments" id="comments">
+                
+                  <div class="ds-thread" data-thread-key="2015/03/15/thinkinginjava-chap2/"
+                       data-title="Java编程思想读书笔记（第二章）" data-url="http://eclipseflower.github.io/2015/03/15/thinkinginjava-chap2/">
+                  </div>
+                
+              </div>
+            
         </div>
 
         
-      </div>
-
-
-      
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -289,12 +315,12 @@
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -303,13 +329,13 @@
         </ul>
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="EclipseFlower" />
-          <p class="site-author-name">EclipseFlower</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="EclipseFlower" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">EclipseFlower</p>
         </div>
-        <p class="site-description motion-element">技术宅拯救世界。</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">技术宅拯救世界。</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">21</span>
@@ -331,7 +357,7 @@
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
 
@@ -339,16 +365,16 @@
           
             
               <span class="links-of-author-item">
-              <a href="https://github.com/eclipseflower" target="_blank">github</a>
-            </span>
+                <a href="https://github.com/eclipseflower" target="_blank">github</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/u/2196543012/" target="_blank">weibo</a>
-            </span>
+                <a href="http://weibo.com/u/2196543012/" target="_blank">weibo</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://www.douban.com/people/59170101/" target="_blank">douban</a>
-            </span>
+                <a href="http://www.douban.com/people/59170101/" target="_blank">douban</a>
+              </span>
             
           
         </div>
@@ -374,11 +400,11 @@
             
           
         </div>
-        
-      </div>
+
+      </section>
 
       
-        <div class="post-toc-wrap sidebar-panel-active">
+        <section class="post-toc-wrap sidebar-panel-active">
           <div class="post-toc-indicator-top post-toc-indicator"></div>
           <div class="post-toc">
             
@@ -387,66 +413,100 @@
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
-        </div>
+        </section>
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>
-  <span class="author">EclipseFlower</span>
+  <span class="author" itemprop="copyrightHolder">EclipseFlower</span>
 </div>
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
 
-<span id="busuanzi_container_site_uv">
-  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-</span>
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
 
 
 
-      </div>
-    </div>
+        </div>
+    </footer>
 
     <div class="back-to-top"></div>
-  </div>
+</div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
   
   
+  
+    
 
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"eclipseflower"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	  <script type="text/javascript">
+  		var duoshuo_user_ID = 11059021
+  	  </script>
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.4"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.4"></script>
   
 
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.4" id="motion.global"></script>
 
 
 
   <script type="text/javascript" src="/js/search-toggle.js"></script>
 
+
   
-  
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.4" id="bootstrap.scrollspy.custom"></script>
 
 
 <script type="text/javascript" id="sidebar.toc.highlight">
@@ -479,7 +539,6 @@
     }
 
     function getTOCMaxHeight () {
-      var $sidebarInner = $('.sidebar-inner');
       var height = $('.sidebar').height() -
                    $tocSelector.position().top -
                    $('.post-toc-indicator-bottom').height();
@@ -501,7 +560,7 @@
       )
     }
 
-    $(document).on('sidebar.didShow', function () {
+    $(document).on('sidebar.motion.complete', function () {
       processTOC();
     });
 
@@ -585,15 +644,15 @@
 
 
 
-  <script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
+        if (CONFIG.sidebar === 'always') {
+            displaySidebar();
+        }
     });
-  </script>
+</script>
 
-  
+
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
@@ -616,41 +675,20 @@
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
-  
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"eclipseflower"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
 
 
-  
-  
 
-  
-  <!-- lazyload -->
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-      <script type="text/javascript">
-        jQuery(function() {          
-            jQuery("#posts img").lazyload({
-              placeholder:"http://www.arao.me/loading.gif",  
-                effect:"fadeIn"
-              });
-            });
-    </script>   
+
+
+<!-- lazyload -->
+<script type="text/javascript" src="/js/lazyload.js"></script>
+<script type="text/javascript">
+    jQuery(function () {
+        jQuery("#posts img").lazyload({
+            placeholder: "/images/loading.gif",
+            effect: "fadeIn"
+        });
+    });
+</script>
 </body>
 </html>

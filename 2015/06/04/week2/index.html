@@ -1,11 +1,15 @@
 <!doctype html>
 <html class="theme-next use-motion theme-next-mist">
 <head>
-  
+    
 
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -17,7 +21,7 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.4"/>
 
 
     <meta name="description" content="技术宅拯救世界。" />
@@ -30,28 +34,32 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
 
+
+<meta name="description" content="一点题外话距离上一篇都过去了两个星期了。完全不是周记的节奏啊。只怪上周有个mapreduce考试耽搁了时间。而且私以为考试成绩与复习时间没有相关性。之所以要说点题外话，是因为上周我又把博客的主题做了点设置。主要修改的有将原有主题的内主题更换了，同时为了美化本地搜索框参考了这篇文章。因为博客主题的开发者还在更新，所以得做好记录，方便以后重配。下面接着上一篇的话题接着往后说。这次的话题可能有些偏学术。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的游戏开发周记（第二周）">
+<meta property="og:url" content="http://eclipseflower.github.io/2015/06/04/week2/index.html">
+<meta property="og:site_name" content="EclipseFlower's Studio">
+<meta property="og:description" content="一点题外话距离上一篇都过去了两个星期了。完全不是周记的节奏啊。只怪上周有个mapreduce考试耽搁了时间。而且私以为考试成绩与复习时间没有相关性。之所以要说点题外话，是因为上周我又把博客的主题做了点设置。主要修改的有将原有主题的内主题更换了，同时为了美化本地搜索框参考了这篇文章。因为博客主题的开发者还在更新，所以得做好记录，方便以后重配。下面接着上一篇的话题接着往后说。这次的话题可能有些偏学术。">
+<meta property="og:updated_time" content="2015-06-18T13:43:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我的游戏开发周记（第二周）">
+<meta name="twitter:description" content="一点题外话距离上一篇都过去了两个星期了。完全不是周记的节奏啊。只怪上周有个mapreduce考试耽搁了时间。而且私以为考试成绩与复习时间没有相关性。之所以要说点题外话，是因为上周我又把博客的主题做了点设置。主要修改的有将原有主题的内主题更换了，同时为了美化本地搜索框参考了这篇文章。因为博客主题的开发者还在更新，所以得做好记录，方便以后重配。下面接着上一篇的话题接着往后说。这次的话题可能有些偏学术。">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    analytics: {
-      google: ''
-    },
     sidebar: 'hide'
   };
 </script>
 
-
-
-
-  <title> 我的游戏开发周记（第二周） // EclipseFlower's Studio </title>
+    <title> 我的游戏开发周记（第二周） // EclipseFlower's Studio </title>
 </head>
-
-<body>
-  <!--[if lte IE 8]>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
       <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
@@ -61,14 +69,15 @@
   </div>
 <![endif]-->
 
-  <div class="container one-column page-post-detail">
-    <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+
+
+<div class="container one-column page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
         <i class="icon-logo"></i>
       </span>
@@ -85,7 +94,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -93,7 +102,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
+          <a href="/" rel="section">
             <i class="menu-item-icon icon-home"></i> <br />
             首页
           </a>
@@ -101,7 +110,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories">
+          <a href="/categories" rel="section">
             <i class="menu-item-icon icon-categories"></i> <br />
             分类
           </a>
@@ -109,7 +118,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
+          <a href="/archives" rel="section">
             <i class="menu-item-icon icon-archives"></i> <br />
             归档
           </a>
@@ -117,7 +126,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
+          <a href="/tags" rel="section">
             <i class="menu-item-icon icon-tags"></i> <br />
             标签
           </a>
@@ -145,26 +154,26 @@
 <div class="site-search-toggle"></div>
     </div>
   
-</div>
+</nav>
 
 
-      </div>
-    </div>
+        </div>
+    </header>
 
-    <div id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content">
-          
+    <main id="main" class="main">
+        <div class="main-inner">
+            <div id="content" class="content">
+                
 
   <div id="posts" class="posts-expand">
     
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
@@ -176,14 +185,17 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-06-04
+          发表于
+          <time itemprop="dateCreated" datetime="2015-06-04T20:33:44+08:00" content="2015-06-04">
+            2015-06-04
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/游戏开发/">游戏开发</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/游戏开发/" itemprop="url" rel="index"><span itemprop="name">游戏开发</span></a></span>
 
               
               
@@ -195,15 +207,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/06/04/week2/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/04/week2/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/06/04/week2/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/04/week2/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -211,7 +223,7 @@
       
 
       
-        <h4 id="一点题外话">一点题外话</h4><p>距离上一篇都过去了两个星期了。完全不是周记的节奏啊。只怪上周有个mapreduce考试耽搁了时间。而且私以为考试成绩与复习时间没有相关性。之所以要说点题外话，是因为上周我又把博客的主题做了点设置。主要修改的有将原有主题的内主题更换了，同时为了美化本地搜索框参考了<a href="http://zzbd.org/2015/04/22/custom-search-btn/" target="_blank" rel="external">这篇</a>文章。因为博客主题的开发者还在更新，所以得做好记录，方便以后重配。下面接着上一篇的话题接着往后说。这次的话题可能有些偏学术。</p>
+        <span itemprop="articleBody"><h4 id="一点题外话">一点题外话</h4><p>距离上一篇都过去了两个星期了。完全不是周记的节奏啊。只怪上周有个mapreduce考试耽搁了时间。而且私以为考试成绩与复习时间没有相关性。之所以要说点题外话，是因为上周我又把博客的主题做了点设置。主要修改的有将原有主题的内主题更换了，同时为了美化本地搜索框参考了<a href="http://zzbd.org/2015/04/22/custom-search-btn/" target="_blank" rel="external">这篇</a>文章。因为博客主题的开发者还在更新，所以得做好记录，方便以后重配。下面接着上一篇的话题接着往后说。这次的话题可能有些偏学术。</p>
 <a id="more"></a>
 <h4 id="正题">正题</h4><p>从<a href="http://eclipseflower.github.io/2015/05/19/week1/">上一篇</a>博客我们可以知道，第一阶段要做的事情就是初始化相应的变量，并载入所需的图片和音频资源。然后，在资源加载完毕之后，我们就要开始引导整个游戏的开始了。首先得提到一个概念：状态机。为什么需要用到状态机呢？因为一个游戏的运行过程（从开始到结束）其实是一个状态不断改变的过程，在不同的状态所要做的事情也是不同的。简单地说，我们可以把游戏分为载入状态、菜单状态、游戏中状态等等。不同的状态往往对应着不同的绘制画面等等。这里，我们在love.load函数的结尾首先进入一个名为intro的状态，调用intro_load函数。源代码中intro_load()函数非常简单，所以我就把它列出来了。。</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">intro_load</span><span class="params">()</span></span></span><br><span class="line">	gamestate = <span class="string">"intro"</span></span><br><span class="line">	</span><br><span class="line">	introduration = <span class="number">2.5</span></span><br><span class="line">	blackafterintro = <span class="number">0.3</span></span><br><span class="line">	introfadetime = <span class="number">0.5</span></span><br><span class="line">	introprogress = -<span class="number">0.2</span> </span><br><span class="line">	</span><br><span class="line">	screenwidth = <span class="number">400</span>*scale</span><br><span class="line">	screenheight = <span class="number">224</span>*scale</span><br><span class="line">	allowskip = <span class="keyword">false</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
@@ -315,17 +327,17 @@ while ( !quit ) {
 </blockquote>
 <p>2、代码中有一句if ( frameTime &gt; 0.25 ) 。这句话的作用是如果画面渲染已经慢到连1秒4帧都渲染不了，就假设它1秒能渲染4帧吧！如果真的卡了，就让画面卡着吧。。。</p>
 <p>好了，本次的内容就到这里了。关于帧率，最简单的写法当然是不固定了。在不同的场合用不同的写法吧。</p>
-
+</span>
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/love2d/"> #love2d </a>
+            <a href="/tags/love2d/" rel="tag">#love2d</a>
           
-            <a href="/tags/游戏开发/"> #游戏开发 </a>
+            <a href="/tags/游戏开发/" rel="tag">#游戏开发</a>
           
         </div>
       
@@ -334,13 +346,13 @@ while ( !quit ) {
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/19/xinbiaorilesson6/">新标日初级读书笔记（第 6 课）</a>
+              <a href="/2015/06/19/xinbiaorilesson6/" rel="prev">新标日初级读书笔记（第 6 课）</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/03/yumeirencao/">《虞美人草》书摘</a>
+              <a href="/2015/06/03/yumeirencao/" rel="next">《虞美人草》书摘</a>
             
           </div>
         </div>
@@ -348,34 +360,33 @@ while ( !quit ) {
 
       
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
 
     <div class="post-spread">
       
     </div>
-
-    
-      <div class="comments" id="comments">
-        
-          <div class="ds-thread" data-thread-key="2015/06/04/week2/"
-               data-title="我的游戏开发周记（第二周）" data-url="http://eclipseflower.github.io/2015/06/04/week2/">
-          </div>
-        
-      </div>
-    
   </div>
 
 
+            </div>
+
+            
+
+            
+              <div class="comments" id="comments">
+                
+                  <div class="ds-thread" data-thread-key="2015/06/04/week2/"
+                       data-title="我的游戏开发周记（第二周）" data-url="http://eclipseflower.github.io/2015/06/04/week2/">
+                  </div>
+                
+              </div>
+            
         </div>
 
         
-      </div>
-
-
-      
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -385,12 +396,12 @@ while ( !quit ) {
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -399,13 +410,13 @@ while ( !quit ) {
         </ul>
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="EclipseFlower" />
-          <p class="site-author-name">EclipseFlower</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="EclipseFlower" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">EclipseFlower</p>
         </div>
-        <p class="site-description motion-element">技术宅拯救世界。</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">技术宅拯救世界。</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">21</span>
@@ -427,7 +438,7 @@ while ( !quit ) {
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
 
@@ -435,16 +446,16 @@ while ( !quit ) {
           
             
               <span class="links-of-author-item">
-              <a href="https://github.com/eclipseflower" target="_blank">github</a>
-            </span>
+                <a href="https://github.com/eclipseflower" target="_blank">github</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/u/2196543012/" target="_blank">weibo</a>
-            </span>
+                <a href="http://weibo.com/u/2196543012/" target="_blank">weibo</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://www.douban.com/people/59170101/" target="_blank">douban</a>
-            </span>
+                <a href="http://www.douban.com/people/59170101/" target="_blank">douban</a>
+              </span>
             
           
         </div>
@@ -470,11 +481,11 @@ while ( !quit ) {
             
           
         </div>
-        
-      </div>
+
+      </section>
 
       
-        <div class="post-toc-wrap sidebar-panel-active">
+        <section class="post-toc-wrap sidebar-panel-active">
           <div class="post-toc-indicator-top post-toc-indicator"></div>
           <div class="post-toc">
             
@@ -483,66 +494,100 @@ while ( !quit ) {
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
-        </div>
+        </section>
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>
-  <span class="author">EclipseFlower</span>
+  <span class="author" itemprop="copyrightHolder">EclipseFlower</span>
 </div>
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
 
-<span id="busuanzi_container_site_uv">
-  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-</span>
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
 
 
 
-      </div>
-    </div>
+        </div>
+    </footer>
 
     <div class="back-to-top"></div>
-  </div>
+</div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
   
   
+  
+    
 
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"eclipseflower"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	  <script type="text/javascript">
+  		var duoshuo_user_ID = 11059021
+  	  </script>
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.4"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.4"></script>
   
 
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.4" id="motion.global"></script>
 
 
 
   <script type="text/javascript" src="/js/search-toggle.js"></script>
 
+
   
-  
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.4" id="bootstrap.scrollspy.custom"></script>
 
 
 <script type="text/javascript" id="sidebar.toc.highlight">
@@ -575,7 +620,6 @@ while ( !quit ) {
     }
 
     function getTOCMaxHeight () {
-      var $sidebarInner = $('.sidebar-inner');
       var height = $('.sidebar').height() -
                    $tocSelector.position().top -
                    $('.post-toc-indicator-bottom').height();
@@ -597,7 +641,7 @@ while ( !quit ) {
       )
     }
 
-    $(document).on('sidebar.didShow', function () {
+    $(document).on('sidebar.motion.complete', function () {
       processTOC();
     });
 
@@ -681,15 +725,15 @@ while ( !quit ) {
 
 
 
-  <script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
+        if (CONFIG.sidebar === 'always') {
+            displaySidebar();
+        }
     });
-  </script>
+</script>
 
-  
+
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
@@ -712,41 +756,20 @@ while ( !quit ) {
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
-  
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"eclipseflower"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
 
 
-  
-  
 
-  
-  <!-- lazyload -->
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-      <script type="text/javascript">
-        jQuery(function() {          
-            jQuery("#posts img").lazyload({
-              placeholder:"http://www.arao.me/loading.gif",  
-                effect:"fadeIn"
-              });
-            });
-    </script>   
+
+
+<!-- lazyload -->
+<script type="text/javascript" src="/js/lazyload.js"></script>
+<script type="text/javascript">
+    jQuery(function () {
+        jQuery("#posts img").lazyload({
+            placeholder: "/images/loading.gif",
+            effect: "fadeIn"
+        });
+    });
+</script>
 </body>
 </html>

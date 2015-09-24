@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Octopress," />
+  <meta name="keywords" content="作用域,声明,语言," />
 
 
 
@@ -37,19 +37,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="之前看到许多小伙伴搭的博客，自己觉得挺好看的，但是由于自己感觉没有太大的需要，就没有产生过自己尝试搭博客的想法。（当然，其实一方面是因为自己比较懒）
-这学期刚开始，又发现了一个小伙伴的博客，而且还在不断更新，逛了逛之后感觉挺励志（大雾）。实际上，上学期我在整理读书笔记的时候，一直被坑爹的Word排版困扰，无法满足得了我的需求。而且，每到放假的时候，我还需要把做的笔记记录等一些东西进行同步，着实不方">
+<meta name="description" content="关于自动变量函数中每个局部变量只在函数调用时存在，函数执行完毕后就消失了。这类局部变量，往往被称作自动变量。
+关于外部变量外部变量，在函数体外定义，只能定义一次。（就是我们通常所说的全局变量）在需要访问某个外部变量的时候，必须要进行声明。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客诞生记">
-<meta property="og:url" content="http://eclipseflower.github.io/2015/03/10/jianzhanji/index.html">
+<meta property="og:title" content="C语言的外部变量与作用域">
+<meta property="og:url" content="http://eclipseflower.github.io/2015/09/24/outer-variables-in-C/index.html">
 <meta property="og:site_name" content="中二病のSTUDIO">
-<meta property="og:description" content="之前看到许多小伙伴搭的博客，自己觉得挺好看的，但是由于自己感觉没有太大的需要，就没有产生过自己尝试搭博客的想法。（当然，其实一方面是因为自己比较懒）
-这学期刚开始，又发现了一个小伙伴的博客，而且还在不断更新，逛了逛之后感觉挺励志（大雾）。实际上，上学期我在整理读书笔记的时候，一直被坑爹的Word排版困扰，无法满足得了我的需求。而且，每到放假的时候，我还需要把做的笔记记录等一些东西进行同步，着实不方">
-<meta property="og:updated_time" content="2015-09-10T14:45:51.000Z">
+<meta property="og:description" content="关于自动变量函数中每个局部变量只在函数调用时存在，函数执行完毕后就消失了。这类局部变量，往往被称作自动变量。
+关于外部变量外部变量，在函数体外定义，只能定义一次。（就是我们通常所说的全局变量）在需要访问某个外部变量的时候，必须要进行声明。">
+<meta property="og:updated_time" content="2015-09-24T15:38:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博客诞生记">
-<meta name="twitter:description" content="之前看到许多小伙伴搭的博客，自己觉得挺好看的，但是由于自己感觉没有太大的需要，就没有产生过自己尝试搭博客的想法。（当然，其实一方面是因为自己比较懒）
-这学期刚开始，又发现了一个小伙伴的博客，而且还在不断更新，逛了逛之后感觉挺励志（大雾）。实际上，上学期我在整理读书笔记的时候，一直被坑爹的Word排版困扰，无法满足得了我的需求。而且，每到放假的时候，我还需要把做的笔记记录等一些东西进行同步，着实不方">
+<meta name="twitter:title" content="C语言的外部变量与作用域">
+<meta name="twitter:description" content="关于自动变量函数中每个局部变量只在函数调用时存在，函数执行完毕后就消失了。这类局部变量，往往被称作自动变量。
+关于外部变量外部变量，在函数体外定义，只能定义一次。（就是我们通常所说的全局变量）在需要访问某个外部变量的时候，必须要进行声明。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -59,7 +59,7 @@
   };
 </script>
 
-  <title> 博客诞生记 | 中二病のSTUDIO </title>
+  <title> C语言的外部变量与作用域 | 中二病のSTUDIO </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -187,7 +187,7 @@
           
           
             
-              博客诞生记
+              C语言的外部变量与作用域
             
           
         </h1>
@@ -196,8 +196,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-03-10T15:11:02+08:00" content="2015-03-10">
-            2015-03-10
+          <time itemprop="dateCreated" datetime="2015-09-24T23:25:22+08:00" content="2015-09-24">
+            2015-09-24
           </time>
         </span>
 
@@ -206,8 +206,8 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/折腾/" itemprop="url" rel="index">
-                  <span itemprop="name">折腾</span>
+                <a href="/categories/C/" itemprop="url" rel="index">
+                  <span itemprop="name">C</span>
                 </a>
               </span>
 
@@ -222,8 +222,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/03/10/jianzhanji/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/10/jianzhanji/" itemprop="commentsCount"></span>
+              <a href="/2015/09/24/outer-variables-in-C/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/24/outer-variables-in-C/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -237,60 +237,14 @@
       
 
       
-        <span itemprop="articleBody"><p>之前看到许多小伙伴搭的博客，自己觉得挺好看的，但是由于自己感觉没有太大的需要，就没有产生过自己尝试搭博客的想法。（当然，其实一方面是因为自己比较懒）</p>
-<p>这学期刚开始，又发现了一个小伙伴的博客，而且还在不断更新，逛了逛之后感觉挺励志（大雾）。实际上，上学期我在整理读书笔记的时候，一直被坑爹的Word排版困扰，无法满足得了我的需求。而且，每到放假的时候，我还需要把做的笔记记录等一些东西进行同步，着实不方便。这时候，我突然想到，如果把这些笔记什么的发布在网上，一来解决了我同步的琐碎问题，二来也可以方便自己随时查阅，三来还能和其他人进行交流。于是我就想自己搭一个博客了。</p>
-<p>想到什么就要及时做什么。于是就有了这篇记录我这几天捣鼓的文章。本博客的建立过程中得到了<a href="http://6carol6.github.io/" target="_blank" rel="external">薇姐</a>和习大大、J神的大力帮助与支持，在此向他们表示感谢。（也不造他们能不能看到==）总之，ありがとうございます。<br><a id="more"></a></p>
-<h2 id="环境配置">环境配置</h2><p>本博客是基于<a href="http://octopress.org/" target="_blank" rel="external">Octopress</a>和<a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages</a>搭建的。关于环境配置的教程，前面两个链接中均有较为详细的描述（不过是英文版==）。中文版的教程，主要参考了使用<a href="http://cn.soulmachine.me//blog/20130401/" target="_blank" rel="external">github + Octopress 搭建免费博客</a>和<a href="http://blog.163.com/fuhaocn@126/blog/static/366650802012115103842500/" target="_blank" rel="external">在Github上搭建Octopress博客</a>两篇博文。但是这里还是要把自己搭建环境的步骤记录，做一个备忘录。（万一哪天我又重装系统了呢）</p>
-<h3 id="1-在GitHub上创建New_Repository">1.在GitHub上创建New Repository</h3><p>该步骤参见<a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages</a>官网。</p>
-<h3 id="2-安装配置msysgit">2.安装配置msysgit</h3><p>我安装的git版本为Git-1.8.1.2-preview20130201。配置过程前面博文均有叙述。</p>
-<h3 id="3-安装Octopress">3.安装Octopress</h3><h4 id="安装ruby">安装ruby</h4><p>我安装的ruby版本为rubyinstaller-1.9.3-p429。</p>
-<h4 id="安装DevKit">安装DevKit</h4><p>我安装的DevKit版本为DevKit-tdm-32-4.5.2-20111229-1559-sfx。</p>
-<h4 id="安装python">安装python</h4><p>该步骤是可选的，但是如果不安装python就无法使用Octopress自带的代码高亮功能。（亲测）</p>
-<p>我安装的python版本为ActivePython-2.7.8.10-win64-x64。别忘记安装完之后要在cmd中执行：</p>
-<pre><code><span class="title">easy_install</span> pygments
-</code></pre><h4 id="安装Octopress">安装Octopress</h4><p>参见<a href="http://octopress.org/" target="_blank" rel="external">Octopress</a>官网和前面博文。</p>
-<h3 id="4-博客基本设置">4.博客基本设置</h3><p>修改Octopress根目录下的主配置文件_config.yml。</p>
-<h3 id="5-部署到GitHub">5.部署到GitHub</h3><p>依旧参见。这里有个小问题，就是我直接在cmd中执行</p>
-<pre><code><span class="title">rake</span> setup_github_pages
-</code></pre><p>时，会遇到repository地址无法识别的问题。但是换在Git Bash下执行相同的命令却解决了。所以最好还是在Git Bash下执行所有操作。</p>
-<p>另外，不要忘记备份源文件：</p>
-<pre><code><span class="label">git</span> <span class="keyword">add </span>.
-<span class="label">git</span> commit -m <span class="string">"your message"</span>
-<span class="label">git</span> <span class="keyword">push </span>origin source
-</code></pre><p>至此，本地环境的配置基本结束。然后差不多就可以写文章啦。markdown的语法参考见<a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">这里</a>和<a href="http://www.jianshu.com/p/q81RER/" target="_blank" rel="external">那里</a>。Octoprees自带语法高亮的文档在<a href="http://octopress.org/docs/plugins/backtick-codeblock/" target="_blank" rel="external">这里</a>。</p>
-<h2 id="常用命令">常用命令</h2><h3 id="rake_install命令">rake install命令</h3><p>该命令在不加任何参数情况下，安装默认的Octopress主题。所加的参数即为各种已下载的其他<a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes" target="_blank" rel="external">第三方的主题</a>。</p>
-<h3 id="rake_generate命令">rake generate命令</h3><p>该命令用于生成静态页面（即对source文件夹进行处理）。如果需要对安装好的主题进行修改，直接对source文件夹的文件进行修改，然后再运行一次本命令即可。</p>
-<h3 id="rake_preview命令">rake preview命令</h3><p>该命令用来本地浏览，这样可以不用每次都要上传才能看到本次修改的效果。另外，该命令是动态更新的，即如果命令不终止，每次修改都会即时生效，然后直接即可本地预览，而不用每次都要重新generate然后再preview，是非常好用的命令。</p>
-<h3 id="rake_deploy命令">rake deploy命令</h3><p>该命令用于将本地修改自动发布到GitHub上的master分支，然后可以就可以访问看到效果了。</p>
-<h2 id="自定义设置">自定义设置</h2><p>1、默认首页显示摘要</p>
-<p>在markdown文件中合适的地方插入下面的代码</p>
-<pre><code><span class="comment">&lt;!-- more --&gt;</span>
-</code></pre><p>就会生成一个Read on。</p>
-<p>2、添加多说评论框</p>
-<p>该设置主要参考<a href="http://droidyue.com/blog/2014/07/29/integrate-duoshuo-in-octopress/" target="_blank" rel="external">Ocotpress集成多说评论</a>。</p>
-<p>3、主题</p>
-<p>本博客使用的主题为<a href="https://github.com/panks/fabric" target="_blank" rel="external">fabric</a>，并在此基础上进行修改。</p>
-<p>4、目录插件</p>
-<p>Octopress的markdown解释器不带目录，我又懒得换，所以找了插件来用。教程见<a href="http://khaos.github.io/blog/2012/12/05/generating-toc-in-octopress/" target="_blank" rel="external">Octopress易筋经，目录表ToC</a>。</p>
-<h2 id="问题整理">问题整理</h2><h3 id="1-执行rake_generate命令时出现的”invalid_bad_byte_sequences_in_UTF-8”错误">1.执行rake generate命令时出现的”invalid bad byte sequences in UTF-8”错误</h3><p>该问题出现得十分诡异，在我使用百度和Google搜索均得不到想要的答案。准确来说，网上出现这种错误的情况比较少。在进行多番排查后，怀疑是自己系统的用户名含有非英文字符所致。于是，果断就重装系统了。重装系统后使用了全英文作为用户名，再次尝试安装，一切顺利，问题解决。这就告诉我们：</p>
-<blockquote>
-<p>no zuo no die</p>
-</blockquote>
-<h3 id="2、执行rake_deploy命令时出现无法git的错误">2、执行rake deploy命令时出现无法git的错误</h3><pre><code>! [rejected]        master -&gt; master (non-fast-forward)
-error: failed <span class="built_in">to</span> push some refs <span class="built_in">to</span> <span class="string">'https://github.com/eclipseflower/eclipseflower.github.com.git'</span>
-hint: Updates were rejected because <span class="operator">the</span> tip <span class="operator">of</span> your current branch is behind
-hint: its remote counterpart. Merge <span class="operator">the</span> remote changes (e.g. <span class="string">'git pull'</span>)
-hint: <span class="keyword">before</span> pushing again.
-hint: See <span class="operator">the</span> <span class="string">'Note about fast-forwards'</span> <span class="operator">in</span> <span class="string">'git push --help'</span> <span class="keyword">for</span> details.
-</code></pre><p>这个问题出现时我也比较紧张。好在Google一下解决方案到处都是。（不得不吐槽百度的英文搜索能力）有以下两种解决方式，亲测都可用：</p>
-<p>1、手动进入_deploy目录手动强制push一次。参见<a href="http://www.itzhoulin.com/deploy-a-blog-using-octopress-hosted-in-github/#deploy2github" target="_blank" rel="external">利用octopress部署博客到github</a>。</p>
-<p>2、（建议）在_deploy目录下执行以下命令。参见<a href="http://stackoverflow.com/questions/21356212/failed-to-deploy-to-github-pages-using-octopress" target="_blank" rel="external">Failed to deploy to Github Pages using octopress</a>。</p>
-<pre><code>git config branch<span class="class">.master</span><span class="class">.remote</span> origin
-git config branch<span class="class">.master</span><span class="class">.merge</span> refs/heads/master
-git pull
-</code></pre><h3 id="3、备份source时出现无法git的错误">3、备份source时出现无法git的错误</h3><p>报错提示与上一错误类似。我自己找到一个比较残暴的解决方案：即先删除远程分支，然后再重新提交本地分支。参考<a href="http://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html" target="_blank" rel="external">git 常用命令(含删除文件)</a>。命令如下：</p>
-<pre><code>git push origin <span class="symbol">:heads/source</span>
-</code></pre><p>然后就可以像以前一样正常提交了。</p>
+        <span itemprop="articleBody"><h5 id="关于自动变量">关于自动变量</h5><p>函数中每个局部变量只在函数调用时存在，函数执行完毕后就消失了。这类局部变量，往往被称作<code>自动变量</code>。</p>
+<h5 id="关于外部变量">关于外部变量</h5><p>外部变量，在函数体外定义，只能定义一次。（就是我们通常所说的全局变量）在需要访问某个外部变量的时候，必须要进行<code>声明</code>。</p>
+<a id="more"></a>
+<h6 id="声明">声明</h6><p>声明外部变量时，要说明其类型。（Q：如果定义外部变量时的类型与声明该变量时的类型不一致会发生什么？）声明可以用<code>extern</code>关键字显式声明，也可以通过上下文隐式声明。来看一个简单的示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> max;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">copy</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">extern</span> <span class="keyword">int</span> max; <span class="comment">// 这里就是声明使用之前定义的外部变量max</span></span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">copy</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在源文件中，如果外部变量的定义出现在使用之前，extern声明是可以省略的，就像上个例子中，max不用声明就可以直接拿来使用。</p>
+<p>如果程序包含多个源文件，某个变量在<em>file1</em>中定义，而其他文件中需要使用到该变量，那么就需要使用<code>extern</code>声明来建立变量与定义之间的联系。</p>
+<h6 id="头文件的写法">头文件的写法</h6><p>针对上述问题，人们通常的做法是，将变量与函数的<code>extern</code>声明放在一个单独的文件中，这个文件称之为<code>头文件</code>。这样，每个源文件在开头用<code>#include</code>头文件的语句把所需要的变量和函数包含进来。</p>
 </span>
       
     </div>
@@ -299,7 +253,11 @@ git pull
       
         <div class="post-tags">
           
-            <a href="/tags/Octopress/" rel="tag">#Octopress</a>
+            <a href="/tags/作用域/" rel="tag">#作用域</a>
+          
+            <a href="/tags/声明/" rel="tag">#声明</a>
+          
+            <a href="/tags/语言/" rel="tag">#语言</a>
           
         </div>
       
@@ -308,11 +266,11 @@ git pull
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/04/23/linuxmark/" rel="prev">Linux问题备忘</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/09/macmark/" rel="next">Mac问题备忘</a>
             
           </div>
         </div>
@@ -364,8 +322,8 @@ git pull
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/03/10/jianzhanji/"
-                   data-title="博客诞生记" data-url="http://eclipseflower.github.io/2015/03/10/jianzhanji/">
+              <div class="ds-thread" data-thread-key="2015/09/24/outer-variables-in-C/"
+                   data-title="C语言的外部变量与作用域" data-url="http://eclipseflower.github.io/2015/09/24/outer-variables-in-C/">
               </div>
             
           </div>
@@ -476,7 +434,7 @@ git pull
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境配置"><span class="nav-number">1.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-在GitHub上创建New_Repository"><span class="nav-number">1.1.</span> <span class="nav-text">1.在GitHub上创建New Repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装配置msysgit"><span class="nav-number">1.2.</span> <span class="nav-text">2.安装配置msysgit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-安装Octopress"><span class="nav-number">1.3.</span> <span class="nav-text">3.安装Octopress</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装ruby"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装ruby</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装DevKit"><span class="nav-number">1.3.2.</span> <span class="nav-text">安装DevKit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装python"><span class="nav-number">1.3.3.</span> <span class="nav-text">安装python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Octopress"><span class="nav-number">1.3.4.</span> <span class="nav-text">安装Octopress</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-博客基本设置"><span class="nav-number">1.4.</span> <span class="nav-text">4.博客基本设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-部署到GitHub"><span class="nav-number">1.5.</span> <span class="nav-text">5.部署到GitHub</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-number">2.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rake_install命令"><span class="nav-number">2.1.</span> <span class="nav-text">rake install命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rake_generate命令"><span class="nav-number">2.2.</span> <span class="nav-text">rake generate命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rake_preview命令"><span class="nav-number">2.3.</span> <span class="nav-text">rake preview命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rake_deploy命令"><span class="nav-number">2.4.</span> <span class="nav-text">rake deploy命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义设置"><span class="nav-number">3.</span> <span class="nav-text">自定义设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题整理"><span class="nav-number">4.</span> <span class="nav-text">问题整理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-执行rake_generate命令时出现的”invalid_bad_byte_sequences_in_UTF-8”错误"><span class="nav-number">4.1.</span> <span class="nav-text">1.执行rake generate命令时出现的”invalid bad byte sequences in UTF-8”错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、执行rake_deploy命令时出现无法git的错误"><span class="nav-number">4.2.</span> <span class="nav-text">2、执行rake deploy命令时出现无法git的错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、备份source时出现无法git的错误"><span class="nav-number">4.3.</span> <span class="nav-text">3、备份source时出现无法git的错误</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#关于自动变量"><span class="nav-number">1.</span> <span class="nav-text">关于自动变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于外部变量"><span class="nav-number">2.</span> <span class="nav-text">关于外部变量</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#声明"><span class="nav-number">2.1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#头文件的写法"><span class="nav-number">2.2.</span> <span class="nav-text">头文件的写法</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

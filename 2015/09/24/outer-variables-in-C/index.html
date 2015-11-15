@@ -61,7 +61,7 @@
 <meta property="og:site_name" content="中二病のSTUDIO">
 <meta property="og:description" content="关于自动变量函数中每个局部变量只在函数调用时存在，函数执行完毕后就消失了。这类局部变量，往往被称作自动变量。
 关于外部变量外部变量，在函数体外定义，只能定义一次。（就是我们通常所说的全局变量）在需要访问某个外部变量的时候，必须要进行声明。">
-<meta property="og:updated_time" content="2015-09-24T15:38:14.000Z">
+<meta property="og:updated_time" content="2015-11-15T14:59:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言的外部变量与作用域">
 <meta name="twitter:description" content="关于自动变量函数中每个局部变量只在函数调用时存在，函数执行完毕后就消失了。这类局部变量，往往被称作自动变量。
@@ -286,7 +286,7 @@
         <span itemprop="articleBody"><h5 id="关于自动变量">关于自动变量</h5><p>函数中每个局部变量只在函数调用时存在，函数执行完毕后就消失了。这类局部变量，往往被称作<code>自动变量</code>。</p>
 <h5 id="关于外部变量">关于外部变量</h5><p>外部变量，在函数体外定义，只能定义一次。（就是我们通常所说的全局变量）在需要访问某个外部变量的时候，必须要进行<code>声明</code>。</p>
 <a id="more"></a>
-<h6 id="声明">声明</h6><p>声明外部变量时，要说明其类型。（Q：如果定义外部变量时的类型与声明该变量时的类型不一致会发生什么？）声明可以用<code>extern</code>关键字显式声明，也可以通过上下文隐式声明。来看一个简单的示例：</p>
+<h6 id="声明">声明</h6><p>声明外部变量时，要说明其类型。（Q：如果定义外部变量时的类型与声明该变量时的类型不一致会发生什么？A：编译器会抱怨类型不一致从而无法通过编译。）声明可以用<code>extern</code>关键字显式声明，也可以通过上下文隐式声明。来看一个简单的示例：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> max;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">copy</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">extern</span> <span class="keyword">int</span> max; <span class="comment">// 这里就是声明使用之前定义的外部变量max</span></span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">copy</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在源文件中，如果外部变量的定义出现在使用之前，extern声明是可以省略的，就像上个例子中，max不用声明就可以直接拿来使用。</p>
 <p>如果程序包含多个源文件，某个变量在<em>file1</em>中定义，而其他文件中需要使用到该变量，那么就需要使用<code>extern</code>声明来建立变量与定义之间的联系。</p>
@@ -319,6 +319,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/15/strings-in-C/" rel="prev" title="C语言的字符串">
+                C语言的字符串 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -409,7 +413,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -423,7 +427,7 @@
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">标签</span>
               
           </div>

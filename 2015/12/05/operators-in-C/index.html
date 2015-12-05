@@ -37,7 +37,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="作用域,声明,语言," />
+  <meta name="keywords" content="操作符,语言," />
 
 
 
@@ -53,19 +53,16 @@
 
 
 
-<meta name="description" content="关于自动变量函数中每个局部变量只在函数调用时存在，函数执行完毕后就消失了。这类局部变量，往往被称作自动变量。
-关于外部变量外部变量，在函数体外定义，只能定义一次。（就是我们通常所说的全局变量）在需要访问某个外部变量的时候，必须要进行声明。">
+<meta name="description" content="按位操作符在使用右移位操作符&amp;gt;&amp;gt;时，要注意当对signed类型的带符号值进行右移时，某些机器将对左边空出的部分用符号位填补（即“算术移位”），而另一些机器则对左边空出的部分用0填补（即“逻辑移位”）。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C语言的外部变量与作用域">
-<meta property="og:url" content="http://eclipseflower.github.io/2015/09/24/outer-variables-in-C/index.html">
+<meta property="og:title" content="C语言的操作符">
+<meta property="og:url" content="http://eclipseflower.github.io/2015/12/05/operators-in-C/index.html">
 <meta property="og:site_name" content="中二病のSTUDIO">
-<meta property="og:description" content="关于自动变量函数中每个局部变量只在函数调用时存在，函数执行完毕后就消失了。这类局部变量，往往被称作自动变量。
-关于外部变量外部变量，在函数体外定义，只能定义一次。（就是我们通常所说的全局变量）在需要访问某个外部变量的时候，必须要进行声明。">
-<meta property="og:updated_time" content="2015-11-15T14:59:30.000Z">
+<meta property="og:description" content="按位操作符在使用右移位操作符&amp;gt;&amp;gt;时，要注意当对signed类型的带符号值进行右移时，某些机器将对左边空出的部分用符号位填补（即“算术移位”），而另一些机器则对左边空出的部分用0填补（即“逻辑移位”）。">
+<meta property="og:updated_time" content="2015-12-05T08:19:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C语言的外部变量与作用域">
-<meta name="twitter:description" content="关于自动变量函数中每个局部变量只在函数调用时存在，函数执行完毕后就消失了。这类局部变量，往往被称作自动变量。
-关于外部变量外部变量，在函数体外定义，只能定义一次。（就是我们通常所说的全局变量）在需要访问某个外部变量的时候，必须要进行声明。">
+<meta name="twitter:title" content="C语言的操作符">
+<meta name="twitter:description" content="按位操作符在使用右移位操作符&amp;gt;&amp;gt;时，要注意当对signed类型的带符号值进行右移时，某些机器将对左边空出的部分用符号位填补（即“算术移位”），而另一些机器则对左边空出的部分用0填补（即“逻辑移位”）。">
 
 
 
@@ -77,7 +74,7 @@
   };
 </script>
 
-  <title> C语言的外部变量与作用域 | 中二病のSTUDIO </title>
+  <title> C语言的操作符 | 中二病のSTUDIO </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -228,7 +225,7 @@
             
             
               
-                C语言的外部变量与作用域
+                C语言的操作符
               
             
           </h1>
@@ -237,8 +234,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-09-24T23:25:22+08:00" content="2015-09-24">
-              2015-09-24
+            <time itemprop="dateCreated" datetime="2015-12-05T14:52:29+08:00" content="2015-12-05">
+              2015-12-05
             </time>
           </span>
 
@@ -263,8 +260,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/24/outer-variables-in-C/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/24/outer-variables-in-C/" itemprop="commentsCount"></span>
+                <a href="/2015/12/05/operators-in-C/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/05/operators-in-C/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -283,15 +280,38 @@
       
 
       
-        <span itemprop="articleBody"><h5 id="关于自动变量">关于自动变量</h5><p>函数中每个局部变量只在函数调用时存在，函数执行完毕后就消失了。这类局部变量，往往被称作<code>自动变量</code>。</p>
-<h5 id="关于外部变量">关于外部变量</h5><p>外部变量，在函数体外定义，只能定义一次。（就是我们通常所说的全局变量）在需要访问某个外部变量的时候，必须要进行<code>声明</code>。</p>
+        <span itemprop="articleBody"><h3 id="按位操作符">按位操作符</h3><p>在使用右移位操作符<code>&gt;&gt;</code>时，要注意当对<code>signed</code>类型的带符号值进行右移时，某些机器将对左边空出的部分用符号位填补（即<code>“算术移位”</code>），而另一些机器则对左边空出的部分用0填补（即<code>“逻辑移位”</code>）。</p>
 <a id="more"></a>
-<h6 id="声明">声明</h6><p>声明外部变量时，要说明其类型。（Q：如果定义外部变量时的类型与声明该变量时的类型不一致会发生什么？A：编译器会抱怨类型不一致从而无法通过编译。）声明可以用<code>extern</code>关键字显式声明，也可以通过上下文隐式声明。来看一个简单的示例：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> max;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">copy</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">extern</span> <span class="keyword">int</span> max; <span class="comment">// 这里就是声明使用之前定义的外部变量max</span></span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">copy</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在源文件中，如果外部变量的定义出现在使用之前，extern声明是可以省略的，就像上个例子中，max不用声明就可以直接拿来使用。</p>
-<p>如果程序包含多个源文件，某个变量在<em>file1</em>中定义，而其他文件中需要使用到该变量，那么就需要使用<code>extern</code>声明来建立变量与定义之间的联系。</p>
-<h6 id="头文件的写法">头文件的写法</h6><p>针对上述问题，人们通常的做法是，将变量与函数的<code>extern</code>声明放在一个单独的文件中，这个文件称之为<code>头文件</code>。这样，每个源文件在开头用<code>#include</code>头文件的语句把所需要的变量和函数包含进来。</p>
-</span>
+<h4 id="掩码操作">掩码操作</h4><p>一元操作符<code>~</code>用于求整数的二进制反码。例如：</p>
+<pre><code><span class="attribute">x </span>=<span class="string"> x &amp; ~077</span>
+</code></pre><p>将把x的最后六位设置为0。注意，表达式<code>x&amp;~077</code>与机器字长无关，它比形如<code>x&amp;0177700</code>的表达式要好，因为后者假定了x是16位的数值。这种<code>可移植</code>的形式并没有增加额外开销，因为<code>~077</code>是常量表达式，可以在<code>编译</code>时求值。</p>
+<p>下面是一个函数<code>getbits(x,p,n)</code>，它返回x中从右边数第p位开始向右数n位的字段。假定最右边的一位是第0位。<code>getbits(x,4,3)</code>返回x中第4、3、2三位的值。</p>
+<pre><code><span class="function"><span class="keyword">unsigned</span> <span class="title">getbits</span><span class="params">(<span class="keyword">unsigned</span> x, <span class="keyword">int</span> p, <span class="keyword">int</span> n)</span>
+</span>{
+    <span class="keyword">return</span> (x &gt;&gt; (p + <span class="number">1</span> - n)) &amp; ~(~<span class="number">0</span> &lt;&lt; n);
+}
+</code></pre><h4 id="统计一个整形数值为1的二进制位的个数">统计一个整形数值为1的二进制位的个数</h4><p>表达式<code>x&amp;=(x-1)</code>可以删除x中最右边值为1的一个二进制位。</p>
+<pre><code><span class="function"><span class="keyword">int</span> <span class="title">bitcount</span><span class="params">(<span class="keyword">unsigned</span> x)</span>
+</span>{
+    <span class="keyword">int</span> b;
+    <span class="keyword">for</span>(b = <span class="number">0</span>; x != <span class="number">0</span>; b++)
+        x &amp;= (x - <span class="number">1</span>);
+    <span class="keyword">return</span> b;
+}
+</code></pre><h3 id="赋值操作符">赋值操作符</h3><p>大多数二元操作符都有一个相应的赋值操作符<code>op=</code>，如果<em>expr1</em>和<em>expr2</em>是表达式，那么</p>
+<pre><code><span class="attribute">expr1 op</span>=<span class="string"> expr2</span>
+</code></pre><p>等价于</p>
+<pre><code>expr1 = <span class="list">(<span class="keyword">expr1</span>)</span> op <span class="list">(<span class="keyword">expr2</span>)</span>
+</code></pre><p>它们的区别在于，前一种形式<em>expr1</em>只计算<code>一次</code>。注意，在第二种形式中，<em>expr2</em>两边的<code>圆括号</code>是不可缺少的。例如，</p>
+<pre><code><span class="attribute">x *</span>=<span class="string"> y + 1</span>
+</code></pre><p>的含义是</p>
+<pre><code>x = x * <span class="list">(<span class="keyword">y</span> + <span class="number">1</span>)</span>
+</code></pre><p>而不是</p>
+<pre><code><span class="attribute">x </span>=<span class="string"> x * y + 1</span>
+</code></pre><h3 id="条件表达式">条件表达式</h3><p>采用条件表达式可以编写出很简洁的代码。例如，下面的这个循环语句打印一个数组的n个元素，每行打印10个元素，每列之间用一个空格隔开，每行用一个换行符结束（包括最后一行）：</p>
+<pre><code><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)
+    <span class="keyword">printf</span>(<span class="string">"<span class="variable">%6d</span><span class="variable">%c</span>"</span>, a[i], (i<span class="variable">%10</span>==<span class="number">9</span> || i==n-<span class="number">1</span>) ? <span class="string">'\n'</span> : <span class="string">' ");</span>
+</code></pre></span>
       
     </div>
 
@@ -299,9 +319,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/作用域/" rel="tag">#作用域</a>
-          
-            <a href="/tags/声明/" rel="tag">#声明</a>
+            <a href="/tags/操作符/" rel="tag">#操作符</a>
           
             <a href="/tags/语言/" rel="tag">#语言</a>
           
@@ -312,17 +330,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/09/macmark/" rel="next" title="Mac问题备忘">
-                <i class="fa fa-chevron-left"></i> Mac问题备忘
+              <a href="/2015/11/15/strings-in-C/" rel="next" title="C语言的字符串">
+                <i class="fa fa-chevron-left"></i> C语言的字符串
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/15/strings-in-C/" rel="prev" title="C语言的字符串">
-                C语言的字符串 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -337,10 +351,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/09/24/outer-variables-in-C/"
-     data-title="C语言的外部变量与作用域"
+        <div class="ds-share flat" data-thread-key="2015/12/05/operators-in-C/"
+     data-title="C语言的操作符"
      data-content=""
-     data-url="http://eclipseflower.github.io/2015/09/24/outer-variables-in-C/">
+     data-url="http://eclipseflower.github.io/2015/12/05/operators-in-C/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -368,8 +382,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/09/24/outer-variables-in-C/"
-           data-title="C语言的外部变量与作用域" data-url="http://eclipseflower.github.io/2015/09/24/outer-variables-in-C/">
+      <div class="ds-thread" data-thread-key="2015/12/05/operators-in-C/"
+           data-title="C语言的操作符" data-url="http://eclipseflower.github.io/2015/12/05/operators-in-C/">
       </div>
     
   </div>
@@ -504,7 +518,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#关于自动变量"><span class="nav-number">1.</span> <span class="nav-text">关于自动变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于外部变量"><span class="nav-number">2.</span> <span class="nav-text">关于外部变量</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#声明"><span class="nav-number">2.1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#头文件的写法"><span class="nav-number">2.2.</span> <span class="nav-text">头文件的写法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#按位操作符"><span class="nav-number">1.</span> <span class="nav-text">按位操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#掩码操作"><span class="nav-number">1.1.</span> <span class="nav-text">掩码操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#统计一个整形数值为1的二进制位的个数"><span class="nav-number">1.2.</span> <span class="nav-text">统计一个整形数值为1的二进制位的个数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值操作符"><span class="nav-number">2.</span> <span class="nav-text">赋值操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件表达式"><span class="nav-number">3.</span> <span class="nav-text">条件表达式</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

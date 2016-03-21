@@ -74,7 +74,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"right","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -98,12 +98,14 @@
 
 
 
+
+
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -132,7 +134,7 @@
   
 
   
-    <ul id="menu" class="menu menu-left">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
@@ -176,10 +178,10 @@
       
 
       
-      
-      
         <li class="menu-item menu-item-search">
-          <a href="#" class="st-search-show-outputs">
+          
+            <a href="#" class="st-search-show-outputs">
+          
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
@@ -304,6 +306,7 @@
                <span class="leancloud-visitors-count"></span>
               </span>
           
+
         </div>
       </header>
     
@@ -328,6 +331,12 @@
 </ol>
 <p>运行成功的图我就不贴了。在Windows下进行了一点测试，发现除了开机速度有一点慢（最坏情况可能要1min），程序第一次载入内存比较慢以外（毕竟是5400转的移动硬盘），其他的运行速度都挺流畅。不过，Mac的硬件架构当真不适合Windows。Windows下的发热量比较大，估计也就只能小玩怡情了。</p>
 
+      
+    </div>
+
+    <div>
+      
+        
       
     </div>
 
@@ -452,19 +461,23 @@
             </a>
           </div>
 
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">分类</span>
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
               </a>
-          </div>
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            
-              <span class="site-state-item-count">13</span>
-              <span class="site-state-item-name">标签</span>
+          
+            <div class="site-state-item site-state-tags">
               
-          </div>
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
 
         </nav>
 
@@ -503,26 +516,29 @@
         
         
 
-        <div class="links-of-author motion-element">
+        
+        <div class="links-of-blogroll motion-element">
           
-            <p class="site-author-name">友情链接</p>
-            
-              <span class="links-of-author-item">
-                <a href="http://6carol6.github.io/" target="_blank">6carol6</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://cellzero.github.io/" target="_blank">cellzero</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://chuan92.com/" target="_blank">chuan92</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://luvinahlc.github.io/" target="_blank">luvina</a>
-              </span>
-            
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://6carol6.github.io/" target="_blank">6carol6</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://cellzero.github.io/" target="_blank">cellzero</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://chuan92.com/" target="_blank">chuan92</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://luvinahlc.github.io/" target="_blank">luvina</a>
+                </li>
+              
+            </ul>
           
         </div>
 
@@ -562,23 +578,30 @@
   &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">EclipseFlower</span>
 </div>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-<span id="busuanzi_container_site_uv">
-  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-</span>
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
 
 
 
       </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
 
   
@@ -586,6 +609,14 @@
 
   
 
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
 
 
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
@@ -772,7 +803,7 @@
     NexT.motion.middleWares.sidebar = function () {
       var $tocContent = $('.post-toc-content');
 
-      if (CONFIG.sidebar === 'post') {
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
         if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
           NexT.utils.displaySidebar();
         }
@@ -822,6 +853,7 @@
 
   
   
+  
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       tex2jax: {
@@ -847,7 +879,6 @@
   
 
 
-  
   
 
   

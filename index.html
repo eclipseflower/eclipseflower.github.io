@@ -246,6 +246,171 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/21/counting-bits/" itemprop="url">
+                  Counting Bits
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-21T21:34:58+08:00" content="2016-03-21">
+              2016-03-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/OJ/" itemprop="url" rel="index">
+                    <span itemprop="name">OJ</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/21/counting-bits/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/21/counting-bits/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/21/counting-bits/" class="leancloud_visitors" data-flag-title="Counting Bits">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>好久没更新博客了，今天就来诈尸一下。今天主要讲一道算法题，目前是LeetCode OJ上通过率最高的题了（我是按通过率排序来做题的＝＝）。题目如下：</p>
+<p>Given a non negative integer number <strong>num</strong>. For every numbers <strong>i</strong> in the range <strong>0 ≤ i ≤ num</strong> calculate the number of 1’s in their binary representation and return them as an array.</p>
+<p><strong>Example:</strong></p>
+<p>For <code>num = 5</code> you should return <code>[0,1,1,2,1,2]</code>.</p>
+<p><strong>Follow up:</strong></p>
+<ul>
+<li>It is very easy to come up with a solution with run time <strong>O(n*sizeof(integer))</strong>. But can you do it in linear time <strong>O(n)</strong> /possibly in a single pass?</li>
+<li>Space complexity should be <strong>O(n)</strong>.</li>
+<li>Can you do it like a boss? Do it without using any builtin function like <strong>__builtin_popcount</strong> in c++ or in any other language.</li>
+</ul>
+<p>题目大意就是要依次统计所有<strong>num</strong>以下的数中二进制表示1的个数。首先，很容易想到单独求一个数的二进制表示1的个数需要<strong>O(sizeof(integer))</strong>时间，然后总共有<strong>num</strong>个数，故需要花费<strong>O(n*sizeof(integer))</strong>的时间。说到如果是单独去求一个数的二进制表示1的个数，可以使用位操作符的办法，如下：</p>
+<pre><code><span class="function"><span class="keyword">int</span> <span class="title">bitcount</span><span class="params">(<span class="keyword">unsigned</span> x)</span>
+</span>{
+    <span class="keyword">int</span> b;
+    <span class="keyword">for</span>(b = <span class="number">0</span>; x != <span class="number">0</span>; b++)
+        x &amp;= (x - <span class="number">1</span>);
+    <span class="keyword">return</span> b;
+}
+</code></pre><p>这个思路也比较容易理解。对于一个数而言，最后一位如果是1，减1之后前面的位并不受影响，该位的1已经被纳入统计；而如果是0，减1之后该位为1，1&amp;0=0，该位并不受影响，但这带动了前面减1的过程，从而计算前面的位中1的个数。而只要统计过的位数，该位在之后运算中一定为0。所以，其实这个算法是从最低位到最高位按位统计1的个数的。</p>
+<p>不过这道题用这种方法做并不能加速。看题目的尿性，感觉到之前算出来的值应该能重复利用（有点动态规划的感觉＝＝）。没忍住看了下题目的提示，果然：</p>
+<p>You should make use of what you have produced already.</p>
+<p>然后就是一个找规律的过程。题目又给了另外一个提示：</p>
+<p>Divide the numbers in ranges like [2-3], [4-7], [8-15] and so on. And try to generate new range from previous.</p>
+<p>看完这个提示，我在草稿纸上画了一通，发现了如下的规律：</p>
+<p>0 -&gt; 0</p>
+<p>1 -&gt; 1</p>
+<p>2 -&gt; 10</p>
+<p>3 -&gt; 11</p>
+<p>4 -&gt; 100</p>
+<p>5 -&gt; 101</p>
+<p>6 -&gt; 110</p>
+<p>7 -&gt; 111</p>
+<p>在计算某个数二进制表示1的个数时，例如7，其实当前最高位的1是已知的，然后剩下的11统计其实是从7-4=3来的。也就是说，根据提示的分组方法，每个组的二进制表示1的个数为上一组的对应某些数的二进制表示1的个数＋1，比方说7与3对应，6与2对应，3与1对应，2与0对应，等等。</p>
+<p>于是，按照这个思路，我们得到了如下的代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; countBits(<span class="keyword">int</span> num) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; count;</span><br><span class="line">        count.push_back(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> base = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(num &gt;= base) &#123;</span><br><span class="line">            <span class="keyword">int</span> nextbase = base &lt;&lt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = base; i &lt; nextbase; i++) &#123;</span><br><span class="line">                count.push_back(count[i - base] + <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span>(i == num)</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            base = nextbase;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这个代码里不太优美的地方，在于每次内循环都要判断什么时候计算完毕，就是，没有把<strong>num</strong>和分组关联起来。另外，其实还有第三个提示，但是我直接就没有看了。。。提示是这样的：</p>
+<p>Or does the odd/even status of the number help you in calculating the number of 1s?</p>
+<p>提示的意思是说，一个数的奇偶性在计算其二进制表示1的个数中发挥了重大作用。让我们再回头看一下那个例子。我们发现对于偶数而言，它的最后一位必定是0，也就是说它的二进制表示1的个数与将它的0抹去（右移位，其实就是除以2）之后的那个数的二进制表示1的个数应该是相同的。例如，6与3对应，4与2对应，它们的二进制表示1的个数都各自相同。如果是奇数呢，做法类似，就是比右移位后的那个数的二进制表示1的个数多1。这也是显然的。所以，这种思路的代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; countBits(<span class="keyword">int</span> num) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; count;</span><br><span class="line">        count.push_back(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= num; i++) &#123;</span><br><span class="line">            count.push_back(count[i &gt;&gt; <span class="number">1</span>] + (i &amp; <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在discuss板块，我又发现了一个比较漂亮的解法，该解法运用了最开始所说的最低位开始统计1的个数的<img src="https://leetcode.com/discuss/92796/four-lines-c-time-o-n-space-o-n" alt="方法">，代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; countBits(<span class="keyword">int</span> num) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ret(num+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= num; ++i)</span><br><span class="line">            ret[i] = ret[i&amp;(i-<span class="number">1</span>)] + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>该方法的巧妙之处在于不直接统计一个数的二进制表示1的个数，因为<code>i&amp;(i-1)</code>表示消去i二进制表示最低位的1之后剩下的数，所以这个数的二进制表示1的个数一定比<code>i</code>小1。这就是代码中循环所表达的意思。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/12/05/operators-in-C/" itemprop="url">
                   C语言的操作符
                 </a>
@@ -1412,7 +1577,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1420,7 +1585,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1429,7 +1594,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

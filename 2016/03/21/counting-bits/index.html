@@ -66,7 +66,7 @@ Given a non negative integer number num. For every numbers i in the range 0 ≤ 
 <meta property="og:description" content="好久没更新博客了，今天就来诈尸一下。今天主要讲一道算法题，目前是LeetCode OJ上通过率最高的题了（我是按通过率排序来做题的＝＝）。题目如下：
 Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their bi">
 <meta property="og:image" content="https://leetcode.com/discuss/92796/four-lines-c-time-o-n-space-o-n">
-<meta property="og:updated_time" content="2016-03-22T14:58:51.000Z">
+<meta property="og:updated_time" content="2016-03-22T15:01:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Counting Bits">
 <meta name="twitter:description" content="好久没更新博客了，今天就来诈尸一下。今天主要讲一道算法题，目前是LeetCode OJ上通过率最高的题了（我是按通过率排序来做题的＝＝）。题目如下：
@@ -332,6 +332,7 @@ Given a non negative integer number num. For every numbers i in the range 0 ≤ 
 <li>Space complexity should be <strong>O(n)</strong>.</li>
 <li>Can you do it like a boss? Do it without using any builtin function like <strong>__builtin_popcount</strong> in c++ or in any other language.</li>
 </ul>
+<a id="more"></a>
 <p>题目大意就是要依次统计所有<strong>num</strong>以下的数中二进制表示1的个数。首先，很容易想到单独求一个数的二进制表示1的个数需要<strong>O(sizeof(integer))</strong>时间，然后总共有<strong>num</strong>个数，故需要花费<strong>O(n*sizeof(integer))</strong>的时间。说到如果是单独去求一个数的二进制表示1的个数，可以使用位操作符的办法，如下：</p>
 <pre><code><span class="function"><span class="keyword">int</span> <span class="title">bitcount</span><span class="params">(<span class="keyword">unsigned</span> x)</span>
 </span>{

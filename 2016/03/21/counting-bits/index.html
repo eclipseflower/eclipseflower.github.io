@@ -65,8 +65,7 @@ Given a non negative integer number num. For every numbers i in the range 0 ≤ 
 <meta property="og:site_name" content="中二病のSTUDIO">
 <meta property="og:description" content="好久没更新博客了，今天就来诈尸一下。今天主要讲一道算法题，目前是LeetCode OJ上通过率最高的题了（我是按通过率排序来做题的＝＝）。题目如下：
 Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their bi">
-<meta property="og:image" content="https://leetcode.com/discuss/92796/four-lines-c-time-o-n-space-o-n">
-<meta property="og:updated_time" content="2016-03-22T15:01:49.000Z">
+<meta property="og:updated_time" content="2016-03-23T14:30:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Counting Bits">
 <meta name="twitter:description" content="好久没更新博客了，今天就来诈尸一下。今天主要讲一道算法题，目前是LeetCode OJ上通过率最高的题了（我是按通过率排序来做题的＝＝）。题目如下：
@@ -362,9 +361,40 @@ Given a non negative integer number num. For every numbers i in the range 0 ≤ 
 <p>Or does the odd/even status of the number help you in calculating the number of 1s?</p>
 <p>提示的意思是说，一个数的奇偶性在计算其二进制表示1的个数中发挥了重大作用。让我们再回头看一下那个例子。我们发现对于偶数而言，它的最后一位必定是0，也就是说它的二进制表示1的个数与将它的0抹去（右移位，其实就是除以2）之后的那个数的二进制表示1的个数应该是相同的。例如，6与3对应，4与2对应，它们的二进制表示1的个数都各自相同。如果是奇数呢，做法类似，就是比右移位后的那个数的二进制表示1的个数多1。这也是显然的。所以，这种思路的代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; countBits(<span class="keyword">int</span> num) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; count;</span><br><span class="line">        count.push_back(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= num; i++) &#123;</span><br><span class="line">            count.push_back(count[i &gt;&gt; <span class="number">1</span>] + (i &amp; <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>在discuss板块，我又发现了一个比较漂亮的解法，该解法运用了最开始所说的最低位开始统计1的个数的<img src="https://leetcode.com/discuss/92796/four-lines-c-time-o-n-space-o-n" alt="方法">，代码如下：</p>
+<p>在discuss板块，我又发现了一个比较漂亮的解法，该解法运用了最开始所说的最低位开始统计1的个数的<a href="https://leetcode.com/discuss/92796/four-lines-c-time-o-n-space-o-n" target="_blank" rel="external">方法</a>，代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; countBits(<span class="keyword">int</span> num) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ret(num+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= num; ++i)</span><br><span class="line">            ret[i] = ret[i&amp;(i-<span class="number">1</span>)] + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>该方法的巧妙之处在于不直接统计一个数的二进制表示1的个数，因为<code>i&amp;(i-1)</code>表示消去i二进制表示最低位的1之后剩下的数，所以这个数的二进制表示1的个数一定比<code>i</code>小1。这就是代码中循环所表达的意思。</p>
+<p>然而，这篇文章还没有结束。作为压轴，不得不提一下一个专门统计一个数二进制表示1的个数的算法——SWAR算法。算法的解释参见<a href="http://stackoverflow.com/questions/22081738/how-variable-precision-swar-algorithm-works" target="_blank" rel="external">这里</a>和<a href="http://blog.csdn.net/jasonbaoly/article/details/47336899" target="_blank" rel="external">这里</a>。但为了让自己理解，我还是手写一遍算法解释。首先，算法如下：</p>
+<pre><code>int SWAR<span class="params">(unsigned int i)</span>
+{
+    i = i - <span class="params">(<span class="params">(i &gt;&gt; <span class="number">1</span>)</span> &amp; <span class="number">0</span>x55555555)</span>;
+    i = <span class="params">(i &amp; <span class="number">0</span>x33333333)</span> + <span class="params">(<span class="params">(i &gt;&gt; <span class="number">2</span>)</span> &amp; <span class="number">0</span>x33333333)</span>;
+    return <span class="params">(<span class="params">(<span class="params">(i + <span class="params">(i &gt;&gt; <span class="number">4</span>)</span>)</span> &amp; <span class="number">0</span>x0F0F0F0F)</span> * <span class="number">0</span>x01010101)</span> &gt;&gt; <span class="number">24</span>;
+}
+</code></pre><p>然后来逐一分析。先看第一行：</p>
+<pre><code>i = i - <span class="list">(<span class="list">(<span class="keyword">i</span> &gt;&gt; <span class="number">1</span>)</span> &amp; <span class="number">0</span>x55555555)</span><span class="comment">;</span>
+</code></pre><p><code>0x55555555</code>的二进制展开形式是<code>01010101010101010101010101010101</code>，可以看到，这个掩码的作用是将一个数的二进制表示偶数位置0。<code>i &gt;&gt; 1</code>很简单，就是将<code>i</code>右移1位。所以第一行的意思就是，第一步，将<code>i</code>右移1位之后得到的数的二进制表示偶数位置0，奇数位则保持不变，得到中间结果<code>j</code>；第二步，把第一步得到的数<code>j</code>从<code>i</code>中减去。这么说太抽象，举个简单的例子来看，假设我们的<code>i</code>用二进制表示后得到<code>ba</code>（前面均为0，这里省略），那么经过第一步操作得到<code>j</code>为<code>0b</code>，然后我们<code>i－j</code>可以得到<code>ba-0b</code>的形式。这时，我们有了令人惊奇的发现：</p>
+<p>无论<code>a</code>和<code>b</code>取何值（实际上它们也只能取0或1），<code>ba-0b</code>的值（转为十进制）永远等于<code>ba</code>中1的个数。那如果<code>i</code>不止两位呢？容易看出，<code>i－j</code>的最后两位依旧符合上述规律。不仅如此，三四位，五六位，乃至更高位，均是如此。这也很容易解释:<code>ba-0b</code>运算时根本不可能向前一位进位，所以前一位不受任何影响；而且，前面位的运算格式也一定类似<code>ba-0b</code>，因为<code>j</code>右移了1位，而且偶数位又置为0。所以综上，这一行就是把32位数分为16个两位为单位的组，每组分别计算1出现的次数。</p>
+<p>然后，我们来看第二行：</p>
+<pre><code>i = <span class="list">(<span class="keyword">i</span> &amp; <span class="number">0</span>x33333333)</span> + <span class="list">(<span class="list">(<span class="keyword">i</span> &gt;&gt; <span class="number">2</span>)</span> &amp; <span class="number">0</span>x33333333)</span><span class="comment">;</span>
+</code></pre><p>这一行要简单一些。<code>0x33333333</code>的二进制形式是<code>00110011001100110011001100110011</code>，<code>i &amp; 0x33333333</code>就是取了奇数组的值，<code>(i &gt;&gt; 2) &amp; 0x33333333</code>就是取了偶数组的值，两者相加，就是归并成以4位为单位进行分组，每组分别计算1出现的次数了。注意这里是分开去与而不是<code>(i + (i &gt;&gt; 2)) &amp; 0x33333333</code>，因为直接<code>i + (i &gt;&gt; 2)</code>是可能出现进位的。＝＝</p>
+<p>接下来，是第三行：</p>
+<pre><code>return <span class="list">(<span class="list">(<span class="list">(<span class="keyword">i</span> + <span class="list">(<span class="keyword">i</span> &gt;&gt; <span class="number">4</span>)</span>)</span> &amp; <span class="number">0</span>x0F0F0F0F)</span> <span class="variable">* 0x01010101) &gt;&gt; 24;</span></span>
+</code></pre><p>第三行的意图与第二行类似。而且，因为上一行的保证，以4位为单位，每个4位上的值最多不超过<code>10+10=0100</code>，而就算是<code>0100+0100</code>也不可能引起到上一组的进位，所以可以直接用<code>(i + (i &gt;&gt; 4)) &amp; 0x0F0F0F0F</code>。这样，得到了一个以8位为单位进行分组，每组统计1出现次数的数<code>k</code>了。然后，我们来观察一下<code>0x01010101</code>。这个数其实是：</p>
+<pre><code><span class="number">0</span>x<span class="number">01010101</span> = <span class="comment">(1 &lt;&lt; 24)</span> + <span class="comment">(1 &lt;&lt; 16)</span> + <span class="comment">(1 &lt;&lt; 8)</span> + <span class="number">1</span>
+</code></pre><p>所以，我们有</p>
+<pre><code>k * <span class="number">0</span>x01010101 = <span class="list">(<span class="keyword">k</span> &lt;&lt; <span class="number">24</span>)</span> + <span class="list">(<span class="keyword">k</span> &lt;&lt; <span class="number">16</span>)</span> + <span class="list">(<span class="keyword">k</span> &lt;&lt; <span class="number">8</span>)</span> + k
+</code></pre><p>这里，我们只要关注结果的最高8位就可以了。显然，<code>k &lt;&lt; 24</code>的最高8位就是<code>k</code>的最低8位分组，而<code>k</code>的最高8位当然就是<code>k</code>的最高8位分组，四者相加，结果的最高8位就是<code>i</code>的二进制表示1的个数（不用担心有进位）！我们通过右移24位，就可以得到最终想要的结果了！</p>
+<p>还有种稍微容易理解的写法，如下：</p>
+<pre><code>int SWAR<span class="params">(unsigned int i)</span>  
+{  
+    x = <span class="params">(x &amp; <span class="number">0</span>x55555555)</span> + <span class="params">(<span class="params">(x &gt;&gt; <span class="number">1</span>)</span> &amp; <span class="number">0</span>x55555555)</span>;  
+    x = <span class="params">(x &amp; <span class="number">0</span>x33333333)</span> + <span class="params">(<span class="params">(x &gt;&gt; <span class="number">2</span>)</span> &amp; <span class="number">0</span>x33333333)</span>;  
+    x = <span class="params">(x &amp; <span class="number">0</span>x0f0f0f0f)</span> + <span class="params">(<span class="params">(x &gt;&gt; <span class="number">4</span>)</span> &amp; <span class="number">0</span>x0f0f0f0f)</span>;  
+    i = <span class="params">(i*<span class="params">(<span class="number">0</span>x01010101)</span> &gt;&gt; <span class="number">24</span>)</span>  
+    return i;  
+}  
+</code></pre><p>第一行的意思更加直接明了。就是一个数二进制表示的奇数位和偶数位相加，然后以2位为单位分组。奇数位和偶数位相加得到的值就是每组1出现次数（十进制表示）。</p>
 
       
     </div>

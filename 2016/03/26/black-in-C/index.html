@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="中二病のSTUDIO">
 <meta property="og:description" content="将一个数作为字符串打印使用递归，首先打印前面的（高位）数字，然后再打印后面的数字。代码如下：
 123456789void printd(int n)&amp;#123;	if(n &amp;lt; 0) &amp;#123;		putchar(&apos;-&apos;);	&amp;#125;	if(n / 10)		printd(n / 10);	putchar(n % 10 + &apos;0&apos;);&amp;#125;">
-<meta property="og:updated_time" content="2016-03-26T13:44:48.000Z">
+<meta property="og:updated_time" content="2016-04-12T12:22:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言工具箱">
 <meta name="twitter:description" content="将一个数作为字符串打印使用递归，首先打印前面的（高位）数字，然后再打印后面的数字。代码如下：
@@ -330,6 +330,11 @@
 <p>如果替换文本中的参数与##相邻，则该参数将被实际参数替换，##与前后的空白符将被删除。如：</p>
 <pre><code><span class="preprocessor">#<span class="keyword">define</span> paste(front, back) front ## back</span>
 </code></pre><p>因此，宏调用<code>paste(name,1)</code>结果为建立记号<code>name1</code>。</p>
+<h4 id="字符串拷贝">字符串拷贝</h4><p>有一种精炼的表达如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">strcpy</span><span class="params">(<span class="keyword">char</span> *s, <span class="keyword">char</span> *t)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(*s++ = *t++)</span><br><span class="line">	;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="指针实现进栈与出栈">指针实现进栈与出栈</h4><pre><code><span class="keyword">*</span>p++ = val;    /<span class="keyword">*</span> 将val压入栈 <span class="keyword">*</span>/
+val = <span class="keyword">*</span>--p;    /<span class="keyword">*</span> 将栈顶元素弹出到val中 <span class="keyword">*</span>/
+</code></pre><p>其中，<code>p</code>指向下一个空闲栈的位置。</p>
 
       
     </div>
@@ -554,7 +559,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#将一个数作为字符串打印"><span class="nav-number">1.</span> <span class="nav-text">将一个数作为字符串打印</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宏替换"><span class="nav-number">2.</span> <span class="nav-text">宏替换</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#将一个数作为字符串打印"><span class="nav-number">1.</span> <span class="nav-text">将一个数作为字符串打印</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宏替换"><span class="nav-number">2.</span> <span class="nav-text">宏替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串拷贝"><span class="nav-number">3.</span> <span class="nav-text">字符串拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指针实现进栈与出栈"><span class="nav-number">4.</span> <span class="nav-text">指针实现进栈与出栈</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="中二病のSTUDIO">
 <meta property="og:description" content="优先级问题一元运算符*和&amp;amp;的优先级比算术运算符的优先级高，且*和++这样的一元运算符遵循从右至左的结合顺序。例如：
 ++*ip等同于(*ip)++，它们都表示将ip指向的对象的值加1，但其中的圆括号是必须的，否则，该表达式将对ip进行加一运算，而不是对ip指向的对象进行加一运算。">
-<meta property="og:updated_time" content="2016-03-26T13:45:11.000Z">
+<meta property="og:updated_time" content="2016-04-12T13:15:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C和指针">
 <meta name="twitter:description" content="优先级问题一元运算符*和&amp;amp;的优先级比算术运算符的优先级高，且*和++这样的一元运算符遵循从右至左的结合顺序。例如：
@@ -329,6 +329,19 @@
 <span class="keyword">int</span> *pa;
 </code></pre><p>赋值语句<code>pa = &amp;a[0]</code>也可以写成<code>pa = a</code>这种形式。但数组名不是变量，<code>a = pa</code>和<code>a++</code>形式的语句是非法的。</p>
 <p>在函数定义中，指针和数组作为形参是等价的。比如<code>char s[]</code>和<code>char *s</code>。</p>
+<h4 id="多维数组">多维数组</h4><p>二维数组实际上是一种特殊的一维数组，它的每个元素也是一个一维数组。如果将二维数组作为<code>参数</code>传递给<code>函数</code>，那么在函数的参数声明中必须指明数组的<code>列数</code>,而<code>行数</code>没有太大关系，因为函数调用时传递的是一个指针。所以，函数声明</p>
+<pre><code>f(int daytab[<span class="link_label">2</span>][<span class="link_reference">13</span>]) { ... }
+</code></pre><p>也可以写成</p>
+<pre><code><span class="tag">f</span>(int daytab[][<span class="number">13</span>]) { ... }
+</code></pre><p>还可以写成</p>
+<pre><code><span class="tag">f</span>(int (*daytab)[<span class="number">13</span>]) { ... }
+</code></pre><p>这种声明形式表明参数是一个指针，它指向具有13个整形元素的一维数组。</p>
+<h4 id="复杂声明">复杂声明</h4><p>来看个例子。</p>
+<p><code>char (*(*x())[])()</code>中的<code>x</code>是什么类型？</p>
+<p>首先，从最外部开始。因为是形如<code>char f()</code>的形式，所以<code>(*(*x())[])</code>是一个函数，这个函数返回类型为<code>char</code>；</p>
+<p>接下来，发现是形如<code>*a[]</code>的形式，所以我们知道，<code>(*x())</code>是一个指针数组，数组的每个元素是指向之前函数的指针；</p>
+<p>最后，容易知道<code>*x()</code>是一个返回指针类型的函数，所以<code>x</code>是函数，返回类型是指向之前数组的指针；</p>
+<p>综上，我们得到：我们声明，x是一个函数，它的返回类型是一个指向数组的指针，该数组中的每个元素都是指向返回类型为<code>char</code>的函数的指针。</p>
 
       
     </div>
@@ -553,7 +566,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#优先级问题"><span class="nav-number">1.</span> <span class="nav-text">优先级问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指针与数组"><span class="nav-number">2.</span> <span class="nav-text">指针与数组</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#优先级问题"><span class="nav-number">1.</span> <span class="nav-text">优先级问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指针与数组"><span class="nav-number">2.</span> <span class="nav-text">指针与数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多维数组"><span class="nav-number">3.</span> <span class="nav-text">多维数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复杂声明"><span class="nav-number">4.</span> <span class="nav-text">复杂声明</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

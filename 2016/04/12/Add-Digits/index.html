@@ -57,19 +57,25 @@
 
 
 
-<meta name="description" content="今天来讲一下目前LeetCode OJ上通过率第二高的题。题目如下：
-You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who">
+<meta name="description" content="今天的题又是一道找规律的题。。。比较无聊。。。
+Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.
+For example:
+Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Si">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nim Game">
-<meta property="og:url" content="http://eclipseflower.github.io/2016/03/29/Nim-Game/index.html">
+<meta property="og:title" content="Add Digits">
+<meta property="og:url" content="http://eclipseflower.github.io/2016/04/12/Add-Digits/index.html">
 <meta property="og:site_name" content="中二病のSTUDIO">
-<meta property="og:description" content="今天来讲一下目前LeetCode OJ上通过率第二高的题。题目如下：
-You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who">
-<meta property="og:updated_time" content="2016-03-29T13:30:19.000Z">
+<meta property="og:description" content="今天的题又是一道找规律的题。。。比较无聊。。。
+Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.
+For example:
+Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Si">
+<meta property="og:updated_time" content="2016-04-12T14:22:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nim Game">
-<meta name="twitter:description" content="今天来讲一下目前LeetCode OJ上通过率第二高的题。题目如下：
-You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who">
+<meta name="twitter:title" content="Add Digits">
+<meta name="twitter:description" content="今天的题又是一道找规律的题。。。比较无聊。。。
+Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.
+For example:
+Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Si">
 
 
 
@@ -87,7 +93,7 @@ You are playing the following Nim Game with your friend: There is a heap of ston
   };
 </script>
 
-  <title> Nim Game | 中二病のSTUDIO </title>
+  <title> Add Digits | 中二病のSTUDIO </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -247,7 +253,7 @@ You are playing the following Nim Game with your friend: There is a heap of ston
             
             
               
-                Nim Game
+                Add Digits
               
             
           </h1>
@@ -259,8 +265,8 @@ You are playing the following Nim Game with your friend: There is a heap of ston
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-29T20:51:11+08:00" content="2016-03-29">
-              2016-03-29
+            <time itemprop="dateCreated" datetime="2016-04-12T21:44:46+08:00" content="2016-04-12">
+              2016-04-12
             </time>
           </span>
 
@@ -289,8 +295,8 @@ You are playing the following Nim Game with your friend: There is a heap of ston
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/29/Nim-Game/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/29/Nim-Game/" itemprop="commentsCount"></span>
+                <a href="/2016/04/12/Add-Digits/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/Add-Digits/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -300,7 +306,7 @@ You are playing the following Nim Game with your friend: There is a heap of ston
 
           
           
-             <span id="/2016/03/29/Nim-Game/" class="leancloud_visitors" data-flag-title="Nim Game">
+             <span id="/2016/04/12/Add-Digits/" class="leancloud_visitors" data-flag-title="Add Digits">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -321,21 +327,24 @@ You are playing the following Nim Game with your friend: There is a heap of ston
       
 
       
-        <p>今天来讲一下目前LeetCode OJ上通过率第二高的题。题目如下：</p>
-<p>You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.</p>
-<p>Both of you are very clever and have optimal strategies for the game. Write a function to determine whether you can win the game given the number of stones in the heap.</p>
-<p>For example, if there are 4 stones in the heap, then you will never win the game: no matter 1, 2, or 3 stones you remove, the last stone will always be removed by your friend.</p>
+        <p>今天的题又是一道找规律的题。。。比较无聊。。。</p>
+<p>Given a non-negative integer <code>num</code>, repeatedly add all its digits until the result has only one digit.</p>
+<p>For example:</p>
+<p>Given <code>num = 38</code>, the process is like: <code>3 + 8 = 11</code>, <code>1 + 1 = 2</code>. Since <code>2</code> has only one digit, return it.</p>
+<p><strong>Follow up</strong>:</p>
+<p>Could you do it without any loop/recursion in O(1) runtime?</p>
 <a id="more"></a>
-<p>题目大意就是要判断是否能赢得游戏在给定石头数量的条件下。当时一看到题目，心想，这不是很简单嘛，我能不能赢，不就相当于我拿走1～3颗石子后，对方会不会输嘛。只要对方有一种可能输，我就采取相应的策略就能赢了啊。所以，随性的代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canWinNim</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span> || n == <span class="number">2</span> || n == <span class="number">3</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> !canWinNim(n - <span class="number">3</span>) || !canWinNim(n - <span class="number">2</span>) || !canWinNim(n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>很不幸，提交上去直接Runtime Error了。一想，递归的子过程有公共的交集，应该用动态规划的手段来解决，于是改进的方案如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canWinNim</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> *result = <span class="keyword">new</span> <span class="keyword">bool</span>[<span class="number">4</span>];</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span> || n == <span class="number">2</span> || n == <span class="number">3</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            result[<span class="number">1</span>] = <span class="keyword">true</span>;</span><br><span class="line">            result[<span class="number">2</span>] = <span class="keyword">true</span>;</span><br><span class="line">            result[<span class="number">3</span>] = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">4</span>; i &lt;= n; i++) &#123;</span><br><span class="line">                result[<span class="number">0</span>] = !result[<span class="number">3</span>] || !result[<span class="number">2</span>] || !result[<span class="number">1</span>];</span><br><span class="line">                result[<span class="number">1</span>] = result[<span class="number">2</span>];</span><br><span class="line">                result[<span class="number">2</span>] = result[<span class="number">3</span>];</span><br><span class="line">                result[<span class="number">3</span>] = result[<span class="number">0</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> result[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>因为n颗石子的结果取决于少1～3颗石子的结果，所以我们需要4个空间即可完成任务。然而，提交上去之后就超时了。&gt;.&lt;</p>
-<p>然后就懵逼了。于是偷窥了一下hint：</p>
-<p>If there are 5 stones in the heap, could you figure out a way to remove the stones such that you will always be the winner?</p>
-<p>这个提示强烈地暗示了这道题目是有规律的。于是，画了画草图，发现当石子数量为1，2，3时必胜，4时必输。如果数量为5，那先取1颗石子，然后剩下4颗，这样对方必输。如此递推，我们可以得到一个规律：当石子数量为4的倍数时，必输；否则，必胜。于是关键代码就只有一行了。。。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canWinNim</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n &amp; <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>这里，<code>%4</code>运算可以用<code>&amp;3</code>来代替，因为<code>%4</code>就是取一个数二进制表示的最末两位。</p>
+<p>题目说到这份上，已经强烈暗示了可以不通过循环计算直接得到答案，那答案肯定是有规律的。所以让我们先来数个数：</p>
+<p>0 -&gt; 0</p>
+<p>1 -&gt; 1 2 -&gt;2 … 8 -&gt; 8 9 -&gt; 9</p>
+<p>10 -&gt; 1 11 -&gt; 2 … 17 -&gt; 8 18 -&gt; 9 </p>
+<p>19 -&gt; 1 20 -&gt; 2 … 26 -&gt; 8 27 -&gt; 9 </p>
+<p>28 -&gt; 1 29 -&gt; 2 … 35 -&gt; 8 36 -&gt; 9</p>
+<p>到这里，我们可以发现，结果的变化规律。<code>num</code>的值总是在1～9之间逐渐变化，每次加1，到最后又归于1。所以，算法的代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">addDigits</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(num == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> mod = num % <span class="number">9</span>;</span><br><span class="line">            <span class="keyword">return</span> mod == <span class="number">0</span> ? <span class="number">9</span> : mod;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>当然，更加精简的写法如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">addDigits</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + (num - <span class="number">1</span>) % <span class="number">9</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里，用了<code>1 + (num - 1) % 9</code>来代替条件判断。即使当<code>num</code>为0时，也有<code>-1 % 9 = -1</code>，还是可以得到正确结果。</p>
 
       
     </div>
@@ -361,17 +370,13 @@ You are playing the following Nim Game with your friend: There is a heap of ston
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/26/pointer-in-C/" rel="next" title="C和指针">
-                <i class="fa fa-chevron-left"></i> C和指针
+              <a href="/2016/03/29/Single-Number/" rel="next" title="Single Number">
+                <i class="fa fa-chevron-left"></i> Single Number
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/29/Single-Number/" rel="prev" title="Single Number">
-                Single Number <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -386,10 +391,10 @@ You are playing the following Nim Game with your friend: There is a heap of ston
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/03/29/Nim-Game/"
-     data-title="Nim Game"
+        <div class="ds-share flat" data-thread-key="2016/04/12/Add-Digits/"
+     data-title="Add Digits"
      data-content=""
-     data-url="http://eclipseflower.github.io/2016/03/29/Nim-Game/">
+     data-url="http://eclipseflower.github.io/2016/04/12/Add-Digits/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -416,8 +421,8 @@ You are playing the following Nim Game with your friend: There is a heap of ston
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/29/Nim-Game/"
-           data-title="Nim Game" data-url="http://eclipseflower.github.io/2016/03/29/Nim-Game/">
+      <div class="ds-thread" data-thread-key="2016/04/12/Add-Digits/"
+           data-title="Add Digits" data-url="http://eclipseflower.github.io/2016/04/12/Add-Digits/">
       </div>
     
   </div>

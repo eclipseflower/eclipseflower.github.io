@@ -729,6 +729,7 @@ h6 {
     font-size: 0.78125rem;
   }
 }
+.entry,
 table {
   margin: 20px 0;
   width: $table-width;

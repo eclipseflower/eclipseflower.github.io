@@ -1,195 +1,732 @@
-<!DOCTYPE html>
-<html>
-  <!-- Html Head Tag-->
-  <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="EclipseFlower">
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="C语言的操作符"/>
-  <meta property="og:description" content="Learn Review Create." />
-  <meta property="og:site_name" content="おたくのスタジオ"/>
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="http://eclipseflower.github.ioundefined"/>
-  
-    <link rel="alternate" href="/atom.xml" title="おたくのスタジオ" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
+<!doctype html>
+
+
+
   
 
-  <!-- Site Title -->
-  <title>おたくのスタジオ</title>
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
-  <!-- Custom CSS -->
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
   
-  <link rel="stylesheet" href="/css/style.light.css" type="text/css">
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
-  <!-- Google Analytics -->
+
+
+
+  
+  
+  
   
 
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="操作符,语言," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="###按位操作符在使用右移位操作符&amp;gt;&amp;gt;时，要注意当对signed类型的带符号值进行右移时，某些机器将对左边空出的部分用符号位填补（即“算术移位”），而另一些机器则对左边空出的部分用0填补（即“逻辑移位”）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言的操作符">
+<meta property="og:url" content="http://eclipseflower.github.io/2015/12/05/operators-in-C/index.html">
+<meta property="og:site_name" content="おたくのスタジオ">
+<meta property="og:description" content="###按位操作符在使用右移位操作符&amp;gt;&amp;gt;时，要注意当对signed类型的带符号值进行右移时，某些机器将对左边空出的部分用符号位填补（即“算术移位”），而另一些机器则对左边空出的部分用0填补（即“逻辑移位”）。">
+<meta property="og:updated_time" content="2015-12-05T08:19:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C语言的操作符">
+<meta name="twitter:description" content="###按位操作符在使用右移位操作符&amp;gt;&amp;gt;时，要注意当对signed类型的带符号值进行右移时，某些机器将对左边空出的部分用符号位填补（即“算术移位”），而另一些机器则对左边空出的部分用0填补（即“逻辑移位”）。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://eclipseflower.github.io/2015/12/05/operators-in-C/"/>
+
+
+
+
+
+  <title> C语言的操作符 | おたくのスタジオ </title>
 </head>
 
-  <body>
-    <!-- Page Header -->
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
 
 
-<header class="site-header header-background" style="background-image: url(/img/banner.jpg)">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-title with-background-image">
-          <p class="title">C语言的操作符</p>
-          <p class="subtitle"></p>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">おたくのスタジオ</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Technology saves the world.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2015/12/05/operators-in-C/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="EclipseFlower">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="おたくのスタジオ">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="おたくのスタジオ" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                C语言的操作符
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2015-12-05T14:52:29+08:00">
+                2015-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
         </div>
-        <div class="site-menu with-background-image">
-          <ul>
-            
-              <li>
-                <a href="/">
-                  
-                  Home
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  
-                  Archives
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="https://github.com/eclipseflower">
-                  
-                  Github
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="mailto:eclipseflowernju@gmail.com">
-                  
-                  Email
-                  
-                </a>
-              </li>
-            
-          </ul>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>###按位操作符<br>在使用右移位操作符<code>&gt;&gt;</code>时，要注意当对<code>signed</code>类型的带符号值进行右移时，某些机器将对左边空出的部分用符号位填补（即<code>“算术移位”</code>），而另一些机器则对左边空出的部分用0填补（即<code>“逻辑移位”</code>）。</p>
+<a id="more"></a>
+<p>####掩码操作<br>一元操作符<code>~</code>用于求整数的二进制反码。例如：</p>
+<pre><code>x = x &amp; ~077
+</code></pre><p>将把x的最后六位设置为0。注意，表达式<code>x&amp;~077</code>与机器字长无关，它比形如<code>x&amp;0177700</code>的表达式要好，因为后者假定了x是16位的数值。这种<code>可移植</code>的形式并没有增加额外开销，因为<code>~077</code>是常量表达式，可以在<code>编译</code>时求值。</p>
+<p>下面是一个函数<code>getbits(x,p,n)</code>，它返回x中从右边数第p位开始向右数n位的字段。假定最右边的一位是第0位。<code>getbits(x,4,3)</code>返回x中第4、3、2三位的值。</p>
+<pre><code>unsigned getbits(unsigned x, int p, int n)
+{
+    return (x &gt;&gt; (p + 1 - n)) &amp; ~(~0 &lt;&lt; n);
+}
+</code></pre><p>####统计一个整形数值为1的二进制位的个数<br>表达式<code>x&amp;=(x-1)</code>可以删除x中最右边值为1的一个二进制位。</p>
+<pre><code>int bitcount(unsigned x)
+{
+    int b;
+    for(b = 0; x != 0; b++)
+        x &amp;= (x - 1);
+    return b;
+}
+</code></pre><p>###赋值操作符<br>大多数二元操作符都有一个相应的赋值操作符<code>op=</code>，如果<em>expr1</em>和<em>expr2</em>是表达式，那么</p>
+<pre><code>expr1 op= expr2
+</code></pre><p>等价于</p>
+<pre><code>expr1 = (expr1) op (expr2)
+</code></pre><p>它们的区别在于，前一种形式<em>expr1</em>只计算<code>一次</code>。注意，在第二种形式中，<em>expr2</em>两边的<code>圆括号</code>是不可缺少的。例如，</p>
+<pre><code>x *= y + 1
+</code></pre><p>的含义是</p>
+<pre><code>x = x * (y + 1)
+</code></pre><p>而不是</p>
+<pre><code>x = x * y + 1
+</code></pre><p>###条件表达式<br>采用条件表达式可以编写出很简洁的代码。例如，下面的这个循环语句打印一个数组的n个元素，每行打印10个元素，每列之间用一个空格隔开，每行用一个换行符结束（包括最后一行）：</p>
+<pre><code>for(i = 0; i &lt; n; i++)
+    printf(&quot;%6d%c&quot;, a[i], (i%10==9 || i==n-1) ? &apos;\n&apos; : &apos; &quot;);
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/操作符/" rel="tag"># 操作符</a>
+          
+            <a href="/tags/语言/" rel="tag"># 语言</a>
+          
         </div>
-      </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/15/strings-in-C/" rel="next" title="C语言的字符串">
+                <i class="fa fa-chevron-left"></i> C语言的字符串
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/21/counting-bits/" rel="prev" title="Counting Bits">
+                Counting Bits <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
     </div>
   </div>
-</header>
-
-
-<article>
-  <div class="container typo">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-info text-muted">
-          
-            <!-- Author -->
-            <span class="author info">By EclipseFlower</span>
-          
-          <!-- Date -->
-          <span class="date-time info">On
-            <span class="date">2015-12-05</span>
-            <span class="time">00:54:04</span>
-          </span>
-          
-          <!--  Categories  -->
-            <span class="categories info">Under 
-
-<a href="/categories/C/">C</a>
-</span>
-          
-        </div>
-        <!-- Tags -->
-        
-          <div class="post-tags text-muted">
-            Tags: 
-
-<a class="tag" href="/tags/操作符/">#操作符</a> <a class="tag" href="/tags/语言/">#语言</a>
 
 
           </div>
-        
-        <!-- Post Main Content -->
-        <div class="post-content">
-          <h3 id="按位操作符">按位操作符</h3><p>在使用右移位操作符<code>&gt;&gt;</code>时，要注意当对<code>signed</code>类型的带符号值进行右移时，某些机器将对左边空出的部分用符号位填补（即<code>“算术移位”</code>），而另一些机器则对左边空出的部分用0填补（即<code>“逻辑移位”</code>）。</p>
-<a id="more"></a>
-<h4 id="掩码操作">掩码操作</h4><p>一元操作符<code>~</code>用于求整数的二进制反码。例如：</p>
-<pre><code><span class="attribute">x </span>=<span class="string"> x &amp; ~077</span>
-</code></pre><p>将把x的最后六位设置为0。注意，表达式<code>x&amp;~077</code>与机器字长无关，它比形如<code>x&amp;0177700</code>的表达式要好，因为后者假定了x是16位的数值。这种<code>可移植</code>的形式并没有增加额外开销，因为<code>~077</code>是常量表达式，可以在<code>编译</code>时求值。</p>
-<p>下面是一个函数<code>getbits(x,p,n)</code>，它返回x中从右边数第p位开始向右数n位的字段。假定最右边的一位是第0位。<code>getbits(x,4,3)</code>返回x中第4、3、2三位的值。</p>
-<pre><code><span class="function"><span class="keyword">unsigned</span> <span class="title">getbits</span><span class="params">(<span class="keyword">unsigned</span> x, <span class="keyword">int</span> p, <span class="keyword">int</span> n)</span>
-</span>{
-    <span class="keyword">return</span> (x &gt;&gt; (p + <span class="number">1</span> - n)) &amp; ~(~<span class="number">0</span> &lt;&lt; n);
-}
-</code></pre><h4 id="统计一个整形数值为1的二进制位的个数">统计一个整形数值为1的二进制位的个数</h4><p>表达式<code>x&amp;=(x-1)</code>可以删除x中最右边值为1的一个二进制位。</p>
-<pre><code><span class="function"><span class="keyword">int</span> <span class="title">bitcount</span><span class="params">(<span class="keyword">unsigned</span> x)</span>
-</span>{
-    <span class="keyword">int</span> b;
-    <span class="keyword">for</span>(b = <span class="number">0</span>; x != <span class="number">0</span>; b++)
-        x &amp;= (x - <span class="number">1</span>);
-    <span class="keyword">return</span> b;
-}
-</code></pre><h3 id="赋值操作符">赋值操作符</h3><p>大多数二元操作符都有一个相应的赋值操作符<code>op=</code>，如果<em>expr1</em>和<em>expr2</em>是表达式，那么</p>
-<pre><code><span class="attribute">expr1 op</span>=<span class="string"> expr2</span>
-</code></pre><p>等价于</p>
-<pre><code>expr1 = <span class="list">(<span class="keyword">expr1</span>)</span> op <span class="list">(<span class="keyword">expr2</span>)</span>
-</code></pre><p>它们的区别在于，前一种形式<em>expr1</em>只计算<code>一次</code>。注意，在第二种形式中，<em>expr2</em>两边的<code>圆括号</code>是不可缺少的。例如，</p>
-<pre><code><span class="attribute">x *</span>=<span class="string"> y + 1</span>
-</code></pre><p>的含义是</p>
-<pre><code>x = x * <span class="list">(<span class="keyword">y</span> + <span class="number">1</span>)</span>
-</code></pre><p>而不是</p>
-<pre><code><span class="attribute">x </span>=<span class="string"> x * y + 1</span>
-</code></pre><h3 id="条件表达式">条件表达式</h3><p>采用条件表达式可以编写出很简洁的代码。例如，下面的这个循环语句打印一个数组的n个元素，每行打印10个元素，每列之间用一个空格隔开，每行用一个换行符结束（包括最后一行）：</p>
-<pre><code><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)
-    <span class="keyword">printf</span>(<span class="string">"<span class="variable">%6d</span><span class="variable">%c</span>"</span>, a[i], (i<span class="variable">%10</span>==<span class="number">9</span> || i==n-<span class="number">1</span>) ? <span class="string">'\n'</span> : <span class="string">' ");</span>
-</code></pre>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
         </div>
-      </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
-</article>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="EclipseFlower" />
+          <p class="site-author-name" itemprop="name">EclipseFlower</p>
+          <p class="site-description motion-element" itemprop="description">修道苦至，当念往劫</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/eclipseflower" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:eclipseflowernju@gmail.com" target="_blank" title="Email">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Email
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://6carol6.github.io/" title="6carol6's blog" target="_blank">6carol6's blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://cellzero.github.io/" title="cellzero's blog" target="_blank">cellzero's blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://chuan92.com/" title="chuan92's blog" target="_blank">chuan92's blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://luvinahlc.github.io/" title="Luvinahlc's blog" target="_blank">Luvinahlc's blog</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
 
 
+      </section>
 
-    <!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p class="copyright text-muted">
-          Copyright By <a target="_blank" href="https://github.com/eclipseflower">EclipseFlower.</a>
-        <p class="copyright text-muted">
-          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
-        </p>
+      
+
+    </div>
+  </aside>
+
+
+        
       </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EclipseFlower</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
     </div>
   </div>
-</footer>
 
+  
 
-    <!-- After Footer Scripts -->
-<script src="/js/highlight.pack.js" type="text/javascript"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
-    codeBlocks.forEach(function(block, index) {
-      hljs.highlightBlock(block);
-    });
-  });
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
-  </body>
-</html>
 
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

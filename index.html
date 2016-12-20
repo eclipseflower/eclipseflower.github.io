@@ -352,7 +352,7 @@
 <p><img src="/images/rotation-matrix-b.png" alt="图 2"></p>
 <p>这里，为了求出旋转矩阵，即需要求出旋转后的向量$\overrightarrow{u’}$。可以将$\overrightarrow{u}$分解为坐标轴z方向的向量$\overrightarrow{u_z}$与y方向的向量$\overrightarrow{u_y}$。</p>
 <p>然后，通过求出旋转后的向量分量$\overrightarrow{u_z’}$和$\overrightarrow{u_y’}$，就可以得到最终要求的向量$\overrightarrow{u’}$。</p>
-<p>假设$\overrightarrow{u}$的坐标为($y$,$z$)，易知$\overrightarrow{u_y’}$的坐标为($ycos\theta$, $ysin\theta$)，$\overrightarrow{u_z’}$的坐标为($-zsin\theta$,$zcos\theta$)。</p>
+<p>假设$\overrightarrow{u}$的坐标为($y$, $z$)，易知$\overrightarrow{u_y’}$的坐标为($ycos\theta$,  $ysin\theta$)，$\overrightarrow{u_z’}$的坐标为($-zsin\theta$, $zcos\theta$)。</p>
 <p>所以$\overrightarrow{u’}$的坐标为($ycos\theta-zsin\theta$, $ysin\theta+zcos\theta$)。</p>
 <p>故绕X轴旋转的旋转矩阵为<br>$<br>R(x) =<br>\begin{bmatrix}<br>     1 &amp; 0 &amp; 0 \\<br>     0 &amp; cos\theta &amp; sin\theta \\<br>     0 &amp; -sin\theta &amp; cos\theta<br>\end{bmatrix}<br>$。</p>
 <p>同理也可推出其他绕坐标轴旋转的矩阵。</p>

@@ -102,7 +102,8 @@
 这里，为了">
 <meta property="og:image" content="http://eclipseflower.github.io/images/rotation-matrix-a.png">
 <meta property="og:image" content="http://eclipseflower.github.io/images/rotation-matrix-b.png">
-<meta property="og:updated_time" content="2016-12-20T16:54:55.000Z">
+<meta property="og:image" content="http://eclipseflower.github.io/images/rotation-matrix-c.png">
+<meta property="og:updated_time" content="2016-12-21T04:33:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="旋转矩阵推导">
 <meta name="twitter:description" content="本文只考虑绕坐标轴旋转的旋转矩阵推导。这里以绕X轴旋转为例，左手坐标系。
@@ -367,6 +368,8 @@
 <p>所以$\overrightarrow{u’}$的坐标为($ycos\theta-zsin\theta$, $ysin\theta+zcos\theta$)。</p>
 <p>故绕X轴旋转的旋转矩阵为<br>$<br>R(x) =<br>\begin{bmatrix}<br>     1 &amp; 0 &amp; 0 \\<br>     0 &amp; cos\theta &amp; sin\theta \\<br>     0 &amp; -sin\theta &amp; cos\theta<br>\end{bmatrix}<br>$。</p>
 <p>同理也可推出其他绕坐标轴旋转的矩阵。</p>
+<p>此外，从另外一个观点来看，也可以保持向量固定来旋转坐标系。通过将坐标系绕X轴逆时针旋转，在原坐标系中的向量将顺时针旋转到新的位置。这样同样也可推出旋转矩阵。</p>
+<p><img src="/images/rotation-matrix-c.png" alt="图 3"></p>
 
       
     </div>

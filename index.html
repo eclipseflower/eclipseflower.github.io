@@ -355,9 +355,13 @@
 <p>假设$\overrightarrow{u}$的坐标为($y$, $z$)，易知$\overrightarrow{u_y’}$的坐标为($ycos\theta$,  $ysin\theta$)，$\overrightarrow{u_z’}$的坐标为($-zsin\theta$, $zcos\theta$)。</p>
 <p>所以$\overrightarrow{u’}$的坐标为($ycos\theta-zsin\theta$, $ysin\theta+zcos\theta$)。</p>
 <p>故绕X轴旋转的旋转矩阵为<br>$<br>R(x) =<br>\begin{bmatrix}<br>     1 &amp; 0 &amp; 0 \\<br>     0 &amp; cos\theta &amp; sin\theta \\<br>     0 &amp; -sin\theta &amp; cos\theta<br>\end{bmatrix}<br>$。</p>
-<p>同理也可推出其他绕坐标轴旋转的矩阵。</p>
 <p>此外，从另外一个观点来看，也可以保持向量固定来旋转坐标系。通过将坐标系绕X轴逆时针旋转，在原坐标系中的向量将顺时针旋转到新的位置。这样同样也可推出旋转矩阵。</p>
 <p><img src="/images/rotation-matrix-c.png" alt="图 3"></p>
+<p>这里，假设原始向量$\overrightarrow{u}$ 的坐标为($y$, $z$)，它的基底分别为原始的y轴和z轴，记为$\overrightarrow{N_y}$和$\overrightarrow{N_z}$。则，我们有：<br>$$<br>\overrightarrow{u} = y\overrightarrow{N_y} + z\overrightarrow{N_z} = (y, z) \begin{bmatrix} \overrightarrow{N_y} \\ \overrightarrow{N_z} \end{bmatrix}<br>$$<br>接下来我们来求逆时针旋转$\theta$角度后的基底$\overrightarrow{N_y’}$和$\overrightarrow{N_z’}$。得到：<br>$$<br>\overrightarrow{N_y’} = \overrightarrow{N_y}cos\theta - \overrightarrow{N_z}sin\theta<br>$$</p>
+<p>$$<br>\overrightarrow{N_z’} = \overrightarrow{N_y}sin\theta + \overrightarrow{N_z}cos\theta<br>$$</p>
+<p>假设旋转后的向量$\overrightarrow{u}$的坐标为($y’$, $z’$)，则有：<br>$$<br>(y, z) \begin{bmatrix} \overrightarrow{N_y} \\ \overrightarrow{N_z} \end{bmatrix} =  (y’, z’) \begin{bmatrix} \overrightarrow{N_y’} \\ \overrightarrow{N_z’} \end{bmatrix} =  (y’, z’) \begin{bmatrix} cos\theta &amp; -sin\theta \ sin\theta &amp; cos\theta \end{bmatrix} \begin{bmatrix} \overrightarrow{N_y} \\ \overrightarrow{N_z} \end{bmatrix}<br>$$<br>可以发现我们要求的旋转矩阵实际上为$\begin{bmatrix} cos\theta &amp; -sin\theta \ sin\theta &amp; cos\theta \end{bmatrix}$的逆矩阵。而因为该矩阵为<code>正交矩阵</code>，所以其逆矩阵即为<code>转置矩阵</code>，故最终得到绕X轴旋转的旋转矩阵为$R(x) = \begin{bmatrix} 1 &amp; 0 &amp; 0 \  0 &amp; cos\theta &amp; sin\theta \ 0 &amp; -sin\theta &amp; cos\theta \end{bmatrix}$。</p>
+<p>同理也可推出其他绕坐标轴旋转的矩阵。这里略去推导直接给出结果：</p>
+<p>$<br>R(y) =<br>\begin{bmatrix}<br>     cos\theta &amp; -sin\theta &amp; 0 \\<br>     0 &amp; 1 &amp; 0 \\<br>     sin\theta &amp; 0 &amp; cos\theta<br>\end{bmatrix}<br>$，<br>$<br>R(z) =<br>\begin{bmatrix}<br>     cos\theta &amp; sin\theta &amp; 0 \\<br>     -sin\theta &amp; cos\theta &amp; 0 \\<br>     0 &amp; 0 &amp; 1<br>\end{bmatrix}<br>$。</p>
 
           
         

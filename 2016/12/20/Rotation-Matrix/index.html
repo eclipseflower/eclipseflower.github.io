@@ -85,33 +85,21 @@
 
 
 <meta name="description" content="本文只考虑绕坐标轴旋转的旋转矩阵推导。这里以绕X轴旋转为例，左手坐标系。
-假设三维坐标系中的某一向量$\overrightarrow{v}$，其在直角坐标系中的图如图1所示。
-
-绕X轴旋转，相当于向量$\overrightarrow{v}$在YZ平面的投影$\overrightarrow{u}$绕原点旋转，如下图所示。注意，当沿着旋转轴指向原点的方向观察时，角度是按顺时针方向度量的。
-
-这里，为了">
+假设三维坐标系中的某一向量$\overrightarrow{v}$，其在直角坐标系中的图如图1所示。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="旋转矩阵推导">
 <meta property="og:url" content="http://eclipseflower.github.io/2016/12/20/Rotation-Matrix/index.html">
 <meta property="og:site_name" content="おたくのスタジオ">
 <meta property="og:description" content="本文只考虑绕坐标轴旋转的旋转矩阵推导。这里以绕X轴旋转为例，左手坐标系。
-假设三维坐标系中的某一向量$\overrightarrow{v}$，其在直角坐标系中的图如图1所示。
-
-绕X轴旋转，相当于向量$\overrightarrow{v}$在YZ平面的投影$\overrightarrow{u}$绕原点旋转，如下图所示。注意，当沿着旋转轴指向原点的方向观察时，角度是按顺时针方向度量的。
-
-这里，为了">
+假设三维坐标系中的某一向量$\overrightarrow{v}$，其在直角坐标系中的图如图1所示。">
 <meta property="og:image" content="http://eclipseflower.github.io/images/rotation-matrix-a.png">
 <meta property="og:image" content="http://eclipseflower.github.io/images/rotation-matrix-b.png">
 <meta property="og:image" content="http://eclipseflower.github.io/images/rotation-matrix-c.png">
-<meta property="og:updated_time" content="2016-12-21T11:37:37.000Z">
+<meta property="og:updated_time" content="2016-12-21T11:43:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="旋转矩阵推导">
 <meta name="twitter:description" content="本文只考虑绕坐标轴旋转的旋转矩阵推导。这里以绕X轴旋转为例，左手坐标系。
-假设三维坐标系中的某一向量$\overrightarrow{v}$，其在直角坐标系中的图如图1所示。
-
-绕X轴旋转，相当于向量$\overrightarrow{v}$在YZ平面的投影$\overrightarrow{u}$绕原点旋转，如下图所示。注意，当沿着旋转轴指向原点的方向观察时，角度是按顺时针方向度量的。
-
-这里，为了">
+假设三维坐标系中的某一向量$\overrightarrow{v}$，其在直角坐标系中的图如图1所示。">
 
 
 
@@ -360,6 +348,7 @@
         <p>本文只考虑绕坐标轴旋转的旋转矩阵推导。这里以绕X轴旋转为例，左手坐标系。</p>
 <p>假设三维坐标系中的某一向量$\overrightarrow{v}$，其在直角坐标系中的图如图1所示。</p>
 <p><img src="/images/rotation-matrix-a.png" alt="图 1"></p>
+<a id="more"></a>
 <p>绕X轴旋转，相当于向量$\overrightarrow{v}$在YZ平面的投影$\overrightarrow{u}$绕原点旋转，如下图所示。注意，当沿着旋转轴指向原点的方向观察时，角度是按顺时针方向度量的。</p>
 <p><img src="/images/rotation-matrix-b.png" alt="图 2"></p>
 <p>这里，为了求出旋转矩阵，即需要求出旋转后的向量$\overrightarrow{u’}$。可以将$\overrightarrow{u}$分解为坐标轴z方向的向量$\overrightarrow{u_z}$与y方向的向量$\overrightarrow{u_y}$。</p>
@@ -371,7 +360,7 @@
 <p><img src="/images/rotation-matrix-c.png" alt="图 3"></p>
 <p>这里，假设原始向量$\overrightarrow{u}$ 的坐标为($y$, $z$)，它的基底分别为原始的y轴和z轴，记为$\overrightarrow{N_y}$和$\overrightarrow{N_z}$。则，我们有：<br>$$<br>\overrightarrow{u} = y\overrightarrow{N_y} + z\overrightarrow{N_z} = (y, z) \begin{bmatrix} \overrightarrow{N_y} \\ \overrightarrow{N_z} \end{bmatrix}<br>$$<br>接下来我们来求逆时针旋转$\theta$角度后的基底$\overrightarrow{N_y’}$和$\overrightarrow{N_z’}$。得到：<br>$$<br>\overrightarrow{N_y’} = \overrightarrow{N_y}cos\theta - \overrightarrow{N_z}sin\theta<br>$$</p>
 <p>$$<br>\overrightarrow{N_z’} = \overrightarrow{N_y}sin\theta + \overrightarrow{N_z}cos\theta<br>$$</p>
-<p>假设旋转后的向量$\overrightarrow{u}$的坐标为($y’$, $z’$)，则有：<br>$$<br>(y, z) \begin{bmatrix} \overrightarrow{N_y} \\ \overrightarrow{N_z} \end{bmatrix} =  (y’, z’) \begin{bmatrix} \overrightarrow{N_y’} \\ \overrightarrow{N_z’} \end{bmatrix} =  (y’, z’) \begin{bmatrix} cos\theta &amp; -sin\theta \ sin\theta &amp; cos\theta \end{bmatrix} \begin{bmatrix} \overrightarrow{N_y} \\ \overrightarrow{N_z} \end{bmatrix}<br>$$<br>可以发现我们要求的旋转矩阵实际上为$\begin{bmatrix} cos\theta &amp; -sin\theta \ sin\theta &amp; cos\theta \end{bmatrix}$的逆矩阵。而因为该矩阵为<code>正交矩阵</code>，所以其逆矩阵即为<code>转置矩阵</code>，故最终得到绕X轴旋转的旋转矩阵为$R(x) = \begin{bmatrix} 1 &amp; 0 &amp; 0 \  0 &amp; cos\theta &amp; sin\theta \ 0 &amp; -sin\theta &amp; cos\theta \end{bmatrix}$。</p>
+<p>假设旋转后的向量$\overrightarrow{u}$的坐标为($y’$, $z’$)，则有：<br>$$<br>(y, z) \begin{bmatrix} \overrightarrow{N_y} \\ \overrightarrow{N_z} \end{bmatrix} =  (y’, z’) \begin{bmatrix} \overrightarrow{N_y’} \\ \overrightarrow{N_z’} \end{bmatrix} =  (y’, z’) \begin{bmatrix} cos\theta &amp; -sin\theta \\ sin\theta &amp; cos\theta \end{bmatrix} \begin{bmatrix} \overrightarrow{N_y} \\ \overrightarrow{N_z} \end{bmatrix}<br>$$<br>可以发现我们要求的旋转矩阵实际上为$\begin{bmatrix} cos\theta &amp; -sin\theta \\ sin\theta &amp; cos\theta \end{bmatrix}$的逆矩阵。而因为该矩阵为<code>正交矩阵</code>，所以其逆矩阵即为<code>转置矩阵</code>，故最终得到绕X轴旋转的旋转矩阵为$R(x) = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\  0 &amp; cos\theta &amp; sin\theta \\ 0 &amp; -sin\theta &amp; cos\theta \end{bmatrix}$。</p>
 <p>同理也可推出其他绕坐标轴旋转的矩阵。这里略去推导直接给出结果：</p>
 <p>$<br>R(y) =<br>\begin{bmatrix}<br>     cos\theta &amp; -sin\theta &amp; 0 \\<br>     0 &amp; 1 &amp; 0 \\<br>     sin\theta &amp; 0 &amp; cos\theta<br>\end{bmatrix}<br>$，<br>$<br>R(z) =<br>\begin{bmatrix}<br>     cos\theta &amp; sin\theta &amp; 0 \\<br>     -sin\theta &amp; cos\theta &amp; 0 \\<br>     0 &amp; 0 &amp; 1<br>\end{bmatrix}<br>$。</p>
 

@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="图形学,数学," />
+  <meta name="keywords" content="API,图形学," />
 
 
 
@@ -84,20 +84,31 @@
 
 
 
-<meta name="description" content="本文主要推导点到平面的距离公式。首先，我们假设平面的方程为：$$\overrightarrow{n}\textbf{p} + d = 0$$这里，$\overrightarrow{n}$为平面的法向量。$\textbf{p}$为平面上任意点。我们的问题是给定该平面，对于一个不在平面上的点$\textbf{q}$，求点到平面的距离。
-很明显，平面上存在一个点$\textbf{p}$，它到点$\tex">
+<meta name="description" content="Direct3D的初始化过程可分解为以下步骤。
+
+获取接口IDirect3D9的指针。
+检查设备性能(D3DCAPS9)，判断主显卡是否支持硬件顶点运算。
+初始化D3DPRESENT_PARAMETERS结构的一个实例。
+利用已初始化的D3DPRESENT_PARAMETERS结构创建IDirect3DDevice9对象。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="点到平面的距离">
-<meta property="og:url" content="http://eclipseflower.github.io/2016/12/21/distance-point-and-plane/index.html">
+<meta property="og:title" content="Direct3D的初始化(DirectX 9.0)">
+<meta property="og:url" content="http://eclipseflower.github.io/2016/12/25/init-direct3d9/index.html">
 <meta property="og:site_name" content="おたくのスタジオ">
-<meta property="og:description" content="本文主要推导点到平面的距离公式。首先，我们假设平面的方程为：$$\overrightarrow{n}\textbf{p} + d = 0$$这里，$\overrightarrow{n}$为平面的法向量。$\textbf{p}$为平面上任意点。我们的问题是给定该平面，对于一个不在平面上的点$\textbf{q}$，求点到平面的距离。
-很明显，平面上存在一个点$\textbf{p}$，它到点$\tex">
-<meta property="og:image" content="http://eclipseflower.github.io/images/distance-point-and-plane-a.png">
-<meta property="og:updated_time" content="2016-12-21T15:17:59.000Z">
+<meta property="og:description" content="Direct3D的初始化过程可分解为以下步骤。
+
+获取接口IDirect3D9的指针。
+检查设备性能(D3DCAPS9)，判断主显卡是否支持硬件顶点运算。
+初始化D3DPRESENT_PARAMETERS结构的一个实例。
+利用已初始化的D3DPRESENT_PARAMETERS结构创建IDirect3DDevice9对象。">
+<meta property="og:updated_time" content="2016-12-25T14:33:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="点到平面的距离">
-<meta name="twitter:description" content="本文主要推导点到平面的距离公式。首先，我们假设平面的方程为：$$\overrightarrow{n}\textbf{p} + d = 0$$这里，$\overrightarrow{n}$为平面的法向量。$\textbf{p}$为平面上任意点。我们的问题是给定该平面，对于一个不在平面上的点$\textbf{q}$，求点到平面的距离。
-很明显，平面上存在一个点$\textbf{p}$，它到点$\tex">
+<meta name="twitter:title" content="Direct3D的初始化(DirectX 9.0)">
+<meta name="twitter:description" content="Direct3D的初始化过程可分解为以下步骤。
+
+获取接口IDirect3D9的指针。
+检查设备性能(D3DCAPS9)，判断主显卡是否支持硬件顶点运算。
+初始化D3DPRESENT_PARAMETERS结构的一个实例。
+利用已初始化的D3DPRESENT_PARAMETERS结构创建IDirect3DDevice9对象。">
 
 
 
@@ -125,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://eclipseflower.github.io/2016/12/21/distance-point-and-plane/"/>
+  <link rel="canonical" href="http://eclipseflower.github.io/2016/12/25/init-direct3d9/"/>
 
 
 
 
 
-  <title> 点到平面的距离 | おたくのスタジオ </title>
+  <title> Direct3D的初始化(DirectX 9.0) | おたくのスタジオ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2016/12/21/distance-point-and-plane/">
+  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2016/12/25/init-direct3d9/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="EclipseFlower">
@@ -276,7 +287,7 @@
             
             
               
-                点到平面的距离
+                Direct3D的初始化(DirectX 9.0)
               
             
           </h1>
@@ -289,8 +300,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2016-12-21T21:20:04+08:00">
-                2016-12-21
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2016-12-25T21:59:27+08:00">
+                2016-12-25
               </time>
             
 
@@ -308,8 +319,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/图形学/" itemprop="url" rel="index">
-                    <span itemprop="name">图形学</span>
+                  <a href="/categories/DirectX/" itemprop="url" rel="index">
+                    <span itemprop="name">DirectX</span>
                   </a>
                 </span>
 
@@ -343,11 +354,23 @@
       
 
       
-        <p>本文主要推导点到平面的距离公式。首先，我们假设平面的方程为：<br>$$<br>\overrightarrow{n}\textbf{p} + d = 0<br>$$<br>这里，$\overrightarrow{n}$为平面的法向量。$\textbf{p}$为平面上任意点。我们的问题是给定该平面，对于一个不在平面上的点$\textbf{q}$，求点到平面的距离。</p>
-<p>很明显，平面上存在一个点$\textbf{p}$，它到点$\textbf{q}$的距离最短。从点$\textbf{p}$到点$\textbf{q}$的向量垂直于平面，记为$k\overrightarrow{e}$。那么$k$即为要求的有符号距离，如图所示。</p>
-<p><img src="/images/distance-point-and-plane-a.png" alt="distance-point-and-plane-a"></p>
+        <p>Direct3D的初始化过程可分解为以下步骤。</p>
+<ol>
+<li>获取接口<code>IDirect3D9</code>的指针。</li>
+<li>检查设备性能(<code>D3DCAPS9</code>)，判断主显卡是否支持硬件顶点运算。</li>
+<li>初始化<code>D3DPRESENT_PARAMETERS</code>结构的一个实例。</li>
+<li>利用已初始化的<code>D3DPRESENT_PARAMETERS</code>结构创建<code>IDirect3DDevice9</code>对象。</li>
+</ol>
 <a id="more"></a>
-<p>开始，我们有：<br>$$<br>k\overrightarrow{e} = \textbf{q} - \textbf{p}<br>$$<br>即：<br>$$<br>k\overrightarrow{e} \cdot \overrightarrow{n} = \textbf{q}\overrightarrow{n} - \textbf{p}\overrightarrow{n}<br>$$<br>将$\overrightarrow{n}\textbf{p} + d = 0$代入，可得到：<br>$$<br>k\overrightarrow{e} \cdot \overrightarrow{n} = \textbf{q}\overrightarrow{n} + d<br>$$<br>所以求出k为：<br>$$<br>k = \dfrac{\textbf{q}\overrightarrow{n} + d} {|\overrightarrow{n}|}<br>$$<br>如果法向量为单位向量的话，那么分母为1，从而$k = \textbf{q}\overrightarrow{n} + d$。</p>
+<h4 id="获取接口IDirect3D9的指针"><a href="#获取接口IDirect3D9的指针" class="headerlink" title="获取接口IDirect3D9的指针"></a>获取接口IDirect3D9的指针</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IDirect3D9* d3d9 = 0;&#10;d3d9 = Direct3DCreate9(D3D_SDK_VERSION);</span><br></pre></td></tr></table></figure>
+<h4 id="校验硬件顶点运算"><a href="#校验硬件顶点运算" class="headerlink" title="校验硬件顶点运算"></a>校验硬件顶点运算</h4><p>要进行检查，必须先根据主显卡的性能参数初始化一个<code>IDirect3DDevice9</code>类型的对象。用如下方法进行初始化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HRESULT IDirect3D9::GetDeviceCaps(UINT Adapter, D3DDEVTYPE DeviceType, D3DCAPS9 *pCaps);</span><br></pre></td></tr></table></figure>
+<p>接下来对设备性能进行检查，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D3DCAPS9 caps;&#10;d3d9-&#62;GetDeviceCaps(D3DADAPTER_DEFAULT, deviceType, &#38;caps);&#10;&#10;int vp = 0;&#10;if( caps.DevCaps &#38; D3DDEVCAPS_HWTRANSFORMANDLIGHT )&#10;&#9;vp = D3DCREATE_HARDWARE_VERTEXPROCESSING;&#10;else&#10;&#9;vp = D3DCREATE_SOFTWARE_VERTEXPROCESSING;</span><br></pre></td></tr></table></figure>
+<h4 id="填充D3DPRESENT-PARAMETERS结构"><a href="#填充D3DPRESENT-PARAMETERS结构" class="headerlink" title="填充D3DPRESENT_PARAMETERS结构"></a>填充D3DPRESENT_PARAMETERS结构</h4><p>这里给出一个填充的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D3DPRESENT_PARAMETERS d3dpp;&#10;d3dpp.BackBufferWidth            = width;&#10;d3dpp.BackBufferHeight           = height;&#10;d3dpp.BackBufferFormat           = D3DFMT_A8R8G8B8;&#10;d3dpp.BackBufferCount            = 1;&#10;d3dpp.MultiSampleType            = D3DMULTISAMPLE_NONE;&#10;d3dpp.MultiSampleQuality         = 0;&#10;d3dpp.SwapEffect                 = D3DSWAPEFFECT_DISCARD; &#10;d3dpp.hDeviceWindow              = hwnd;&#10;d3dpp.Windowed                   = windowed;&#10;d3dpp.EnableAutoDepthStencil     = true; &#10;d3dpp.AutoDepthStencilFormat     = D3DFMT_D24S8;&#10;d3dpp.Flags                      = 0;&#10;d3dpp.FullScreen_RefreshRateInHz = D3DPRESENT_RATE_DEFAULT;&#10;d3dpp.PresentationInterval       = D3DPRESENT_INTERVAL_IMMEDIATE;</span><br></pre></td></tr></table></figure>
+<h4 id="创建IDirect3DDevice9接口"><a href="#创建IDirect3DDevice9接口" class="headerlink" title="创建IDirect3DDevice9接口"></a>创建IDirect3DDevice9接口</h4><p>这里给出一个创建示例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hr = d3d9-&#62;CreateDevice(&#10;&#9;D3DADAPTER_DEFAULT, // primary adapter&#10;&#9;deviceType,         // device type&#10;&#9;hwnd,               // window associated with device&#10;&#9;vp,                 // vertex processing&#10;&#9;&#38;d3dpp,             // present parameters&#10;&#9;device);            // return created device</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -371,9 +394,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/图形学/" rel="tag"># 图形学</a>
+            <a href="/tags/API/" rel="tag"># API</a>
           
-            <a href="/tags/数学/" rel="tag"># 数学</a>
+            <a href="/tags/图形学/" rel="tag"># 图形学</a>
           
         </div>
       
@@ -382,8 +405,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/20/Rotation-Matrix/" rel="next" title="旋转矩阵推导">
-                <i class="fa fa-chevron-left"></i> 旋转矩阵推导
+              <a href="/2016/12/21/distance-point-and-plane/" rel="next" title="点到平面的距离">
+                <i class="fa fa-chevron-left"></i> 点到平面的距离
               </a>
             
           </div>
@@ -391,10 +414,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/25/init-direct3d9/" rel="prev" title="Direct3D的初始化(DirectX 9.0)">
-                Direct3D的初始化(DirectX 9.0) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -441,8 +460,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -541,6 +569,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取接口IDirect3D9的指针"><span class="nav-number">1.</span> <span class="nav-text">获取接口IDirect3D9的指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#校验硬件顶点运算"><span class="nav-number">2.</span> <span class="nav-text">校验硬件顶点运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#填充D3DPRESENT-PARAMETERS结构"><span class="nav-number">3.</span> <span class="nav-text">填充D3DPRESENT_PARAMETERS结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建IDirect3DDevice9接口"><span class="nav-number">4.</span> <span class="nav-text">创建IDirect3DDevice9接口</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>

@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="字符串,语言," />
+  <meta name="keywords" content="变长参数,语言," />
 
 
 
@@ -84,22 +84,22 @@
 
 
 
-<meta name="description" content="字符串拼接编译时可以讲多个字符串常量连接起来。如：
-1234567#include &amp;lt;stdio.h&amp;gt;int main() &amp;#123;	char s[100] = &quot;hello&quot; &quot;world&quot;;	printf(&quot;%s\n&quot;, s);	return 0;&amp;#125;
-上述代码的输出结果为helloworld。字符串常量自动拼接起来了。">
+<meta name="description" content="我们以实现函数printf的一个最简单版本为例，介绍如何以可移植的方式编写可处理变长参数表的函数。函数的声明形式为：
+1void minprintf(char *fmt, ...)
+标准头文件中包含一组宏定义，它们对如何遍历参数表进行了定义。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C语言的字符串">
-<meta property="og:url" content="http://eclipseflower.github.io/2015/11/15/strings-in-C/index.html">
+<meta property="og:title" content="C的变长参数">
+<meta property="og:url" content="http://eclipseflower.github.io/2017/01/11/variable-param-in-C/index.html">
 <meta property="og:site_name" content="おたくのスタジオ">
-<meta property="og:description" content="字符串拼接编译时可以讲多个字符串常量连接起来。如：
-1234567#include &amp;lt;stdio.h&amp;gt;int main() &amp;#123;	char s[100] = &quot;hello&quot; &quot;world&quot;;	printf(&quot;%s\n&quot;, s);	return 0;&amp;#125;
-上述代码的输出结果为helloworld。字符串常量自动拼接起来了。">
-<meta property="og:updated_time" content="2015-11-15T15:20:43.000Z">
+<meta property="og:description" content="我们以实现函数printf的一个最简单版本为例，介绍如何以可移植的方式编写可处理变长参数表的函数。函数的声明形式为：
+1void minprintf(char *fmt, ...)
+标准头文件中包含一组宏定义，它们对如何遍历参数表进行了定义。">
+<meta property="og:updated_time" content="2017-01-10T16:54:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C语言的字符串">
-<meta name="twitter:description" content="字符串拼接编译时可以讲多个字符串常量连接起来。如：
-1234567#include &amp;lt;stdio.h&amp;gt;int main() &amp;#123;	char s[100] = &quot;hello&quot; &quot;world&quot;;	printf(&quot;%s\n&quot;, s);	return 0;&amp;#125;
-上述代码的输出结果为helloworld。字符串常量自动拼接起来了。">
+<meta name="twitter:title" content="C的变长参数">
+<meta name="twitter:description" content="我们以实现函数printf的一个最简单版本为例，介绍如何以可移植的方式编写可处理变长参数表的函数。函数的声明形式为：
+1void minprintf(char *fmt, ...)
+标准头文件中包含一组宏定义，它们对如何遍历参数表进行了定义。">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://eclipseflower.github.io/2015/11/15/strings-in-C/"/>
+  <link rel="canonical" href="http://eclipseflower.github.io/2017/01/11/variable-param-in-C/"/>
 
 
 
 
 
-  <title> C语言的字符串 | おたくのスタジオ </title>
+  <title> C的变长参数 | おたくのスタジオ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -254,7 +254,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2015/11/15/strings-in-C/">
+  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2017/01/11/variable-param-in-C/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="EclipseFlower">
@@ -278,7 +278,7 @@
             
             
               
-                C语言的字符串
+                C的变长参数
               
             
           </h1>
@@ -291,8 +291,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2015-11-15T23:11:54+08:00">
-                2015-11-15
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2017-01-11T00:50:57+08:00">
+                2017-01-11
               </time>
             
 
@@ -345,9 +345,16 @@
       
 
       
-        <h5 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h5><p>编译时可以讲多个字符串常量连接起来。如：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> s[<span class="number">100</span>] = <span class="string">"hello"</span> <span class="string">"world"</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, s);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上述代码的输出结果为<code>helloworld</code>。字符串常量自动拼接起来了。</p>
+        <p>我们以实现函数printf的一个最简单版本为例，介绍如何以可移植的方式编写可处理变长参数表的函数。函数的声明形式为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">minprintf</span><span class="params">(<span class="keyword">char</span> *fmt, ...)</span></span></span><br></pre></td></tr></table></figure>
+<p>标准头文件<stdarg.h>中包含一组宏定义，它们对如何遍历参数表进行了定义。</stdarg.h></p>
+<a id="more"></a>
+<p>va_list类型用于声明一个变量，该变量将依次引用各参数。在函数minprintf中，我们将该变量称为ap，意思是参数指针。</p>
+<p>宏va_start将ap初始化为指向第一个无名参数的指针。在使用ap之前，该宏必须被调用一次。参数表必须至少包含一个有名参数，va_start将最后一个有名参数作为起点。</p>
+<p>每次调用va_arg，该函数都将返回一个参数，并将ap指向下一个参数。va_arg使用一个类型名来决定返回的对象类型，指针移动的步长。</p>
+<p>最后，必须在函数返回之前调用va_end，以完成一些必要的清理工作。</p>
+<p>函数的实现如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdarg.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">minprintf</span><span class="params">(<span class="keyword">char</span> *fmt, ...)</span> </span>&#123;</span><br><span class="line">	va_list ap;</span><br><span class="line">	<span class="keyword">char</span> *p, *sval;</span><br><span class="line">	<span class="keyword">int</span> ival;</span><br><span class="line">	<span class="keyword">double</span> dval;</span><br><span class="line">	</span><br><span class="line">	va_start(ap, fmt);</span><br><span class="line">	<span class="keyword">for</span>(p = fmt; *p; p++) &#123;</span><br><span class="line">    	<span class="keyword">if</span>(*p != <span class="string">'%'</span>) &#123;</span><br><span class="line">        	<span class="built_in">putchar</span>(*p);</span><br><span class="line">        	<span class="keyword">continue</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">switch</span>(*++p) &#123;</span><br><span class="line">      	<span class="keyword">case</span> <span class="string">'d'</span>:</span><br><span class="line">      		ival = va_arg(ap, <span class="keyword">int</span>);</span><br><span class="line">      		<span class="built_in">printf</span>(<span class="string">"%d"</span>, ival);</span><br><span class="line">      		<span class="keyword">break</span>;</span><br><span class="line">      	<span class="keyword">case</span> <span class="string">'f'</span>:</span><br><span class="line">      		dval = va_arg(ap, <span class="keyword">double</span>);</span><br><span class="line">      		<span class="built_in">printf</span>(<span class="string">"%f"</span>, dval);</span><br><span class="line">      		<span class="keyword">break</span>;</span><br><span class="line">      	<span class="keyword">case</span> <span class="string">'s'</span>:</span><br><span class="line">      		<span class="keyword">for</span>(sval = va_arg(ap, <span class="keyword">char</span> *); *sval; sval++)</span><br><span class="line">      			<span class="built_in">putchar</span>(*sval);</span><br><span class="line">      		<span class="keyword">break</span>;</span><br><span class="line">      	<span class="keyword">default</span>:</span><br><span class="line">      		<span class="built_in">putchar</span>(*p);</span><br><span class="line">      		<span class="keyword">break</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	va_end(ap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -371,7 +378,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/字符串/" rel="tag"># 字符串</a>
+            <a href="/tags/变长参数/" rel="tag"># 变长参数</a>
           
             <a href="/tags/语言/" rel="tag"># 语言</a>
           
@@ -382,8 +389,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/24/variables-in-C/" rel="next" title="C语言的变量与作用域">
-                <i class="fa fa-chevron-left"></i> C语言的变量与作用域
+              <a href="/2016/12/25/init-direct3d9/" rel="next" title="Direct3D的初始化(DirectX 9.0)">
+                <i class="fa fa-chevron-left"></i> Direct3D的初始化(DirectX 9.0)
               </a>
             
           </div>
@@ -392,8 +399,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/12/05/operators-in-C/" rel="prev" title="C语言的操作符">
-                C语言的操作符 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/11/View-Matrix/" rel="prev" title="观察矩阵推导">
+                观察矩阵推导 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -441,17 +448,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -462,7 +460,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -479,7 +477,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -551,22 +549,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串拼接"><span class="nav-number">1.</span> <span class="nav-text">字符串拼接</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
     </div>
   </aside>
@@ -581,7 +563,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

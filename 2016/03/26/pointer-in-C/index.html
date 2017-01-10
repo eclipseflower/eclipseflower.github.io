@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="####优先级问题一元运算符*和&amp;amp;的优先级比算术运算符的优先级高，且*和++这样的一元运算符遵循从右至左的结合顺序。例如：
+<meta name="description" content="优先级问题一元运算符*和&amp;amp;的优先级比算术运算符的优先级高，且*和++这样的一元运算符遵循从右至左的结合顺序。例如：
 ++*ip等同于(*ip)++，它们都表示将ip指向的对象的值加1，但其中的圆括号是必须的，否则，该表达式将对ip进行加一运算，而不是对ip指向的对象进行加一运算。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C和指针">
 <meta property="og:url" content="http://eclipseflower.github.io/2016/03/26/pointer-in-C/index.html">
 <meta property="og:site_name" content="おたくのスタジオ">
-<meta property="og:description" content="####优先级问题一元运算符*和&amp;amp;的优先级比算术运算符的优先级高，且*和++这样的一元运算符遵循从右至左的结合顺序。例如：
+<meta property="og:description" content="优先级问题一元运算符*和&amp;amp;的优先级比算术运算符的优先级高，且*和++这样的一元运算符遵循从右至左的结合顺序。例如：
 ++*ip等同于(*ip)++，它们都表示将ip指向的对象的值加1，但其中的圆括号是必须的，否则，该表达式将对ip进行加一运算，而不是对ip指向的对象进行加一运算。">
-<meta property="og:updated_time" content="2016-04-12T13:15:10.000Z">
+<meta property="og:updated_time" content="2017-01-10T16:51:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C和指针">
-<meta name="twitter:description" content="####优先级问题一元运算符*和&amp;amp;的优先级比算术运算符的优先级高，且*和++这样的一元运算符遵循从右至左的结合顺序。例如：
+<meta name="twitter:description" content="优先级问题一元运算符*和&amp;amp;的优先级比算术运算符的优先级高，且*和++这样的一元运算符遵循从右至左的结合顺序。例如：
 ++*ip等同于(*ip)++，它们都表示将ip指向的对象的值加1，但其中的圆括号是必须的，否则，该表达式将对ip进行加一运算，而不是对ip指向的对象进行加一运算。">
 
 
@@ -342,24 +342,22 @@
       
 
       
-        <p>####优先级问题<br>一元运算符<code>*</code>和<code>&amp;</code>的优先级比<code>算术运算符</code>的优先级高，且<code>*</code>和<code>++</code>这样的一元运算符遵循<code>从右至左</code>的结合顺序。例如：</p>
+        <h4 id="优先级问题"><a href="#优先级问题" class="headerlink" title="优先级问题"></a>优先级问题</h4><p>一元运算符<code>*</code>和<code>&amp;</code>的优先级比<code>算术运算符</code>的优先级高，且<code>*</code>和<code>++</code>这样的一元运算符遵循<code>从右至左</code>的结合顺序。例如：</p>
 <p><code>++*ip</code>等同于<code>(*ip)++</code>，它们都表示将ip指向的对象的值加1，但其中的圆括号是必须的，否则，该表达式将对ip进行加一运算，而不是对ip指向的对象进行加一运算。</p>
 <a id="more"></a>
-<p>####指针与数组<br>数组名所代表的是该数组最开始的一个元素的地址，如果我们有：</p>
+<h4 id="指针与数组"><a href="#指针与数组" class="headerlink" title="指针与数组"></a>指针与数组</h4><p>数组名所代表的是该数组最开始的一个元素的地址，如果我们有：</p>
 <pre><code>int a[10];
 int *pa;
 </code></pre><p>赋值语句<code>pa = &amp;a[0]</code>也可以写成<code>pa = a</code>这种形式。但数组名不是变量，<code>a = pa</code>和<code>a++</code>形式的语句是非法的。</p>
 <p>在函数定义中，指针和数组作为形参是等价的。比如<code>char s[]</code>和<code>char *s</code>。</p>
-<p>####多维数组</p>
-<p>二维数组实际上是一种特殊的一维数组，它的每个元素也是一个一维数组。如果将二维数组作为<code>参数</code>传递给<code>函数</code>，那么在函数的参数声明中必须指明数组的<code>列数</code>,而<code>行数</code>没有太大关系，因为函数调用时传递的是一个指针。所以，函数声明</p>
+<h4 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h4><p>二维数组实际上是一种特殊的一维数组，它的每个元素也是一个一维数组。如果将二维数组作为<code>参数</code>传递给<code>函数</code>，那么在函数的参数声明中必须指明数组的<code>列数</code>,而<code>行数</code>没有太大关系，因为函数调用时传递的是一个指针。所以，函数声明</p>
 <pre><code>f(int daytab[2][13]) { ... }
 </code></pre><p>也可以写成</p>
 <pre><code>f(int daytab[][13]) { ... }
 </code></pre><p>还可以写成</p>
 <pre><code>f(int (*daytab)[13]) { ... }
 </code></pre><p>这种声明形式表明参数是一个指针，它指向具有13个整形元素的一维数组。</p>
-<p>####复杂声明</p>
-<p>来看个例子。</p>
+<h4 id="复杂声明"><a href="#复杂声明" class="headerlink" title="复杂声明"></a>复杂声明</h4><p>来看个例子。</p>
 <p><code>char (*(*x())[])()</code>中的<code>x</code>是什么类型？</p>
 <p>首先，从最外部开始。因为是形如<code>char f()</code>的形式，所以<code>(*(*x())[])</code>是一个函数，这个函数返回类型为<code>char</code>；</p>
 <p>接下来，发现是形如<code>*a[]</code>的形式，所以我们知道，<code>(*x())</code>是一个指针数组，数组的每个元素是指向之前函数的指针；</p>
@@ -399,8 +397,8 @@ int *pa;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/26/black-in-C/" rel="next" title="C语言工具箱">
-                <i class="fa fa-chevron-left"></i> C语言工具箱
+              <a href="/2016/03/21/counting-bits/" rel="next" title="Counting Bits">
+                <i class="fa fa-chevron-left"></i> Counting Bits
               </a>
             
           </div>
@@ -458,8 +456,17 @@ int *pa;
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -470,7 +477,7 @@ int *pa;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -487,7 +494,7 @@ int *pa;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -559,6 +566,22 @@ int *pa;
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#优先级问题"><span class="nav-number">1.</span> <span class="nav-text">优先级问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指针与数组"><span class="nav-number">2.</span> <span class="nav-text">指针与数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多维数组"><span class="nav-number">3.</span> <span class="nav-text">多维数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复杂声明"><span class="nav-number">4.</span> <span class="nav-text">复杂声明</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
@@ -573,7 +596,7 @@ int *pa;
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

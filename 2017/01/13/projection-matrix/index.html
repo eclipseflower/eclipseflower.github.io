@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="LeetCode,算法," />
+  <meta name="keywords" content="图形学,数学," />
 
 
 
@@ -84,25 +84,22 @@
 
 
 
-<meta name="description" content="今天讲一道已成烂柿子的题。如下：
-Given an array of integers, every element appears twice except for one. Find that single one.
-Note:
-Your algorithm should have a linear runtime complexity. Could you implement it with">
+<meta name="description" content="透视投影是3D固定流水线的重要组成部分，是将相机空间中的点从视锥体(frustum)变换到规则观察体(Canonical View Volume)中，待裁剪完毕后进行透视除法的行为。在算法中它是通过透视矩阵乘法和透视除法两步完成的。
+经过相机矩阵的变换，顶点被变换到了相机空间。这个时候的多边形也许会被视锥体裁剪，但在这个不规则的体中进行裁剪并非那么容易的事情，所以裁剪被安排到规则观察体(Canon">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Single Number">
-<meta property="og:url" content="http://eclipseflower.github.io/2016/03/29/Single-Number/index.html">
+<meta property="og:title" content="投影矩阵推导">
+<meta property="og:url" content="http://eclipseflower.github.io/2017/01/13/projection-matrix/index.html">
 <meta property="og:site_name" content="おたくのスタジオ">
-<meta property="og:description" content="今天讲一道已成烂柿子的题。如下：
-Given an array of integers, every element appears twice except for one. Find that single one.
-Note:
-Your algorithm should have a linear runtime complexity. Could you implement it with">
-<meta property="og:updated_time" content="2016-03-29T13:45:44.000Z">
+<meta property="og:description" content="透视投影是3D固定流水线的重要组成部分，是将相机空间中的点从视锥体(frustum)变换到规则观察体(Canonical View Volume)中，待裁剪完毕后进行透视除法的行为。在算法中它是通过透视矩阵乘法和透视除法两步完成的。
+经过相机矩阵的变换，顶点被变换到了相机空间。这个时候的多边形也许会被视锥体裁剪，但在这个不规则的体中进行裁剪并非那么容易的事情，所以裁剪被安排到规则观察体(Canon">
+<meta property="og:image" content="http://eclipseflower.github.io/images/projection-matrix-a.jpg">
+<meta property="og:image" content="http://eclipseflower.github.io/images/projection-matrix-b.jpg">
+<meta property="og:image" content="http://eclipseflower.github.io/images/projection-matrix-c.jpg">
+<meta property="og:updated_time" content="2017-01-13T13:22:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Single Number">
-<meta name="twitter:description" content="今天讲一道已成烂柿子的题。如下：
-Given an array of integers, every element appears twice except for one. Find that single one.
-Note:
-Your algorithm should have a linear runtime complexity. Could you implement it with">
+<meta name="twitter:title" content="投影矩阵推导">
+<meta name="twitter:description" content="透视投影是3D固定流水线的重要组成部分，是将相机空间中的点从视锥体(frustum)变换到规则观察体(Canonical View Volume)中，待裁剪完毕后进行透视除法的行为。在算法中它是通过透视矩阵乘法和透视除法两步完成的。
+经过相机矩阵的变换，顶点被变换到了相机空间。这个时候的多边形也许会被视锥体裁剪，但在这个不规则的体中进行裁剪并非那么容易的事情，所以裁剪被安排到规则观察体(Canon">
 
 
 
@@ -130,13 +127,13 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
 
 
 
-  <link rel="canonical" href="http://eclipseflower.github.io/2016/03/29/Single-Number/"/>
+  <link rel="canonical" href="http://eclipseflower.github.io/2017/01/13/projection-matrix/"/>
 
 
 
 
 
-  <title> Single Number | おたくのスタジオ </title>
+  <title> 投影矩阵推导 | おたくのスタジオ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +254,7 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2016/03/29/Single-Number/">
+  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2017/01/13/projection-matrix/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="EclipseFlower">
@@ -281,7 +278,7 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
             
             
               
-                Single Number
+                投影矩阵推导
               
             
           </h1>
@@ -294,8 +291,8 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2016-03-29T21:36:05+08:00">
-                2016-03-29
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2017-01-13T21:19:17+08:00">
+                2017-01-13
               </time>
             
 
@@ -313,8 +310,8 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OJ/" itemprop="url" rel="index">
-                    <span itemprop="name">OJ</span>
+                  <a href="/categories/图形学/" itemprop="url" rel="index">
+                    <span itemprop="name">图形学</span>
                   </a>
                 </span>
 
@@ -348,13 +345,32 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
       
 
       
-        <p>今天讲一道已成烂柿子的题。如下：</p>
-<p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
-<p><strong>Note</strong>:</p>
-<p>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
+        <p>透视投影是3D固定流水线的重要组成部分，是将相机空间中的点从视锥体(frustum)变换到规则观察体(Canonical View Volume)中，待裁剪完毕后进行透视除法的行为。在算法中它是通过透视矩阵乘法和透视除法两步完成的。</p>
+<p>经过相机矩阵的变换，顶点被变换到了相机空间。这个时候的多边形也许会被视锥体裁剪，但在这个不规则的体中进行裁剪并非那么容易的事情，所以裁剪被安排到规则观察体(Canonical View Volume, CVV)中进行，多边形裁剪就是用这个规则体完成的。所以，事实上是透视投影变换由两步组成：</p>
+<p>1）  用透视变换矩阵把顶点从视锥体中变换到裁剪空间的CVV中</p>
+<p>2）  CVV裁剪完成后进行透视除法</p>
 <a id="more"></a>
-<p>算法大家都知道，就是取个异或。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            res ^= nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>视锥体是一个三维体，它的位置和摄像机相关，视锥体的形状决定了模型如何从camera space投影到屏幕上。透视投影使得离摄像机近的物体投影后较大，而离摄像机较远的物体投影后较小。透视投影使用棱锥作为视锥体，摄像机位于棱锥的椎顶。该棱锥被前后两个平面截断，形成一个棱台，叫做View Frustum，只有位于Frustum内部的模型才是可见的。</p>
+<p><img src="/images/projection-matrix-a.jpg" alt="图 1"></p>
+<p>透视投影的目的就是将上面的棱台转换为一个立方体（cuboid），转换后，棱台的前剪裁平面的右上角点变为立方体的前平面的中心（下图中弧线所示）。由图可知，这个变换的过程是将棱台较小的部分放大，较大的部分缩小，以形成最终的立方体。这就是投影变换会产生近大远小的效果的原因。变换后的x坐标范围是[-1, 1]，y坐标范围是[-1, 1]，z坐标范围是[0, 1]（OpenGL略有不同，z值范围是[-1, 1]）。</p>
+<p><img src="/images/projection-matrix-b.jpg" alt="图 2"></p>
+<p>为了简化问题，我们考虑YOZ平面上的投影情况，见下图。设P（x, y, z）是Frustum内一点，它在近剪裁平面上的投影是P’（x’, y’, z’）。（<strong>注意：D3D以近剪裁平面作为投影平面</strong>），设视锥体在Y方向的夹角为$\theta$。</p>
+<p><img src="/images/projection-matrix-c.jpg" alt="图 3"></p>
+<p>由三角形相似可知：<br>$$<br>\dfrac{P_y}{y’} = \dfrac{P_z}{n}<br>$$<br>故有$y’ = \dfrac{nP_y}{P_z}$，同理有$x’ = \dfrac{nP_x}{P_z}$，$z’ = n$。</p>
+<p>接下来，我们要把点P’进行缩放，在x和y方向把顶点从Frustum情形变成CVV情形。将P’缩放的过程，假设投影平面的高度为H，由于转换后cuboid的高度为2。所以有：<br>$$<br>\dfrac{y’}{y’’} = \dfrac{H}{2}<br>$$<br>故有$y’’ = \dfrac{2y’}{H} = \dfrac{2nP_y}{HP_z}$，因为$cot\theta = \dfrac{2n}{H}$，所以最终得到：<br>$$<br>y’’ = \dfrac{P_y}{P_z}cot\theta<br>$$<br>同理，又因为投影平面的宽高比为Aspect，有：<br>$$<br>x’’ = \dfrac{2x’}{W} = \dfrac{2nP_x}{WP_z} = \dfrac{2nP_x}{HAspectP_z} = \dfrac{P_x}{P_z} cot\theta \dfrac{1}{Aspect}<br>$$<br>最后看z’’。当Frustum内的点投影到近剪裁平面的时候，实际上这个z’值已经没有意义了，因为所有位于近剪裁平面上的点，其z’值都是n，不过由于需要进行深度测试，在光栅化之前，我们需要对z坐标的倒数进行插值，所以可以将z’’写成z的一次表达式形式，如下：<br>$$<br>z’’ = a\dfrac{1}{P_z} + b<br>$$</p>
+<p>写成这样的形式，主要有以下三个原因：</p>
+<ol>
+<li>后面投影之后的光栅化阶段，要通过x’’和y’’对z进行线性插值，以求出三角形内部片元的z，进行z缓冲深度测试。在数学上，投影后的x’’和y’’，与z不是线性关系，与1/z才是线性关系。而a/z+b正是1/z的线性关系。用这个1/z的线性组合值和x’’、y’’进行插值才是正确的。</li>
+<li>P’的3个代数分量统一地除以分母z，易于使用齐次坐标变为普通坐标来完成，使得处理更加一致、高效。</li>
+<li>后面的CVV是一个规则体，便于进行多边形裁剪。而我们可以适当地选择系数a和b，使得这个式子在z = n的时候值为0，而在z = f的时候值为1，从而在z方向上构建CVV。</li>
+</ol>
+<p>所以，我们可得到下列方程组：<br>$$<br>\begin{cases}<br>0 = a\dfrac{1}{n} + b \<br>1 = a\dfrac{1}{f} + b<br>\end{cases}<br>$$<br>解方程，得到：<br>$$<br>\begin{cases}<br>a = \dfrac{fn}{n-f} \<br>b = \dfrac{f}{f-n}<br>\end{cases}<br>$$<br>代入可求出z’’：<br>$$<br>z’’ = \dfrac{fn}{n - f} \dfrac{1}{P_z} + \dfrac{f}{f-n}<br>$$<br>最终投影点P’的齐次坐标(x’’,y’’,z’’, 1)为<br>$$<br>(\dfrac{P_x}{P_z} cot\theta \dfrac{1}{Aspect}, \dfrac{P_y}{P_z}cot\theta, \dfrac{fn}{n - f} \dfrac{1}{P_z} + \dfrac{f}{f-n}, 1)<br>$$<br>下面要做的就是从这个新形式出发反推出透视投影矩阵。注意到$(\dfrac{P_x}{P_z} cot\theta \dfrac{1}{Aspect}, \dfrac{P_y}{P_z}cot\theta, \dfrac{fn}{n - f} \dfrac{1}{P_z} + \dfrac{f}{f-n}, 1)$是$(P_x cot\theta \dfrac{1}{Aspect}, P_y cot\theta, \dfrac{fn}{n - f} + \dfrac{f}{f-n}P_z, P_z)$经过透视除法的形式，所以我们做透视除法的逆处理——给P’每个分量乘上z，得到<br>$$<br>(P_x, P_y, P_z, 1)M = (P_x cot\theta \dfrac{1}{Aspect}, P_y cot\theta, \dfrac{fn}{n - f} + \dfrac{f}{f-n}P_z, P_z)<br>$$<br>最终得到投影矩阵为：<br>$$<br>M = \begin{bmatrix}<br>\dfrac{cot\theta}{Aspect} &amp; 0 &amp; 0 &amp; 0 \\<br>0 &amp; cot\theta &amp; 0 &amp; 0 \\<br>0 &amp; 0 &amp; \dfrac{f}{f - n} &amp; 1 \\<br>0 &amp; 0 &amp; \dfrac{fn}{n - f} &amp; 0<br>\end{bmatrix}<br>$$<br>M就是最终的透视变换矩阵。相机空间中的顶点，如果在视锥体中，则变换后就在CVV中。如果在视锥体外，变换后就在CVV外。而CVV本身的规则性对于多边形的裁剪很有利。注意到M的最后一列不是(0 0 0 1)而是(0 0 1 0)，因此可以看出透视变换不是一种仿射变换，它是非线性的。</p>
+<p>另外一点，对于投影面来说，它的宽和高大多数情况下不同，即宽高比不为1，比如640/480。而CVV的宽高是相同的，即宽高比永远是1。这就造成了多边形的失真现象，比如一个投影面上的正方形在CVV的面上可能变成了一个长方形。解决这个问题的方法就是在对多变形进行透视变换、裁剪、透视除法之后，在归一化的设备坐标(Normalized Device Coordinates)上进行的视口(viewport)变换中进行校正，它会把归一化的顶点之间按照和投影面上相同的比例变换到视口中，从而解除透视投影变换带来的失真现象。进行校正前提就是要使投影平面的宽高比和视口的宽高比相同。</p>
+<p>参考：</p>
+<ol>
+<li><a href="http://www.cnblogs.com/graphics/archive/2012/07/25/2582119.html" target="_blank" rel="external">http://www.cnblogs.com/graphics/archive/2012/07/25/2582119.html</a></li>
+<li><a href="http://blog.csdn.net/popy007/article/details/1797121" target="_blank" rel="external">http://blog.csdn.net/popy007/article/details/1797121</a></li>
+</ol>
 
       
     </div>
@@ -378,9 +394,9 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+            <a href="/tags/图形学/" rel="tag"># 图形学</a>
           
-            <a href="/tags/算法/" rel="tag"># 算法</a>
+            <a href="/tags/数学/" rel="tag"># 数学</a>
           
         </div>
       
@@ -389,8 +405,8 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/29/Nim-Game/" rel="next" title="Nim Game">
-                <i class="fa fa-chevron-left"></i> Nim Game
+              <a href="/2017/01/11/View-Matrix/" rel="next" title="观察矩阵推导">
+                <i class="fa fa-chevron-left"></i> 观察矩阵推导
               </a>
             
           </div>
@@ -398,10 +414,6 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/12/Add-Digits/" rel="prev" title="Add Digits">
-                Add Digits <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

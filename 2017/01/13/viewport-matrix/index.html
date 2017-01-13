@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="おたくのスタジオ">
 <meta property="og:description" content="视口变换在投影变换之后，视口变换的作用是将投影平面上的点转换为屏幕上的点，这是一个缩放的过程。">
 <meta property="og:image" content="http://eclipseflower.github.io/images/viewport-matrix-a.jpg">
-<meta property="og:updated_time" content="2017-01-13T13:27:48.000Z">
+<meta property="og:updated_time" content="2017-01-13T15:22:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="视口变换矩阵推导">
 <meta name="twitter:description" content="视口变换在投影变换之后，视口变换的作用是将投影平面上的点转换为屏幕上的点，这是一个缩放的过程。">
@@ -343,7 +343,7 @@
         <p>视口变换在投影变换之后，视口变换的作用是将投影平面上的点转换为屏幕上的点，这是一个缩放的过程。</p>
 <p><img src="/images/viewport-matrix-a.jpg" alt="图 1"></p>
 <a id="more"></a>
-<p>CVV的坐标范围是：<br>$$<br>\begin{cases}<br>-1 \leq x \leq 1 \<br>-1 \leq y \leq 1 \<br>0 \leq z \leq 1<br>\end{cases}<br>$$<br>而viewport的坐标范围是：<br>$$<br>\begin{cases}<br>X \leq x \leq X + Width \<br>Y \leq y \leq Y + Height \<br>MinZ \leq z \leq MaxZ<br>\end{cases}<br>$$<br>由上图知，视口的起点为（X, Y），宽高分别为Width和Height，x轴向右为正，y轴向下为正，y轴的方向与三维坐标正好相反。视口是一个2D平面，但是在viewport变换中，Z坐标也是跟着变换的，只是在这个图中没有体现。</p>
+<p>CVV的坐标范围是：<br>$$<br>\begin{cases}<br>-1 \leq x \leq 1 \\<br>-1 \leq y \leq 1 \\<br>0 \leq z \leq 1<br>\end{cases}<br>$$<br>而viewport的坐标范围是：<br>$$<br>\begin{cases}<br>X \leq x \leq X + Width \\<br>Y \leq y \leq Y + Height \\<br>MinZ \leq z \leq MaxZ<br>\end{cases}<br>$$<br>由上图知，视口的起点为（X, Y），宽高分别为Width和Height，x轴向右为正，y轴向下为正，y轴的方向与三维坐标正好相反。视口是一个2D平面，但是在viewport变换中，Z坐标也是跟着变换的，只是在这个图中没有体现。</p>
 <p>接下来，我们来求这个矩阵。对于原来CVV中的任一点P(x, y, z)，转换至viewport的坐标为(x’, y’, z’)，我们有：<br>$$<br>\dfrac{x - (-1)}{2} = \dfrac{x’ - X}{Width}<br>$$<br>解得$x’ = \dfrac{Width}{2}x + \dfrac{Width}{2} + X$。同理：<br>$$<br>\dfrac{1 - y}{2} = \dfrac{y’ - Y}{Height}<br>$$<br>解得$y’ = -\dfrac{Height}{2}y + \dfrac{Height}{2} + Y$。然后：<br>$$<br>z = \dfrac{z’ - MinZ}{MaxZ - MinZ}<br>$$<br>得到$z’ = (MaxZ - MinZ)z + MinZ$。</p>
 <p>所以，我们得到视口变换矩阵为：<br>$$<br>\begin{bmatrix}<br>\dfrac{Width}{2} &amp; 0 &amp; 0 &amp; 0 \\<br>0 &amp; \dfrac{-Height}{2} &amp; 0 &amp; 0 \\<br>0 &amp; 0 &amp; MaxZ - MinZ &amp; 0 \\<br>X + \dfrac{Width}{2} &amp; Y + \dfrac{Height}{2} &amp; MinZ &amp; 1<br>\end{bmatrix}<br>$$</p>
 <p>参考：</p>

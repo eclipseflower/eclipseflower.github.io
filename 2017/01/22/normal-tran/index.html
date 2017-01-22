@@ -94,7 +94,7 @@
 我们已经知道通过缩放、旋转、平移三种基本操作合成的模型-世界变换矩阵可以将模型顶点坐标从模型坐标系中转换到世界坐标系中。那么这个模型-世界变换">
 <meta property="og:image" content="http://eclipseflower.github.io/images/normal-tran-a.png">
 <meta property="og:image" content="http://eclipseflower.github.io/images/normal-tran-b.png">
-<meta property="og:updated_time" content="2017-01-22T09:20:15.000Z">
+<meta property="og:updated_time" content="2017-01-22T09:41:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="法向量变换">
 <meta name="twitter:description" content="模型的顶点的法向量一开始是定义在模型坐标系中的，在将模型布置在场景中后，根据光照模型计算颜色时需要用到顶点法向量，由于光照都是在世界坐标系中进行计算，这时用到的法向量也应该是定义在世界坐标系中。所以我们需要设法将顶点法向量从模型坐标系中转换到世界坐标系中。
@@ -347,12 +347,10 @@
         <p>模型的顶点的法向量一开始是定义在模型坐标系中的，在将模型布置在场景中后，根据光照模型计算颜色时需要用到顶点法向量，由于光照都是在世界坐标系中进行计算，这时用到的法向量也应该是定义在世界坐标系中。所以我们需要设法将顶点法向量从模型坐标系中转换到世界坐标系中。</p>
 <p>我们已经知道通过缩放、旋转、平移三种基本操作合成的模型-世界变换矩阵可以将模型顶点坐标从模型坐标系中转换到世界坐标系中。那么这个模型-世界变换矩阵是否也可以将顶点法向量转换到世界坐标系呢？如果不行，那么需要找到一个可以完成这个任务的矩阵。</p>
 <a id="more"></a>
-<p>模型变换矩阵是否可以用于转换法向量</p>
-<p><img src="/images/normal-tran-a.png" alt="normal-tran-a"></p>
+<h5 id="模型变换矩阵是否可以用于转换法向量"><a href="#模型变换矩阵是否可以用于转换法向量" class="headerlink" title="模型变换矩阵是否可以用于转换法向量"></a>模型变换矩阵是否可以用于转换法向量</h5><p><img src="/images/normal-tran-a.png" alt="normal-tran-a"></p>
 <p><img src="/images/normal-tran-b.png" alt="normal-tran-b"></p>
 <p>如图所示：图中的线段AB经过了缩放变换。上图中点A = (0,1)，B = (1,0)，法向量N = (1,1)；下图中经过y坐标值放大两倍的变换后，法向量N = (1,2)，而向量T’ = A - B = (-1,2)，法向量N’不再与线段AB垂直。</p>
-<p>寻找用于变换法向量的通用矩阵</p>
-<p>设法向量为$N$，三角形表面某一切向量为$t$，则有：<br>$$<br>N \cdot t^T = 0<br>$$<br>写成转置形式，是为了方便进行矩阵运算。设模型-世界变换矩阵为$M$，变换后的切向量为$t’$，法向量为$N’$，则有：<br>$$<br>\begin{align}<br>N’ \cdot t’^T &amp;= 0 \\<br>N’ \cdot (t \cdot M)^T&amp; = 0 \\<br>N’ \cdot M^T \cdot t^T &amp;= 0<br>\end{align}<br>$$<br>可以得到<br>$$<br>N’ \cdot M^T = N<br>$$<br>所以变换法向量的矩阵为$(M^T)^{-1}$。</p>
+<h5 id="寻找用于变换法向量的通用矩阵"><a href="#寻找用于变换法向量的通用矩阵" class="headerlink" title="寻找用于变换法向量的通用矩阵"></a>寻找用于变换法向量的通用矩阵</h5><p>设法向量为$N$，三角形表面某一切向量为$t$，则有：<br>$$<br>N \cdot t^T = 0<br>$$<br>写成转置形式，是为了方便进行矩阵运算。设模型-世界变换矩阵为$M$，变换后的切向量为$t’$，法向量为$N’$，则有：<br>$$<br>\begin{align}<br>N’ \cdot t’^T &amp;= 0 \\<br>N’ \cdot (t \cdot M)^T&amp; = 0 \\<br>N’ \cdot M^T \cdot t^T &amp;= 0<br>\end{align}<br>$$<br>可以得到<br>$$<br>N’ \cdot M^T = N<br>$$<br>所以变换法向量的矩阵为$(M^T)^{-1}$。</p>
 <p>如果一个变换矩阵只包含旋转的话，它一定是个正交的矩阵，即：<br>$$<br>M^T = M<br>$$<br>而且，这时还有<br>$$<br>M^T = M^{-1}<br>$$<br>结合一下可知在一个只包含旋转的变换里。法向量的变换矩阵的确就是模型-世界变换矩阵。但是如果变换中包含非正交的因素，如：平移、不等比缩放、错切等。那情况就不一样。即使看到了所谓的正确的结果。那也是近似正确的，至少在理论上，它就是不正确的。</p>
 <p>以不是三个坐标方向的等比例缩放为例，有一种可以简洁推算法向量变换矩阵的方法：</p>
 <p>如果模型被不成比例的缩放，在不同方向上会有不同程度的拉伸或者压缩，顶点的坐标会因而伸缩。但是<strong>如果对法向量进行同样的伸缩，那么法向量将不再垂直于对应的表面</strong>（<strong>顶点的法向量是该顶点所在几个表面法向量的平均值</strong>）。</p>
@@ -449,8 +447,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -549,6 +556,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#模型变换矩阵是否可以用于转换法向量"><span class="nav-number">1.</span> <span class="nav-text">模型变换矩阵是否可以用于转换法向量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寻找用于变换法向量的通用矩阵"><span class="nav-number">2.</span> <span class="nav-text">寻找用于变换法向量的通用矩阵</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>

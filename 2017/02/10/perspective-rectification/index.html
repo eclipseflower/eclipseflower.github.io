@@ -84,23 +84,21 @@
 
 
 
-<meta name="description" content="默认状态下，Direct3D认为顶点排列顺序为顺时针（观察坐标系中）的三角形单元是正面朝向的，顶点排列顺序为逆时针（观察坐标系中）的三角形单元是背面朝向的。
-那么，如何判断一个三角形的绕序呢？让我们先从三角形的基本性质看起。
-在左手坐标系中，当从三角形“正面”看时，经常以顺时针方向列出这些点，设这三个顶点为$v_1、v_2、v_3$。让我们标出下图中的三角形内角、顺时针边向量、边长。">
+<meta name="description" content="在《投影矩阵推导》中，我们提到在光栅化之前，我们需要对z坐标的倒数进行插值，这是因为在数学上，投影后的x和y，以及纹理坐标s和t，与z都不是线性关系，与1/z才是线性关系。本篇文章将围绕于此。
+在3D渲染中，输入数据是一些primitive信息，包括顶点位置、颜色、纹理坐标等等。在光栅化阶段，primitive(一般为三角形)被转化成一系列的fragment(或者称为像素)，此时每个fragmen">
 <meta property="og:type" content="article">
-<meta property="og:title" content="三角形的背面消隐">
-<meta property="og:url" content="http://eclipseflower.github.io/2017/01/21/triangle-backface/index.html">
+<meta property="og:title" content="透视校正插值">
+<meta property="og:url" content="http://eclipseflower.github.io/2017/02/10/perspective-rectification/index.html">
 <meta property="og:site_name" content="おたくのスタジオ">
-<meta property="og:description" content="默认状态下，Direct3D认为顶点排列顺序为顺时针（观察坐标系中）的三角形单元是正面朝向的，顶点排列顺序为逆时针（观察坐标系中）的三角形单元是背面朝向的。
-那么，如何判断一个三角形的绕序呢？让我们先从三角形的基本性质看起。
-在左手坐标系中，当从三角形“正面”看时，经常以顺时针方向列出这些点，设这三个顶点为$v_1、v_2、v_3$。让我们标出下图中的三角形内角、顺时针边向量、边长。">
-<meta property="og:image" content="http://eclipseflower.github.io/images/triangle-backface-a.png">
-<meta property="og:updated_time" content="2017-02-09T14:33:26.000Z">
+<meta property="og:description" content="在《投影矩阵推导》中，我们提到在光栅化之前，我们需要对z坐标的倒数进行插值，这是因为在数学上，投影后的x和y，以及纹理坐标s和t，与z都不是线性关系，与1/z才是线性关系。本篇文章将围绕于此。
+在3D渲染中，输入数据是一些primitive信息，包括顶点位置、颜色、纹理坐标等等。在光栅化阶段，primitive(一般为三角形)被转化成一系列的fragment(或者称为像素)，此时每个fragmen">
+<meta property="og:image" content="http://eclipseflower.github.io/images/perspective- rectification-a.png">
+<meta property="og:image" content="http://eclipseflower.github.io/images/perspective- rectification-b.png">
+<meta property="og:updated_time" content="2017-02-10T08:27:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="三角形的背面消隐">
-<meta name="twitter:description" content="默认状态下，Direct3D认为顶点排列顺序为顺时针（观察坐标系中）的三角形单元是正面朝向的，顶点排列顺序为逆时针（观察坐标系中）的三角形单元是背面朝向的。
-那么，如何判断一个三角形的绕序呢？让我们先从三角形的基本性质看起。
-在左手坐标系中，当从三角形“正面”看时，经常以顺时针方向列出这些点，设这三个顶点为$v_1、v_2、v_3$。让我们标出下图中的三角形内角、顺时针边向量、边长。">
+<meta name="twitter:title" content="透视校正插值">
+<meta name="twitter:description" content="在《投影矩阵推导》中，我们提到在光栅化之前，我们需要对z坐标的倒数进行插值，这是因为在数学上，投影后的x和y，以及纹理坐标s和t，与z都不是线性关系，与1/z才是线性关系。本篇文章将围绕于此。
+在3D渲染中，输入数据是一些primitive信息，包括顶点位置、颜色、纹理坐标等等。在光栅化阶段，primitive(一般为三角形)被转化成一系列的fragment(或者称为像素)，此时每个fragmen">
 
 
 
@@ -128,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://eclipseflower.github.io/2017/01/21/triangle-backface/"/>
+  <link rel="canonical" href="http://eclipseflower.github.io/2017/02/10/perspective-rectification/"/>
 
 
 
 
 
-  <title> 三角形的背面消隐 | おたくのスタジオ </title>
+  <title> 透视校正插值 | おたくのスタジオ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2017/01/21/triangle-backface/">
+  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2017/02/10/perspective-rectification/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="EclipseFlower">
@@ -279,7 +277,7 @@
             
             
               
-                三角形的背面消隐
+                透视校正插值
               
             
           </h1>
@@ -292,8 +290,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2017-01-21T17:12:41+08:00">
-                2017-01-21
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2017-02-10T16:24:02+08:00">
+                2017-02-10
               </time>
             
 
@@ -346,21 +344,19 @@
       
 
       
-        <p>默认状态下，Direct3D认为顶点排列顺序为顺时针（观察坐标系中）的三角形单元是正面朝向的，顶点排列顺序为逆时针（观察坐标系中）的三角形单元是背面朝向的。</p>
-<p>那么，如何判断一个三角形的绕序呢？让我们先从三角形的基本性质看起。</p>
-<p>在左手坐标系中，当从三角形“正面”看时，经常以顺时针方向列出这些点，设这三个顶点为$v_1、v_2、v_3$。让我们标出下图中的三角形内角、顺时针边向量、边长。</p>
-<p><img src="/images/triangle-backface-a.png" alt="图 1"></p>
+        <p>在《投影矩阵推导》中，我们提到在光栅化之前，我们需要对z坐标的倒数进行插值，这是因为在数学上，投影后的x和y，以及纹理坐标s和t，与z都不是线性关系，与1/z才是线性关系。本篇文章将围绕于此。</p>
+<p>在3D渲染中，输入数据是一些primitive信息，包括顶点位置、颜色、纹理坐标等等。在光栅化阶段，primitive(一般为三角形)被转化成一系列的fragment(或者称为像素)，此时每个fragment都有位置、颜色、纹理坐标这些属性信息，这些属性信息通过顶点属性用插值方法得到的。比如下面的primtive，输入数据中只有a,b,c三个顶点的信息，则三角形内部经过扫描转化得到的像素f的颜色则是通过插值得到，d是a、b的插值，e是a、c的插值，然后f又是d、e的插值。</p>
+<p><img src="/images/perspective- rectification-a.png" alt="perspective- rectification-a"></p>
 <a id="more"></a>
-<p>设$l_i$为$e_i$的长度，注意$e_i、l_i$和$v_i$的对应关系，$v_i$为相应下标的顶点，它们的关系如下：<br>$$<br>e_1 = v_3 - v_2 \quad l_1 = |e_1| \\<br>e_2 = v_1 - v_3 \quad l_2 = |e_2| \\<br>e_3 = v_2 - v_1 \quad l_3 = |e_3|<br>$$<br>由正弦定理可知：<br>$$<br>\dfrac{sin\theta_1}{l_1} = \dfrac{sin\theta_2}{l_2} = \dfrac{sin\theta_3}{l_3}<br>$$<br>由余弦定理可知：<br>$$<br>l_1^2 = l_2^2 + l_3^2 - 2l_2l_3cos\theta_1 \\<br>l_2^2 = l_1^2 + l_3^2 - 2l_1l_3cos\theta_2 \\<br>l_3^2 = l_1^2 + l_2^2 - 2l_1l_2cos\theta_3<br>$$<br>接下来我们来看下三角形的面积。</p>
-<p>如果不知道高，可以使用海伦公式计算面积，它只需要提供三边的长度即可。设s为周长的一半（也称作半周长），公式如下：<br>$$<br>s = \dfrac{l_1 + l_2 + l_3}{2} = \dfrac{p}{2} \\<br>A = \sqrt{s(s - l_1)(s - l_2)(s - l_3)}<br>$$<br>海伦公式非常有用，因为它在3D中使用非常方便。</p>
-<p>有时候，高和周长都没有直接提供，所知道的只有顶点的笛卡尔坐标。（当然，总是可以从坐标中算出边长，但在某些情况下，我们想要避免这种代价相对较高的计算。）让我们看看能否从顶点坐标直接计算面积。</p>
-<p>先在2D中解决这个问题。基本思想是，对三角形三边中的每一边，计算上由该边，下由x轴所围成的梯形的有符号面积。</p>
-<p>有符号面积是指：如果边的端点是从左向右的，则面积为正；如果边的端点是从右向左的，则面积为负。注意不管三角形的方向如何变化，都存在至少一个正边和一个负，一个竖直边的面积为0。各边下面区域的面积分别为：<br>$$<br>A(e_1) = \dfrac{(y_3 + y_2)(x_3 - x_2)}{2} \\<br>A(e_2) = \dfrac{(y_1 + y_3)(x_1 - x_3)}{2} \\<br>A(e_3) = \dfrac{(y_2 + y_1)(x_2 - x_1)}{2}<br>$$<br>即使一部分（或整个）三角形扩展到了x轴下边，上面的公式依然正确。这三个梯形的有符号面积相加，就得到了三角形本身的面积。事实上，能用同样的思想计算任意多边形的面积。</p>
-<p>这里，假设顶点是按顺指针列出的，如果顶点以相反的顺序列出，面积的符号将变负。将这三个梯形的面积相加，计算三角形的有符号面积：<br>$$<br>\begin{align}<br>A &amp;= A(e_1) + A(e_2) + A(e_3) \\<br>&amp;= \dfrac{y_1(x_2 - x_3) + y_2(x_3 - x_1) + y_3(x_1 - x_2)}{2}<br>\end{align}<br>$$<br>实际上，还能进一步简化。基本思想是，平移三角形不会改变三角形的面积。因此，我们可以在竖直方向上平移三角形，从每个y坐标中减去$y_3$，如下所示。（用代数变换也能得到这个简化形式。）<br>$$<br>A = \dfrac{(y_1 - y_3)(x_2 - x_3)+ (y_2 - y_3)(x_3 - x_1)}{2}<br>$$<br>在3D中，可以通过叉乘来计算三角形的面积。两向量<strong>a</strong>、<strong>b</strong>叉乘的大小等于以<strong>a</strong>、<strong>b</strong>为两边的平行四边形的面积。因为三角形面积等于包围它的平行四边形的一半，所以我们有了一种简便方法。给出三角形的两个边向量，$e_1$和$e_2$，则三角形面积为：<br>$$<br>A = \dfrac{|e_1 \times e_2|}{2}<br>$$<br>综上，我们可以通过计算三角形的有符号面积来判断三角形的绕序。若面积为正，则为顺时针绕序，否则即为逆时针绕序。要注意有符号面积的计算应当是在透视除法后计算，这样可以确保与z无关。</p>
-<p>在观察坐标系中，还有一种很直观的办法可以判断三角形的绕序：</p>
-<p>1、按约定顺序（顺时针）计算出两个边向量：<br>$$<br>\overrightarrow{v_1} = (x_3 - x_2, y_3 - y_2, z_3 - z_2) \\<br>\overrightarrow{v_2} = (x_1 - x_3, y_1 - y_3, z_1 - z_3)<br>$$<br>2、求两个边向量的叉乘，得到面法向量：<br>$$<br>\overrightarrow{n} = \overrightarrow{v_1} \times \overrightarrow{v_2}<br>$$<br>3、计算视线向量$\overrightarrow{view}$，可以取三角形面上任意点减去相机的坐标则该向量是从三角形面指向相机的。但可以采取简单做法：首先在观察坐标系中相机坐标即为原点坐标；其次可以直接用相机的朝向向量的逆向量来代替视线向量。</p>
-<p>4、求面法向量与视线向量的点积，如果点积大于0，说明夹角为锐角，是正面，即顺时针绕序，否则即为逆时针绕序。</p>
-<p>特别地，如果相机的朝向向量为(0, 0, 1)，那么我们可以得到：<br>$$<br>\overrightarrow{n} \cdot \overrightarrow{view} = (y_1 - y_3)(x_2 - x_3)+ (y_2 - y_3)(x_3 - x_1)<br>$$<br>是不是很神奇。</p>
+<p>下图是clip裁剪视锥体的xz平面，从图中可以看出，在投影平面的均匀插值(一系列蓝色的标记)，它们实际位置距离并不是均匀的，距离投影平面越远，实际位置距离越长，所以这是我们采用线性插值的话，可能最终的结果并不是我们所想要的。</p>
+<p><img src="/images/perspective- rectification-b.png" alt="perspective- rectification-b"></p>
+<p>我们来证明一下投影后的x和y与1/z才是线性关系。</p>
+<p>首先有，<br>$$<br>p = tp_1 + (1- t)p_2<br>$$<br>由投影关系可知<br>$$<br>\dfrac{p_1}{x_1} = \dfrac{-e}{z_1}, \dfrac{p_2}{x_2} = \dfrac{-e}{z_2}, \dfrac{p}{x} = \dfrac{-e}{z}<br>$$<br>代入上式可得：<br>$$<br>-\dfrac{ex}{z} = t \dfrac{-ex_1}{z_1} + (1 - t)\dfrac{-ex_2}{z_2}<br>$$<br>又$(x_1, z_1)$，$(x, z)$和$(x_2, z_2)$三点共线，假设该直线方程为$ax + bz = c$，即得到$x=\dfrac{-bz + c}{a}$，代入上式，进一步化简有：<br>$$<br>\dfrac{1}{z} = t\dfrac{1}{z_1} + (1-t)\dfrac{1}{z_2}<br>$$<br>可见，z的倒数是线性插值，所以我们可以用顶点的z值来插值求得primitive内部fragment的属性值，比如颜色等等。</p>
+<p>接下来让我们看下插值算法。算法描述如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double x, y, xleft, xright; // &#25554;&#20540;x&#21644;y&#65292;&#24038;&#21491;&#32447;&#27573;x&#10;double oneoverz_left, oneoverz_right; // &#24038;&#21491;&#32447;&#27573;1/z&#10;double oneoverz_top, oneoverz_bottom; // &#19978;&#19979;&#39030;&#28857;1/z&#10;double oneoverz, oneoverz_step;   // &#25554;&#20540;1/z&#20197;&#21450;&#25195;&#25551;&#32447;&#27493;&#38271;&#10;double soverz_top, soverz_bottom; // &#19978;&#19979;&#39030;&#28857;s/z&#10;double toverz_top, toverz_bottom; // &#19978;&#19979;&#39030;&#28857;t/z&#10;double soverz_left, soverz_right; // &#24038;&#21491;&#32447;&#27573;s/z&#10;double toverz_left, toverz_right; // &#24038;&#21491;&#32447;&#27573;t/z&#10;double soverz, soverz_step; // &#25554;&#20540;s/z&#20197;&#21450;&#25195;&#25551;&#32447;&#27493;&#38271;&#10;double toverz, toverz_step; // &#25554;&#20540;t/z&#20197;&#21450;&#25195;&#25551;&#32447;&#27493;&#38271;&#10;double s, t; // &#35201;&#27714;&#30340;&#21407;&#22987;s&#21644;t&#10;for(y = y0; y &#60; y1; ++y)&#10;&#123;&#10;       xleft = &#29992;y&#21644;&#24038;&#36793;&#30340;&#30452;&#32447;&#26041;&#31243;&#26469;&#27714;&#20986;&#24038;&#36793;&#30340;x&#10;       xright = &#29992;y&#21644;&#21491;&#36793;&#30340;&#30452;&#32447;&#26041;&#31243;&#26469;&#27714;&#20986;&#21491;&#36793;&#30340;x&#10;       oneoverz_top = 1.0 / z0;&#10;       oneoverz_bottom = 1.0 / z1;&#10;       oneoverz_left = (y &#8211; y0) * (oneoverz_bottom &#8211; oneoverz_top) / (y1 &#8211; y0) + oneoverz_top;&#10;       oneoverz_bottom = 1.0 / z2;&#10;       oneoverz_right = (y &#8211; y0) * (oneoverz_bottom &#8211; oneoverz_top) / (y2 &#8211; y0) + oneoverz_top;&#10;       oneoverz_step = (oneoverz_right &#8211; oneoverz_left) / (xright &#8211; xleft);&#10;       soverz_top = s0 / z0;&#10;       soverz_bottom = s1 / z1;&#10;       soverz_left = (y &#8211; y0) * (soverz_bottom &#8211; soverz_top) / (y1 &#8211; y0) + soverz_top;&#10;       soverz_bottom = s2 / z2;&#10;       soverz_right = (y &#8211; y0) * (soverz_bottom &#8211; soverz_top) / (y2 &#8211; y0) + soverz_top;&#10;       soverz_step = (soverz_right &#8211; soverz_left) / (xright &#8211; xleft);&#10;       toverz_top = t0 / z0;&#10;       toverz_bottom = t1 / z1;&#10;       toverz_left = (y &#8211; y0) * (toverz_bottom &#8211; toverz_top) / (y1 &#8211; y0) + toverz_top;&#10;       toverz_bottom = t2 / z2;&#10;       toverz_right = (y &#8211; y0) * (toverz_bottom &#8211; toverz_top) / (y2 &#8211; y0) + toverz_top;&#10;       toverz_step = (toverz_right &#8211; toverz_left) / (xright &#8211; xleft);&#10;       for(x = xleft, oneoverz = oneoverz_left,&#10;              soverz = soverz_left, toverz = toverz_lef,t&#10;              x &#60; xright; ++x, oneoverz += oneoverz_step,&#10;              soverz += soverz_step, toverz += toverz_step)&#10;       &#123;&#10;              s = soverz / oneoverz;&#10;              t = toverz / oneoverz;&#10;              &#24103;&#32531;&#20914;&#20687;&#32032;[x, y] = &#32441;&#29702;[s, t];&#10;       &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：</p>
+<p>1.<a href="http://www.cnblogs.com/mikewolf2002/archive/2012/11/25/2787480.html" target="_blank" rel="external">http://www.cnblogs.com/mikewolf2002/archive/2012/11/25/2787480.html</a></p>
+<p>2.<a href="http://blog.csdn.net/popy007/article/details/5570803" target="_blank" rel="external">http://blog.csdn.net/popy007/article/details/5570803</a></p>
 
       
     </div>
@@ -395,8 +391,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/13/viewport-matrix/" rel="next" title="视口变换矩阵推导">
-                <i class="fa fa-chevron-left"></i> 视口变换矩阵推导
+              <a href="/2017/01/22/normal-tran/" rel="next" title="法向量变换">
+                <i class="fa fa-chevron-left"></i> 法向量变换
               </a>
             
           </div>
@@ -404,10 +400,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/22/normal-tran/" rel="prev" title="法向量变换">
-                法向量变换 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

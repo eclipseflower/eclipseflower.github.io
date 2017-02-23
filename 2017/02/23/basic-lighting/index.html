@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://eclipseflower.github.io/images/basic-lighting-e.png">
 <meta property="og:image" content="http://eclipseflower.github.io/images/basic-lighting-c.png">
 <meta property="og:image" content="http://eclipseflower.github.io/images/basic-lighting-d.png">
-<meta property="og:updated_time" content="2017-02-22T16:47:48.000Z">
+<meta property="og:updated_time" content="2017-02-23T15:32:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基本光照模型">
 <meta name="twitter:description" content="本篇文章主要分析Direct3D中的固定功能光照模型。这个基本模型对经典的Phong模型进行了修改和扩展。关于不同的光照模型，将留到后续文章中介绍。在基本模型中，一个物体的表面颜色是放射（emissive）、环境反射（ambient）、漫反射（diffuse）和镜面反射（specular）等光照作用的总和。每种光照作用取决于表面材质的性质（例如亮度和材质颜色）和光源的性质（例如光的颜色和位置）的共">
@@ -420,6 +420,10 @@
 <li>$\phi$为外部圆锥角度</li>
 <li>$p$为辐射值</li>
 </ul>
+<p>参考：</p>
+<p>1.<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb174694(v=vs.85).aspx" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/windows/desktop/bb174694(v=vs.85).aspx</a></p>
+<p>2.<a href="http://www.cppblog.com/liangairan/articles/94103.html" target="_blank" rel="external">http://www.cppblog.com/liangairan/articles/94103.html</a></p>
+<p>3.<a href="http://www.cnblogs.com/QG-whz/p/5189831.html?utm_source=tuicool&amp;utm_medium=referral#_label1_0" target="_blank" rel="external">http://www.cnblogs.com/QG-whz/p/5189831.html?utm_source=tuicool&amp;utm_medium=referral#_label1_0</a></p>
 
       
     </div>

@@ -92,7 +92,7 @@
 <meta property="og:description" content="Bresenham算法是DDA算法画线算法的一种改进算法。本质上它也是采取了步进的思想。不过它比DDA算法作了优化，避免了步进时浮点数运算，同时为选取符合直线方程的点提供了一个好思路。首先通过直线的斜率确定了在x方向进行单位步进还是y方向进行单位步进：当斜率k的绝对值$|m|&amp;lt;1$时，在x方向进行单位步进；当斜率k的绝对值$|m|&amp;gt;1$时，在y方向进行单位步进。">
 <meta property="og:image" content="http://eclipseflower.github.io/images/Bresenham-draw-line-a.png">
 <meta property="og:image" content="http://eclipseflower.github.io/images/Bresenham-draw-line-b.png">
-<meta property="og:updated_time" content="2017-03-05T16:49:40.000Z">
+<meta property="og:updated_time" content="2017-03-06T14:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bresenham快速画直线算法">
 <meta name="twitter:description" content="Bresenham算法是DDA算法画线算法的一种改进算法。本质上它也是采取了步进的思想。不过它比DDA算法作了优化，避免了步进时浮点数运算，同时为选取符合直线方程的点提供了一个好思路。首先通过直线的斜率确定了在x方向进行单位步进还是y方向进行单位步进：当斜率k的绝对值$|m|&amp;lt;1$时，在x方向进行单位步进；当斜率k的绝对值$|m|&amp;gt;1$时，在y方向进行单位步进。">
@@ -255,7 +255,7 @@
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="EclipseFlower">
     <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="image" content="/images/childoflight.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -345,13 +345,13 @@
 <a id="more"></a>
 <p>下面以$|m|&lt;1$时推导Bresenham算法的数学依据：</p>
 <p><img src="/images/Bresenham-draw-line-a.png" alt="Bresenham-draw-line-a"></p>
-<p>请看上图，已知有一直线$y = mx+b，|m|&lt;1$。我们通过斜率确定了x方向为单位步进。当$x = x_k$时，$y = y_k$。那么当x 执行一个单位步进时（即$x = x_k+1$时）,y等于$y_k$还是等于$y_k+1$更符合这个直线方程呢？单凭肉眼我们很难得出结论，最好的办法当然是比较$y_k$和$y<em>k+1$和真实的方程的y值的差是多少（即$y</em>{real} = m*(x_k+1)+b$），看看哪一个更靠近真实的方程的y值。</p>
-<p>算法的具体过程，其实就是在每次画点的时候选取与实际直线的交点y坐标的差最小的那个点。这里假设：<br>$$<br>d_{upper} = (y<em>k + 1) - y</em>{real} \\<br>d<em>{down} = y</em>{real} - y<em>k<br>$$<br>要确定两像素中哪一个更接近线路径，需测试两个像素偏移的差：<br>$$<br>d</em>{upper} - d_{down} = 2y_k - 2mx_k -2m - 2b + 1<br>$$<br>由于$m=\dfrac{\Delta y}{\Delta x}$,我们有：<br>$$<br>p<em>m = \Delta x(d</em>{upper} - d_{down}) = 2\Delta x y_k - 2\Delta y x<em>k + \Delta x - 2\Delta y - 2b\Delta x<br>$$<br>则：<br>$$<br>p</em>{m+1} = 2\Delta x y<em>{k+1} - 2\Delta y x</em>{k+1} + \Delta x - 2\Delta y - 2b\Delta x<br>$$<br>相减可得到：<br>$$<br>p_{m+1} - p<em>m = 2\Delta x (y</em>{k+1} - y<em>k) - 2\Delta y (x</em>{k+1} - x<em>k)<br>$$<br>因为$x</em>{k+1} = x<em>k + 1$，所以有：<br>$$<br>p</em>{k+1} - p<em>k = 2\Delta x (y</em>{k+1} - y<em>k) - 2\Delta y<br>$$<br>其中，$y</em>{k+1} - y_k$取0还是1，取决于$p_m$的符号。</p>
+<p>请看上图，已知有一直线$y = mx+b，|m|&lt;1$。我们通过斜率确定了x方向为单位步进。当$x = x_k$时，$y = y_k$。那么当x执行一个单位步进时（即$x = x_k+1$时）,y等于$y_k$还是等于$y_k+1$更符合这个直线方程呢？单凭肉眼我们很难得出结论，最好的办法当然是比较$y_k$和$y_k+1$和真实的方程的y值的差是多少（即$y_{real} = m*(x_k+1)+b$），看看哪一个更靠近真实的方程的y值。</p>
+<p>算法的具体过程，其实就是在每次画点的时候选取与实际直线的交点y坐标的差最小的那个点。这里假设：<br>$$<br>d_{upper} = (y_k + 1) - y_{real} \\<br>d_{down} = y_{real} - y_k<br>$$<br>要确定两像素中哪一个更接近线路径，需测试两个像素偏移的差：<br>$$<br>d_{upper} - d_{down} = 2y_k - 2mx_k -2m - 2b + 1<br>$$<br>由于$m=\dfrac{\Delta y}{\Delta x}$,我们有：<br>$$<br>p_m = \Delta x(d_{upper} - d_{down}) = 2\Delta x y_k - 2\Delta y x_k + \Delta x - 2\Delta y - 2b\Delta x<br>$$<br>则：<br>$$<br>p_{m+1} = 2\Delta x y_{k+1} - 2\Delta y x_{k+1} + \Delta x - 2\Delta y - 2b\Delta x<br>$$<br>相减可得到：<br>$$<br>p_{m+1} - p_m = 2\Delta x (y_{k+1} - y_k) - 2\Delta y (x_{k+1} - x_k)<br>$$<br>因为$x_{k+1} = x_k + 1$，所以有：<br>$$<br>p_{k+1} - p_k = 2\Delta x (y_{k+1} - y_k) - 2\Delta y<br>$$<br>其中，$y_{k+1} - y_k$取0还是1，取决于$p_m$的符号。</p>
 <p>明白了数学原理，我们很快能确定算法步骤：</p>
-<p>1、输入线段的两个端点，并将左端点存储在$(x<em>{Begin}, y</em>{Begin})$中；</p>
-<p>2、将$(x<em>{Begin}, y</em>{Begin})$装入帧缓存，画出第一个点；</p>
+<p>1、输入线段的两个端点，并将左端点存储在$(x_{Begin}, y_{Begin})$中；</p>
+<p>2、将$(x_{Begin}, y_{Begin})$装入帧缓存，画出第一个点；</p>
 <p>3、计算$\Delta x, \Delta y$，并得到决策参数的第一个值：<br>$$<br>p_0 = 2\Delta x y_0 - 2\Delta y x_0 + \Delta x - 2\Delta y - 2b\Delta x<br>$$<br>因为$y_0 = mx_0 + b = \dfrac{\Delta y}{\Delta x}x_0 + b$,所以代入可得：<br>$$<br>p_0 = \Delta x - 2\Delta y<br>$$<br>4、从$k=0$开始，在沿线路径的每个$x_k$处，进行下列检测：</p>
-<p>如果$p<em>k &lt; 0$,下一个要绘制的点是$(x</em>{k+1}, y<em>{k+1})$，并且：<br>$$<br>p</em>{k+1} = p<em>k + 2\Delta x - 2\Delta y<br>$$<br>否则，下一个要绘制的点是$(x</em>{k+1}, y<em>k)$，并且：<br>$$<br>p</em>{k+1} = p_k - 2\Delta y<br>$$<br>5、重复步骤4，共$\Delta x - 1$次</p>
+<p>如果$p_k &lt; 0$,下一个要绘制的点是$(x_{k+1}, y_{k+1})$，并且：<br>$$<br>p_{k+1} = p_k + 2\Delta x - 2\Delta y<br>$$<br>否则，下一个要绘制的点是$(x_{k+1}, y_k)$，并且：<br>$$<br>p_{k+1} = p_k - 2\Delta y<br>$$<br>5、重复步骤4，共$\Delta x - 1$次</p>
 <p>上面是完整严谨的数学推导。当然，也可以用直观的递推方式来实现算法。如图所示，我们可以假设在$(x_k, y_k)$时误差为$\varepsilon$,即实际直线上的点为$(x_k, y_k + \varepsilon)$，那么下一个位于直线上的点应该为$(x_k + 1, y_k + \varepsilon + m)$。可以看出，当$\varepsilon + m &lt; 0.5$时，绘制$(x_k + 1, y_k)$点，否则绘制$(x_k + 1, y_k + 1)$点。每次绘制后，$\varepsilon$将更新为新值：</p>
 <p> $\varepsilon = \varepsilon + m$, 如果$\varepsilon + m &lt; 0.5$</p>
 <p>$\varepsilon = \varepsilon + m - 1$, 其他情况</p>
@@ -456,7 +456,7 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
+               src="/images/childoflight.jpg"
                alt="EclipseFlower" />
           <p class="site-author-name" itemprop="name">EclipseFlower</p>
           <p class="site-description motion-element" itemprop="description">修道苦至，当念往劫</p>

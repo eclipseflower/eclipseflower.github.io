@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://eclipseflower.github.io/images/rasterrulestriangle-a.png">
 <meta property="og:image" content="http://eclipseflower.github.io/images/rasterrulestriangle-b.png">
 <meta property="og:image" content="http://eclipseflower.github.io/images/rasterrulestriangle-c.png">
-<meta property="og:updated_time" content="2017-03-15T14:14:11.000Z">
+<meta property="og:updated_time" content="2017-03-15T14:32:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三角形光栅化规则">
 <meta name="twitter:description" content="最近在写一个软件渲染器，在光栅化这里遇到不少麻烦。这里主要介绍一下三角形的光栅化规则。Direct3D使用左上规则进行光栅化。左上规则是，如果某个像素中心位于三角形的上边缘或左边缘，则将其定义为位于三角形内。落到三角形内的任何像素中心都会被绘制；如果像素通过了左上规则，则假定该像素位于内部。其中：
@@ -362,7 +362,7 @@
 <p><img src="/images/rasterrulestriangle-a.png" alt="rasterrulestriangle-a"></p>
 <p>像素的浅灰色和深色灰色覆盖将它们显示为成组的像素以指示它们位于哪个三角形内。</p>
 <p><img src="/images/rasterrulestriangle-b.png" alt="rasterrulestriangle-b"></p>
-<p>接下来，我们用数学的方式来定义光栅化规则。左上规则可以利用ceil函数定义。如图，假如我们想步进y以生成扫描线，那么从$P_0$到$P_2$生成的x坐标为：<br>$$<br>x = \dfrac{x_2 - x_0}{y_2 - y_0} (y - y_0) + x<em>0<br>$$<br>然后，我们使用ceil函数来生成一个整数的x值：<br>$$<br>x</em>{int} = ceil(\dfrac{x_2 - x_0}{y_2 - y_0} (y - y_0) + x<em>0)<br>$$<br>如果起始y坐标不是整数，仍然需要使用ceil函数来生成初始化的整数y值：<br>$$<br>y</em>{0,int} = ceil(y_0)<br>$$<br>由于使用了ceil函数，在开始光栅化之前，我们可能需要先对x和y做预先步进处理，即插值计算x和y整数坐标下的相应参数（纹理，颜色等）。如图所示，虚线之处表示需要插值到的位置。</p>
+<p>接下来，我们用数学的方式来定义光栅化规则。左上规则可以利用ceil函数定义。如图，假如我们想步进y以生成扫描线，那么从$P_0$到$P_2$生成的x坐标为：<br>$$<br>x = \dfrac{x_2 - x_0}{y_2 - y_0} (y - y_0) + x_0<br>$$<br>然后，我们使用ceil函数来生成一个整数的x值：<br>$$<br>x_{int} = ceil(\dfrac{x_2 - x_0}{y_2 - y_0} (y - y_0) + x_0)<br>$$<br>如果起始y坐标不是整数，仍然需要使用ceil函数来生成初始化的整数y值：<br>$$<br>y_{0,int} = ceil(y_0)<br>$$<br>由于使用了ceil函数，在开始光栅化之前，我们可能需要先对x和y做预先步进处理，即插值计算x和y整数坐标下的相应参数（纹理，颜色等）。如图所示，虚线之处表示需要插值到的位置。</p>
 <p><img src="/images/rasterrulestriangle-c.png" alt="rasterrulestriangle-c"></p>
 <p>另外，为了节省插值时所需要的运算，我们可以提前计算好梯度，这样在之后光栅化时只需要进行加法运算就可以正确计算出各种坐标。如之前图所示，我们来计算光栅化参数c是如何随着屏幕坐标x和y变化的。</p>
 <p>首先来看$P_0$和$P_4$，它们的y坐标相同，即$y_4 = y_0$，因而可以计算$\dfrac{dc}{dx}$。<br>$$<br>\dfrac{dc}{dx} = \dfrac{c_4 - c_0}{x_4 - x_0}<br>$$<br>然后，我们有：<br>$$<br>c_4 = c_2 + \dfrac{c_1 - c_2}{y_1 - y_2} (y_4 - y_2) \\<br>c_0 = c_2 + \dfrac{c_0 - c_2}{y_0 - y_2}(y_0 - y_2) \\<br>x_4 = x_2 + \dfrac{x_1 - x_2}{y_1 - y_2} (y_4 - y_2) \\<br>x_0 = x_2 + \dfrac{x_0 - x_2}{y_0 - y_2}(y_0 - y_2) \\<br>$$<br>代入可得：<br>$$<br>\dfrac{dc}{dx} = \dfrac{(c_1 - c_2)(y_0 - y_2) - (c_0 - c_2)(y_1 - y_2)}{(x_1 - x_2)(y_0 - y_2) - (x_0 - x_2)(y_1 - y_2)}<br>$$<br>同理，对于$P_0$和$P_3$，它们的x坐标相同，即$x_0 = x_3$，因而可以计算$\dfrac{dc}{dy}$。<br>$$<br>\dfrac{dc}{dy} = \dfrac{c_3 - c_0}{y_3 - y_0}<br>$$<br>其中：<br>$$<br>c_3 = c_2 + \dfrac{c_1 - c_2}{x_1 - x_2}(x_3 - x_2) \\<br>c_0 = c_2 + \dfrac{c_0 - c_2}{x_0 - x_2}(x_0 - x_2) \\<br>y_3 = y_2 + \dfrac{y_1 - y_2}{x_1 - x_2}(x_3 - x_2) \\<br>y_0 = y_2 + \dfrac{y_0 - y_2}{x_0 - x_2}(x_0 - x_2) \\<br>$$<br>代入可得：<br>$$<br>\dfrac{dc}{dy} = \dfrac{(c_1 - c_2)(x_0 - x_2) - (c_0 - c_2)(x_1 - x_2)}{(y_1 - y_2)(x_0 - x_2) - (y_0 - y_2)(x_1 - x_2)}<br>$$<br>这样就可以避免插值时的乘法运算了。</p>

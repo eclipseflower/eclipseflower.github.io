@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="图形学,数学," />
+  <meta name="keywords" content="日语," />
 
 
 
@@ -84,18 +84,28 @@
 
 
 
-<meta name="description" content="在流水线中，当物体从模型坐标通过世界矩阵变换到世界空间之后，它将通过相机变换从世界空间变换到相机空间。所谓的相机空间，就是以相机作为坐标原点的一个参考系，所以，从世界空间变换到相机空间，就是把物体从世界坐标系，变换到相机为原点的相机坐标系，如图所示。">
+<meta name="description" content="1、いつ泣き出すかもしれなかった空は、ちょっとだけ意地を張り、その涙を冷たい風で凍らせた。
+2、その騒がしさをかき消すように、空から降りてくる粉雪は、ますますその数を増やしていく。
+3、具体的には、今飛び立っていくあの飛行機を、絶対に視界に収めないために。
+4、いつも、俺たちの分岐点に現れて、辛いこと、哀しいことを覆い隠すように、雪が、降り積もる。
+5、一度、最低の裏切りをしてしまった相手だから。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="观察矩阵推导">
-<meta property="og:url" content="http://eclipseflower.github.io/2017/01/11/View-Matrix/index.html">
+<meta property="og:title" content="白色相簿2摘抄">
+<meta property="og:url" content="http://eclipseflower.github.io/2017/05/21/WA2/index.html">
 <meta property="og:site_name" content="おたくのスタジオ">
-<meta property="og:description" content="在流水线中，当物体从模型坐标通过世界矩阵变换到世界空间之后，它将通过相机变换从世界空间变换到相机空间。所谓的相机空间，就是以相机作为坐标原点的一个参考系，所以，从世界空间变换到相机空间，就是把物体从世界坐标系，变换到相机为原点的相机坐标系，如图所示。">
-<meta property="og:image" content="http://eclipseflower.github.io/images/view-matrix-a.png">
-<meta property="og:image" content="http://eclipseflower.github.io/images/view-matrix-b.png">
-<meta property="og:updated_time" content="2017-01-13T13:24:33.000Z">
+<meta property="og:description" content="1、いつ泣き出すかもしれなかった空は、ちょっとだけ意地を張り、その涙を冷たい風で凍らせた。
+2、その騒がしさをかき消すように、空から降りてくる粉雪は、ますますその数を増やしていく。
+3、具体的には、今飛び立っていくあの飛行機を、絶対に視界に収めないために。
+4、いつも、俺たちの分岐点に現れて、辛いこと、哀しいことを覆い隠すように、雪が、降り積もる。
+5、一度、最低の裏切りをしてしまった相手だから。">
+<meta property="og:updated_time" content="2017-05-21T03:10:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="观察矩阵推导">
-<meta name="twitter:description" content="在流水线中，当物体从模型坐标通过世界矩阵变换到世界空间之后，它将通过相机变换从世界空间变换到相机空间。所谓的相机空间，就是以相机作为坐标原点的一个参考系，所以，从世界空间变换到相机空间，就是把物体从世界坐标系，变换到相机为原点的相机坐标系，如图所示。">
+<meta name="twitter:title" content="白色相簿2摘抄">
+<meta name="twitter:description" content="1、いつ泣き出すかもしれなかった空は、ちょっとだけ意地を張り、その涙を冷たい風で凍らせた。
+2、その騒がしさをかき消すように、空から降りてくる粉雪は、ますますその数を増やしていく。
+3、具体的には、今飛び立っていくあの飛行機を、絶対に視界に収めないために。
+4、いつも、俺たちの分岐点に現れて、辛いこと、哀しいことを覆い隠すように、雪が、降り積もる。
+5、一度、最低の裏切りをしてしまった相手だから。">
 
 
 
@@ -123,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://eclipseflower.github.io/2017/01/11/View-Matrix/"/>
+  <link rel="canonical" href="http://eclipseflower.github.io/2017/05/21/WA2/"/>
 
 
 
 
 
-  <title> 观察矩阵推导 | おたくのスタジオ </title>
+  <title> 白色相簿2摘抄 | おたくのスタジオ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -250,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2017/01/11/View-Matrix/">
+  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2017/05/21/WA2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="EclipseFlower">
@@ -274,7 +284,7 @@
             
             
               
-                观察矩阵推导
+                白色相簿2摘抄
               
             
           </h1>
@@ -287,8 +297,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2017-01-11T00:54:57+08:00">
-                2017-01-11
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2017-05-21T11:06:06+08:00">
+                2017-05-21
               </time>
             
 
@@ -306,8 +316,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/图形学/" itemprop="url" rel="index">
-                    <span itemprop="name">图形学</span>
+                  <a href="/categories/日语/" itemprop="url" rel="index">
+                    <span itemprop="name">日语</span>
                   </a>
                 </span>
 
@@ -341,17 +351,16 @@
       
 
       
-        <p>在流水线中，当物体从模型坐标通过世界矩阵变换到世界空间之后，它将通过相机变换从世界空间变换到相机空间。所谓的相机空间，就是以相机作为坐标原点的一个参考系，所以，从世界空间变换到相机空间，就是把物体从世界坐标系，变换到相机为原点的相机坐标系，如图所示。</p>
-<p><img src="/images/view-matrix-a.png" alt="图 1"></p>
-<a id="more"></a>
-<p>左半部分是小人在世界空间中的位置，右半部分是小人变换到相机空间后的位置。这里我们讨论最为广泛的UVN系统构建观察矩阵。</p>
-<h5 id="UVN系统"><a href="#UVN系统" class="headerlink" title="UVN系统"></a>UVN系统</h5><p>UVN系统本身是一个基。如下图所示，三个基向量U，V，N分别指向相机的右方、上方和后方从而构成右手坐标系，相机则处于坐标原点。</p>
-<p><img src="/images/view-matrix-b.png" alt="图 2"></p>
-<p>在参考系下（这里是世界坐标系），我们给定相机的位置——eye，被观察的小人的位置——lookat，以及一个辅助向量——参考系中表示“上方”的向量up，这个向量会影响U和V的生成，因为以后求出的V向量会在up和N向量所决定的平面上，所以可以通过这个向量让相机产生不同的偏转。</p>
-<p>首先我们求出向量$\overrightarrow{N}$：<br>$$<br>\overrightarrow{N} = lookat - eye<br>$$<br>然后，我们求出向量$\overrightarrow{U}$。这一步需要使用辅助向量up，如果不希望相机产生偏转，一般取(0, 1, 0)：<br>$$<br>\overrightarrow{U} = \overrightarrow{up} \times \overrightarrow{N}<br>$$<br>U使用向量的叉乘实现。最后，使用N和U计算出向量$\overrightarrow{V}$：<br>$$<br>\overrightarrow{V} = \overrightarrow{N} \times \overrightarrow{U}<br>$$<br>最后将计算出的$\overrightarrow{U}$，$\overrightarrow{V}$和$\overrightarrow{N}$进行单位化，就得到了相机的UVN系统。我们可以把UVN系统看作是相机的基，从而可以方便地把一个向量在世界坐标和相机坐标进行转换。</p>
-<h5 id="观察矩阵推导"><a href="#观察矩阵推导" class="headerlink" title="观察矩阵推导"></a>观察矩阵推导</h5><p>由变换过程可知，物体是先随着观察坐标系平移至世界坐标系，然后旋转使得观察坐标系与世界坐标系完全重合。所以总的变换分为两部分：平移+旋转。可写作：<br>$$<br>C=TR<br>$$<br>首先，平移变换很容易求出：<br>$$<br>T =<br>\begin{bmatrix}<br>1 &amp; 0 &amp; 0 &amp; 0 \\<br>0 &amp; 1 &amp; 0 &amp; 0 \\<br>0 &amp; 0 &amp; 1 &amp; 0 \\<br>T_x &amp; T_y &amp; T_z &amp; 1<br>\end{bmatrix}<br>$$<br>经过平移后，相机的原点和世界原点就重合了。通过旋转，将此时的观察坐标系与世界坐标系重合，因为点随着观察坐标系一起旋转，因此这相当于将观察坐标系中的某个点坐标(x, y, z)旋转变换到世界坐标系下的相同坐标表示(x, y, z)。从而我们有：<br>$$<br>(x, y, z) \begin{bmatrix} \overrightarrow{U} \\ \overrightarrow{V} \\ \overrightarrow{N} \end{bmatrix} \cdot R = (x, y, z)<br>$$<br>也可理解为将观察坐标系的基底经过旋转变换转换为世界坐标系的基底，同样有：<br>$$<br>\begin{bmatrix} \overrightarrow{U} \\ \overrightarrow{V} \\ \overrightarrow{N} \end{bmatrix} \cdot R = I<br>$$<br>所以旋转变换其实是$\begin{bmatrix} \overrightarrow{U} \\ \overrightarrow{V} \\ \overrightarrow{N} \end{bmatrix}$的逆矩阵。而因为该矩阵是正交的，所以逆矩阵即为其转置矩阵：<br>$$<br>R = \begin{bmatrix} \overrightarrow{U} \overrightarrow{V} \overrightarrow{N} \end{bmatrix} = \begin{bmatrix}<br>U_x &amp; V_x &amp; N_x &amp; 0 \\<br>U_y &amp; V_y &amp; N_y &amp; 0 \\<br>U_z &amp; V_z &amp; N_z &amp; 0 \\<br>0 &amp; 0 &amp; 0 &amp; 1<br>\end{bmatrix}<br>$$<br>故观察矩阵为：<br>$$<br>C = TR = \begin{bmatrix}<br>U_x &amp; V_x &amp; N_x &amp; 0 \\<br>U_y &amp; V_y &amp; N_y &amp; 0 \\<br>U_z &amp; V_z &amp; N_z &amp; 0 \\<br>\overrightarrow{T} \cdot \overrightarrow{U} &amp; \overrightarrow{T} \cdot \overrightarrow{V} &amp; \overrightarrow{T} \cdot \overrightarrow{N} &amp; 1<br>\end{bmatrix}<br>$$</p>
-<p>参考：</p>
-<p><a href="http://blog.csdn.net/popy007/article/details/5120158" target="_blank" rel="external">http://blog.csdn.net/popy007/article/details/5120158</a></p>
+        <p>1、いつ泣き出すかもしれなかった空は、ちょっとだけ意地を張り、その涙を冷たい風で凍らせた。</p>
+<p>2、その騒がしさをかき消すように、空から降りてくる粉雪は、ますますその数を増やしていく。</p>
+<p>3、具体的には、今飛び立っていくあの飛行機を、絶対に視界に収めないために。</p>
+<p>4、いつも、俺たちの分岐点に現れて、辛いこと、哀しいことを覆い隠すように、雪が、降り積もる。</p>
+<p>5、一度、最低の裏切りをしてしまった相手だから。もう、ずっと最低を貫かなくちゃならないから。</p>
+<p>6、俺の胸に回され、しっかりと握りしめられた両手の強さ。</p>
+<p>7、彼女が純粋であればあるほど、自分の罪深さに押し潰される。</p>
+<p>8、こんなに優してくれて。。。精一杯、我慢して背伸びして許して、自分の中のしこりを、俺のために全部抑さえ込んで。</p>
+<p>9、悲しさのあまり、あなたがわたしを受け入れてるって、最低の思い込み、しちゃうよ？</p>
+<p>10、一度解けたら、そうやって隠していた事実を、忘れていた想いを、もう一度白日の下にさらす。</p>
 
       
     </div>
@@ -375,9 +384,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/图形学/" rel="tag"># 图形学</a>
-          
-            <a href="/tags/数学/" rel="tag"># 数学</a>
+            <a href="/tags/日语/" rel="tag"># 日语</a>
           
         </div>
       
@@ -386,8 +393,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/11/variable-param-in-C/" rel="next" title="C的变长参数">
-                <i class="fa fa-chevron-left"></i> C的变长参数
+              <a href="/2017/04/02/three-months-battle/" rel="next" title="还有3个月就要毕业了那我能做什么">
+                <i class="fa fa-chevron-left"></i> 还有3个月就要毕业了那我能做什么
               </a>
             
           </div>
@@ -395,10 +402,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/13/projection-matrix/" rel="prev" title="投影矩阵推导">
-                投影矩阵推导 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -445,17 +448,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/childoflight.jpg"
@@ -554,22 +548,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#UVN系统"><span class="nav-number">1.</span> <span class="nav-text">UVN系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#观察矩阵推导"><span class="nav-number">2.</span> <span class="nav-text">观察矩阵推导</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>

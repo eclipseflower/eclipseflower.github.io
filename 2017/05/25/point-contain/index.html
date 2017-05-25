@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="文学,读书笔记," />
+  <meta name="keywords" content="图形学,数学," />
 
 
 
@@ -84,25 +84,26 @@
 
 
 
-<meta name="description" content="《虞美人草》是日本作家夏目漱石的作品。
-有一段非常精妙的心理描写，描述得十分细腻与真实。摘抄如下：
+<meta name="description" content="在2D中，如何判断一个点是否被包含在任意凸多边形之内呢？最为直接的办法是半空间检测。基本上，可以想像将每条边延长至无限长，从而平面被分割成两半，如图所示。
 
-只要起疑，连自己都无法信任自己，何况自己以外的人都站在利害得失的街角，戴着厚重的面具，避开所有可能蒙受的不利损失，令人难以揣摩面具内的真意。眼前这个好友对母亲所下的评语，是从面具内发出的？亦或只面具外的敷衍？他都觉得自己内部隐藏着连自己都会受骗的魔鬼，即便对方是至交，是父亲那方的远亲，也不能大意地">
+如果检测的点在每个半空间的内侧，那么根据凸多边形的性质，点一定是在多边形内部。此时只需找到一种测试方法来判断点在一条直线的哪一侧。
+如果将直线以一定顺序进行标记，转换为向量，之后可以将直线想像为平面，使用点积操作符，即可确定点在平面的哪一侧，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《虞美人草》书摘">
-<meta property="og:url" content="http://eclipseflower.github.io/2015/06/03/yumeirencao/index.html">
+<meta property="og:title" content="点包含检测">
+<meta property="og:url" content="http://eclipseflower.github.io/2017/05/25/point-contain/index.html">
 <meta property="og:site_name" content="おたくのスタジオ">
-<meta property="og:description" content="《虞美人草》是日本作家夏目漱石的作品。
-有一段非常精妙的心理描写，描述得十分细腻与真实。摘抄如下：
+<meta property="og:description" content="在2D中，如何判断一个点是否被包含在任意凸多边形之内呢？最为直接的办法是半空间检测。基本上，可以想像将每条边延长至无限长，从而平面被分割成两半，如图所示。
 
-只要起疑，连自己都无法信任自己，何况自己以外的人都站在利害得失的街角，戴着厚重的面具，避开所有可能蒙受的不利损失，令人难以揣摩面具内的真意。眼前这个好友对母亲所下的评语，是从面具内发出的？亦或只面具外的敷衍？他都觉得自己内部隐藏着连自己都会受骗的魔鬼，即便对方是至交，是父亲那方的远亲，也不能大意地">
-<meta property="og:updated_time" content="2015-09-10T14:48:52.000Z">
+如果检测的点在每个半空间的内侧，那么根据凸多边形的性质，点一定是在多边形内部。此时只需找到一种测试方法来判断点在一条直线的哪一侧。
+如果将直线以一定顺序进行标记，转换为向量，之后可以将直线想像为平面，使用点积操作符，即可确定点在平面的哪一侧，">
+<meta property="og:image" content="http://eclipseflower.github.io/images/point-contain-a.png">
+<meta property="og:updated_time" content="2017-05-25T15:19:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《虞美人草》书摘">
-<meta name="twitter:description" content="《虞美人草》是日本作家夏目漱石的作品。
-有一段非常精妙的心理描写，描述得十分细腻与真实。摘抄如下：
+<meta name="twitter:title" content="点包含检测">
+<meta name="twitter:description" content="在2D中，如何判断一个点是否被包含在任意凸多边形之内呢？最为直接的办法是半空间检测。基本上，可以想像将每条边延长至无限长，从而平面被分割成两半，如图所示。
 
-只要起疑，连自己都无法信任自己，何况自己以外的人都站在利害得失的街角，戴着厚重的面具，避开所有可能蒙受的不利损失，令人难以揣摩面具内的真意。眼前这个好友对母亲所下的评语，是从面具内发出的？亦或只面具外的敷衍？他都觉得自己内部隐藏着连自己都会受骗的魔鬼，即便对方是至交，是父亲那方的远亲，也不能大意地">
+如果检测的点在每个半空间的内侧，那么根据凸多边形的性质，点一定是在多边形内部。此时只需找到一种测试方法来判断点在一条直线的哪一侧。
+如果将直线以一定顺序进行标记，转换为向量，之后可以将直线想像为平面，使用点积操作符，即可确定点在平面的哪一侧，">
 
 
 
@@ -130,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://eclipseflower.github.io/2015/06/03/yumeirencao/"/>
+  <link rel="canonical" href="http://eclipseflower.github.io/2017/05/25/point-contain/"/>
 
 
 
 
 
-  <title> 《虞美人草》书摘 | おたくのスタジオ </title>
+  <title> 点包含检测 | おたくのスタジオ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +258,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2015/06/03/yumeirencao/">
+  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2017/05/25/point-contain/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="EclipseFlower">
@@ -281,7 +282,7 @@
             
             
               
-                《虞美人草》书摘
+                点包含检测
               
             
           </h1>
@@ -294,8 +295,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2015-06-03T20:43:15+08:00">
-                2015-06-03
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2017-05-25T23:18:55+08:00">
+                2017-05-25
               </time>
             
 
@@ -313,8 +314,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文学/" itemprop="url" rel="index">
-                    <span itemprop="name">文学</span>
+                  <a href="/categories/图形学/" itemprop="url" rel="index">
+                    <span itemprop="name">图形学</span>
                   </a>
                 </span>
 
@@ -348,20 +349,10 @@
       
 
       
-        <p>《虞美人草》是日本作家夏目漱石的作品。</p>
-<p><code>有一段非常精妙的心理描写，描述得十分细腻与真实。摘抄如下：</code></p>
-<blockquote>
-<p>只要起疑，连自己都无法信任自己，何况自己以外的人都站在利害得失的街角，戴着厚重的面具，避开所有可能蒙受的不利损失，令人难以揣摩面具内的真意。眼前这个好友对母亲所下的评语，是从面具内发出的？亦或只面具外的敷衍？他都觉得自己内部隐藏着连自己都会受骗的魔鬼，即便对方是至交，是父亲那方的远亲，也不能大意地泄露天机。宗近那句话，是想套出自己对继母的真正感情吗？如果宗近知晓自己的真心后仍不改变的话，那倒无所谓；但倘若他是个懂得话里套话的人，没人能保证在他套出所有的一切后不会翻脸不认人。宗近那句话是基于他表里一致的直率个性，深信母亲话里的言外之意的反应吗？从他平日的言行看来，应该是的。他不可能受母亲之托，在阴暗得连自己都觉得可怕的内心深渊，丢下一个探测深度的测锤这种卑鄙行为。然而，越正直的人越容易被使唤。只是，宗近或许无意为母亲卖力，他只是看错了母亲的为人，受母亲之托，却为了至交着想，明知这种行为卑鄙，明知这样问可能会令彼此都不高兴，故意在旅程结束之前，提及此事也说不定。总之，还是守口如瓶为妙。</p>
-</blockquote>
-<a id="more"></a>
-<p><code>还有一段对照描写，以物写人，生动形象而且十分贴切。摘抄如下：</code></p>
-<blockquote>
-<p>水底下的海藻在阴暗处漂荡，不知道白帆驶去的岸边有阳光。海藻只能任由波浪愚弄，摇右漂左。只要随波逐流便没事。习惯了就不会在乎波浪的存在，也无暇思考波浪到底是何物，更遑论去思考为何波浪总要残酷地击打自己。即便去思考此问题，也无法解答问题。命运之神命海藻生长在阴暗处，于是海藻便朝夕晃动——小野是水底下的海藻。</p>
-</blockquote>
-<p><code>这里有段描写犹豫是否要去见一个人的心理，以现实中的例子做类比，画面感十足。</code></p>
-<blockquote>
-<p>人在街上会遇见人。这时双方只要擦肩而过便会成为毫不相关的陌生人，一切恢复原状。但有时双方会同时往右或往左地彼此让路。当你察觉不妙而缩回脚打算转往反方向时，对方也同样察觉不妙而缩回脚转往反方向。反方向碰上反方向时，彼此都察觉不妙，一方打算重来时，另一方也同时打算重来。双方都打算重来而缩回脚步，缩回脚步后又打算重来，结果就像挂钟钟摆那般不停地左右晃动，犹豫来犹豫去。犹豫到最后，彼此都想开口大骂对方是个浑蛋。颇得人心的小野差点被女佣认为是个优柔寡断的浑蛋。</p>
-</blockquote>
+        <p>在2D中，如何判断一个点是否被包含在任意凸多边形之内呢？最为直接的办法是半空间检测。基本上，可以想像将每条边延长至无限长，从而平面被分割成两半，如图所示。</p>
+<p><img src="/images/point-contain-a.png" alt="point-contain-a"></p>
+<p>如果检测的点在每个半空间的内侧，那么根据凸多边形的性质，点一定是在多边形内部。此时只需找到一种测试方法来判断点在一条直线的哪一侧。</p>
+<p>如果将直线以一定顺序进行标记，转换为向量，之后可以将直线想像为平面，使用点积操作符，即可确定点在平面的哪一侧，还是恰好就在平面上（参考《点到平面的距离》）。</p>
 
       
     </div>
@@ -385,9 +376,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/文学/" rel="tag"># 文学</a>
+            <a href="/tags/图形学/" rel="tag"># 图形学</a>
           
-            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+            <a href="/tags/数学/" rel="tag"># 数学</a>
           
         </div>
       
@@ -396,8 +387,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/04/23/linuxmark/" rel="next" title="Linux问题备忘">
-                <i class="fa fa-chevron-left"></i> Linux问题备忘
+              <a href="/2017/05/23/2d-clipping/" rel="next" title="2D直线裁剪算法">
+                <i class="fa fa-chevron-left"></i> 2D直线裁剪算法
               </a>
             
           </div>
@@ -405,10 +396,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/07/06/woyuditan/" rel="prev" title="《我与地坛》书摘">
-                《我与地坛》书摘 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

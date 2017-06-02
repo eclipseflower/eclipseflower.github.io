@@ -90,7 +90,8 @@
 <meta property="og:url" content="http://eclipseflower.github.io/2017/05/31/quaternion-rotation/index.html">
 <meta property="og:site_name" content="おたくのスタジオ">
 <meta property="og:description" content="复数在我们能够完全理解四元数之前，我们必须先知道四元数是怎么来的。四元数的根源其实是复数。复数的集合$\mathbb{C}$是一个实数和一个虚数的和，形式如下：$$z = a + b\mathbf i \ a,b\in R,\ \mathbf i^{2} = -1$$如果$\mathbf i$的平方等于-1，那么$\mathbf i$的n次幂也应该存在：$$\mathbf i^{0} = 1$$">
-<meta property="og:updated_time" content="2017-06-02T15:31:32.000Z">
+<meta property="og:image" content="http://eclipseflower.github.io/images/quaternion-rotation-a.png">
+<meta property="og:updated_time" content="2017-06-02T16:19:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="四元数旋转">
 <meta name="twitter:description" content="复数在我们能够完全理解四元数之前，我们必须先知道四元数是怎么来的。四元数的根源其实是复数。复数的集合$\mathbb{C}$是一个实数和一个虚数的和，形式如下：$$z = a + b\mathbf i \ a,b\in R,\ \mathbf i^{2} = -1$$如果$\mathbf i$的平方等于-1，那么$\mathbf i$的n次幂也应该存在：$$\mathbf i^{0} = 1$$">
@@ -365,9 +366,12 @@
 <p>四元数的逆：<br>$$<br>\mathbf q^{-1} = \frac {\mathbf q^{*}}{|\mathbf q|^{2} }<br>$$</p>
 <h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><p>根据四元数和复数的相似性，应该有可能设计一个可以旋转3D空间的点的四元数：<br>$$<br>\mathbf q = [cos\theta, sin\theta \mathbf {v}]<br>$$<br>让我们测试一下这个理论是否可靠，方法就是计算四元数$q$和向量$\mathbf p$的积。第一步，我们把$\mathbf p$写成纯四元数的形式：<br>$$<br>\mathbf p = [0,\mathbf {p}]<br>$$<br>以及单位四元数$q$：<br>$$<br>\mathbf q = [s,\lambda \mathbf {\hat { \mathbf v }}]<br>$$<br>从而：<br>$$<br>\mathbf p’ = \mathbf q\mathbf p = [s,\lambda \mathbf {\hat { \mathbf v }}] [0,\mathbf {p}] =  [-\lambda \mathbf {\hat { \mathbf v }}\cdot \mathbf {p}, s\mathbf {p} + \lambda \mathbf {\hat { \mathbf v }}\times \mathbf {p} ]<br>$$<br>我们可以看到结果是一个同时有系数、有虚向量的四元数。然而，Hamilton发现，如果对$\mathbf q\mathbf p$右乘$q$的逆，出来的结果是一个纯四元数，并且四元数向量部分的模可以保持不变。为了正确地让一个向量绕某个轴向量旋转某个角度，我们必须以目标角度的一半来计算。因此，我们构造了下面的四元数：<br>$$<br>q = [cos\frac {1}{2}\theta ,sin\frac {1}{2}\theta \mathbf { \hat { \mathbf v } }]<br>$$<br>这就是<strong>旋转四元数</strong>的一般形式。</p>
 <h3 id="旋转四元数的证明"><a href="#旋转四元数的证明" class="headerlink" title="旋转四元数的证明"></a>旋转四元数的证明</h3><p>我们想要证明的是，给定$t=cos\theta + usin\theta$，其中$u$是$\mathbb{R} \mathbf{i} + \mathbb{R} \mathbf{j} + \mathbb{R} \mathbf{k}$中单位向量，那么$t$的共轭作用将把$\mathbb{R} \mathbf{i} + \mathbb{R} \mathbf{j} + \mathbb{R} \mathbf{k}$绕着$u$所在的轴$\mathbb{R}u$旋转$2\theta$。</p>
-<p>证明分两步，首先我们证明$\mathbb{R}u$是旋转轴。这也就意味着，我们要证明$u$的所有实数倍的向量在$t$的共轭作用下保持原位：<br>$$<br>\begin{aligned}<br>tut^{-1} &amp;= (cos\theta + usin\theta)u(cos\theta - usin\theta) \\<br>&amp;= (ucos\theta + u^2sin\theta)(cos\theta - usin\theta) \\<br>&amp;= (ucos\theta - sin\theta)(cos\theta - usin\theta)  \\<br>&amp;= u(cos^2\theta + sin^2\theta) - sin\theta cos\theta - u^2sin\theta cos\theta \\<br>&amp;= u<br>\end{aligned}<br>$$<br>接下来，我们在$\\mathbb{R} \mathbf{i} + \mathbb{R} \mathbf{j} + \mathbb{R} \mathbf{k}​$中选取垂直于$u​$的单位向量$v​$，令$w=u \times v​$。于是，${u,v,w}​$是$\\mathbb{R} \mathbf{i} + \mathbb{R} \mathbf{j} + \mathbb{R} \mathbf{k}​$的一组规范正交基。</p>
+<p>证明分两步，首先我们证明$\mathbb{R}u$是旋转轴。这也就意味着，我们要证明$u$的所有实数倍的向量在$t$的共轭作用下保持原位：<br>$$<br>\begin{aligned}<br>tut^{-1} &amp;= (cos\theta + usin\theta)u(cos\theta - usin\theta) \\<br>&amp;= (ucos\theta + u^2sin\theta)(cos\theta - usin\theta) \\<br>&amp;= (ucos\theta - sin\theta)(cos\theta - usin\theta)  \\<br>&amp;= u(cos^2\theta + sin^2\theta) - sin\theta cos\theta - u^2sin\theta cos\theta \\<br>&amp;= u<br>\end{aligned}<br>$$<br>接下来，我们在$\mathbb{R} \mathbf{i} + \mathbb{R} \mathbf{j} + \mathbb{R} \mathbf{k}​$中选取垂直于$u​$的单位向量$v​$，令$w=u \times v​$。于是，${u,v,w}​$是$\mathbb{R} \mathbf{i} + \mathbb{R} \mathbf{j} + \mathbb{R} \mathbf{k}​$的一组规范正交基。</p>
 <p>为了证明确实旋转了$2\theta$，我们只需要证明$tvt^{-1} = vcos2\theta + wsin2\theta$以及$twt^{-1} = wcos2\theta - vsin2\theta$就好了。两者证明类似，这里只证明前者：<br>$$<br>\begin{aligned}<br>tvt^{-1} &amp;= (cos\theta + usin\theta)v(cos\theta - usin\theta) \\<br>&amp;= (vcos\theta + uvsin\theta)(cos\theta - usin\theta) \\<br>&amp;= vcos^2\theta - vusin\theta cos\theta + uvsin\theta cos\theta - uvusin^2\theta \\<br>&amp;= vcos^2\theta + 2uvsin\theta cos\theta + u^2vsin^2\theta \\<br>&amp;= v(cos^2\theta - sin^2\theta) + 2wsin\theta cos\theta \\<br>&amp;= vcos2\theta + wsin2\theta<br>\end{aligned}<br>$$</p>
 <p>证明完毕！</p>
+<p>还有一种直观的证明方法。如图所示，$\mathbb{R}u$为旋转轴，旋转角度为$\sigma$，向量$\mathbf v$旋转到$\mathbf w$处。旋转到$\dfrac{\sigma}{2}$处为$\mathbf k$（图中未标出）。</p>
+<p><img src="/images/quaternion-rotation-a.png" alt="quaternion-rotation-a"></p>
+<p>首先，令$u$方向上的单位向量为$\mathbf u$（为了方便，命名不变，后面的$\mathbf u$都是指旋转轴方向的单位四元数），那么根据$q$的定义，参见四元数乘法法则：<br>$$<br>q=(\cos{\frac{\theta}{2}},\mathbf{u}\sin{\frac{\theta}{2}}) = (\mathbf{v}\cdot \mathbf{k},\mathbf{v}\times\mathbf{k})=(\mathbf{k},0)(-\mathbf{v},0)=\mathbf k \mathbf v^*<br>$$</p>
 
       
     </div>

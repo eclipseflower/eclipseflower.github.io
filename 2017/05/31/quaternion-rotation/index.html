@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="おたくのスタジオ">
 <meta property="og:description" content="复数在我们能够完全理解四元数之前，我们必须先知道四元数是怎么来的。四元数的根源其实是复数。复数的集合$\mathbb{C}$是一个实数和一个虚数的和，形式如下：$$z = a + b\mathbf i \ a,b\in R,\ \mathbf i^{2} = -1$$如果$\mathbf i$的平方等于-1，那么$\mathbf i$的n次幂也应该存在：$$\mathbf i^{0} = 1$$">
 <meta property="og:image" content="http://eclipseflower.github.io/images/quaternion-rotation-a.png">
-<meta property="og:updated_time" content="2017-06-02T16:23:40.000Z">
+<meta property="og:updated_time" content="2017-06-03T03:03:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="四元数旋转">
 <meta name="twitter:description" content="复数在我们能够完全理解四元数之前，我们必须先知道四元数是怎么来的。四元数的根源其实是复数。复数的集合$\mathbb{C}$是一个实数和一个虚数的和，形式如下：$$z = a + b\mathbf i \ a,b\in R,\ \mathbf i^{2} = -1$$如果$\mathbf i$的平方等于-1，那么$\mathbf i$的n次幂也应该存在：$$\mathbf i^{0} = 1$$">
@@ -372,6 +372,8 @@
 <p>还有一种直观的证明方法。如图所示，$\mathbb{R}u$为旋转轴，旋转角度为$\sigma$，向量$\mathbf v$旋转到$\mathbf w$处。旋转到$\dfrac{\sigma}{2}$处为$\mathbf k$（图中未标出）。</p>
 <p><img src="/images/quaternion-rotation-a.png" alt="quaternion-rotation-a"></p>
 <p>首先，令$u$方向上的单位向量为$\mathbf u$（为了方便，命名不变，后面的$\mathbf u$都是指旋转轴方向的单位四元数），那么根据$q$的定义，参见四元数乘法法则：<br>$$<br>q=(\cos{\frac{\theta}{2}},\mathbf{u}\sin{\frac{\theta}{2}}) = (\mathbf{v}\cdot \mathbf{k},\mathbf{v}\times\mathbf{k})=(0,\mathbf{k})(0,-\mathbf{v})=\mathbf k \mathbf v^*<br>$$</p>
+<p>现在令<br>$$<br>w=qvq^{-1}<br>$$<br>如果能证明$\mathbf w$与$\mathbf v$的夹角是$\sigma$，那么就说明$\mathbf w$确实是$\mathbf v$旋转$\sigma$得到的，整个命题就得证了。</p>
+<p>注意$\mathbf v$，$\mathbf k$和$\mathbf w$都是实部为0的单位四元数，表示单位向量，我们有：<br>$$<br>wk^<em>=(qvq^{-1})k^</em>=qvq^<em>k^</em>=qvvk^<em>k^</em>=q<br>$$<br>所以<br>$$<br>wk^<em>=kv^</em><br>$$<br>上面的式子拆分成实部和虚部，虚部表明$\mathbf w$与$-\mathbf k$的平面和$\mathbf k$与-$\mathbf v$的平面重合，实部表明$\mathbf w$和$-\mathbf k$之间的夹角与$\mathbf k$和-$\mathbf v$之间的夹角相等，都是$\pi - \dfrac{\sigma}{2}$。这就说明了$\mathbf w$与$\mathbf v$的夹角是$\sigma$，原命题就得证了。</p>
 
       
     </div>

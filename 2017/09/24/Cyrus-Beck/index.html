@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://eclipseflower.github.io/images/Cyrus-Beck-a.png">
 <meta property="og:image" content="http://eclipseflower.github.io/images/Cyrus-Beck-b.png">
 <meta property="og:image" content="http://eclipseflower.github.io/images/Cyrus-Beck-c.png">
-<meta property="og:updated_time" content="2017-09-24T11:19:56.660Z">
+<meta property="og:updated_time" content="2017-09-24T11:23:13.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cyrus Beck算法">
 <meta name="twitter:description" content="Cyrus-Beck算法是一种参数化裁剪算法，裁剪区域可以是平面上任意的凸多边形。被裁剪的直线采用参数化表达式：$$\textbf{P}(t) = \textbf{P}_0 + t(\textbf{P}_1 - \textbf{P}_0)$$">
@@ -345,10 +345,10 @@
         <p>Cyrus-Beck算法是一种参数化裁剪算法，裁剪区域可以是平面上任意的凸多边形。被裁剪的直线采用参数化表达式：<br>$$<br>\textbf{P}(t) = \textbf{P}_0 + t(\textbf{P}_1 - \textbf{P}_0)<br>$$</p>
 <p><img src="/images/Cyrus-Beck-a.png" alt="Cyrus-Beck-a"></p>
 <a id="more"></a>
-<p>如图所示，通过计算点积$\textbf{N}<em>i \cdot (\textbf{P}(t) - \textbf{P}</em>{E_i})$的值，可知：</p>
-<p>位于外半平面的点$\textbf{P}_0$有：$\textbf{N}_i \cdot (\textbf{P}<em>0 - \textbf{P}</em>{E_i}) &gt; 0$；</p>
-<p>位于内半平面的点$\textbf{P}_i$有：$\textbf{N}_i \cdot (\textbf{P}<em>i - \textbf{P}</em>{E_i}) &lt; 0$；</p>
-<p>在边上的点$\textbf{P}_t$有：$\textbf{N}_i \cdot (\textbf{P}<em>t - \textbf{P}</em>{E_i}) = 0$。</p>
+<p>如图所示，通过计算点积$\textbf{N}_i \cdot (\textbf{P}(t) - \textbf{P}_{E_i})$的值，可知：</p>
+<p>位于外半平面的点$\textbf{P}_0$有：$\textbf{N}_i \cdot (\textbf{P}_0 - \textbf{P}_{E_i}) &gt; 0$；</p>
+<p>位于内半平面的点$\textbf{P}_i$有：$\textbf{N}_i \cdot (\textbf{P}_i - \textbf{P}_{E_i}) &lt; 0$；</p>
+<p>在边上的点$\textbf{P}_t$有：$\textbf{N}_i \cdot (\textbf{P}_t - \textbf{P}_{E_i}) = 0$。</p>
 <p>最后一个公式可代入直线的参数化表达式替换得到：<br>$$<br>t = - \dfrac{\textbf{N}_i \cdot (\textbf{P}<em>0 - \textbf{P}</em>{E_i})}{\textbf{N}_i  \cdot \textbf{P}_0\textbf{P}_1}<br>$$<br>当上式除数不为0时，即可解得一个有效的t值。</p>
 <p>首先，在区间[0,1]以外的t可以去掉，因为它位于线段$\textbf{P}_0\textbf{P}_1$之外。然后需要判断交点是否在裁剪边界上。如下图所示，4条线段中，线段a、b和d有2个交点供选择，线段c有4个交点供选择。</p>
 <p><img src="/images/Cyrus-Beck-b.png" alt="Cyrus-Beck-b"></p>

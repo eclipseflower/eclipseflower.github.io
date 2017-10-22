@@ -85,18 +85,18 @@
 
 
 <meta name="description" content="在之前提到的基本漫反射光照模型中，可以注意到一个问题，即在光照无法到达的区域，模型的外观同通常是全黑的，没有任何明暗变化，这会使得模型的背光区域看起来就像一个平面一样，失去了模型细节表现。为此，有一种改善技术被提出来，这就是半兰伯特光照（Half Lambert）模型。
-广义的半兰伯特光照模型的公式如下：$$c{diffuse} = (c{light} \cdot m_{diffuse})(\al">
+广义的半兰伯特光照模型的公式如下：$$c_{diffuse} = (c_{light} \cdot m_{diffuse})(\">
 <meta property="og:type" content="article">
 <meta property="og:title" content="半兰伯特光照模型">
 <meta property="og:url" content="http://eclipseflower.github.io/2017/10/22/half-lambert-lighting-model/index.html">
 <meta property="og:site_name" content="おたくのスタジオ">
 <meta property="og:description" content="在之前提到的基本漫反射光照模型中，可以注意到一个问题，即在光照无法到达的区域，模型的外观同通常是全黑的，没有任何明暗变化，这会使得模型的背光区域看起来就像一个平面一样，失去了模型细节表现。为此，有一种改善技术被提出来，这就是半兰伯特光照（Half Lambert）模型。
-广义的半兰伯特光照模型的公式如下：$$c{diffuse} = (c{light} \cdot m_{diffuse})(\al">
-<meta property="og:updated_time" content="2017-10-22T07:37:54.645Z">
+广义的半兰伯特光照模型的公式如下：$$c_{diffuse} = (c_{light} \cdot m_{diffuse})(\">
+<meta property="og:updated_time" content="2017-10-22T07:39:24.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="半兰伯特光照模型">
 <meta name="twitter:description" content="在之前提到的基本漫反射光照模型中，可以注意到一个问题，即在光照无法到达的区域，模型的外观同通常是全黑的，没有任何明暗变化，这会使得模型的背光区域看起来就像一个平面一样，失去了模型细节表现。为此，有一种改善技术被提出来，这就是半兰伯特光照（Half Lambert）模型。
-广义的半兰伯特光照模型的公式如下：$$c{diffuse} = (c{light} \cdot m_{diffuse})(\al">
+广义的半兰伯特光照模型的公式如下：$$c_{diffuse} = (c_{light} \cdot m_{diffuse})(\">
 
 
 
@@ -343,7 +343,7 @@
 
       
         <p>在之前提到的基本漫反射光照模型中，可以注意到一个问题，即在光照无法到达的区域，模型的外观同通常是全黑的，没有任何明暗变化，这会使得模型的背光区域看起来就像一个平面一样，失去了模型细节表现。为此，有一种改善技术被提出来，这就是半兰伯特光照（Half Lambert）模型。</p>
-<p>广义的半兰伯特光照模型的公式如下：<br>$$<br>c<em>{diffuse} = (c</em>{light} \cdot m_{diffuse})(\alpha (\textbf{n} \cdot \textbf{I}) + \beta)<br>$$<br>可以看出，半兰伯特光照模型并没有使用max操作来避免点积为负值，而是对其结果进行了一个$\alpha$倍的缩放再加上一个$\beta$大小的偏移。绝大多数情况下，$\alpha$和$\beta$的值均为0.5。</p>
+<p>广义的半兰伯特光照模型的公式如下：<br>$$<br>c_{diffuse} = (c_{light} \cdot m_{diffuse})(\alpha (\textbf{n} \cdot \textbf{I}) + \beta)<br>$$<br>可以看出，半兰伯特光照模型并没有使用max操作来避免点积为负值，而是对其结果进行了一个$\alpha$倍的缩放再加上一个$\beta$大小的偏移。绝大多数情况下，$\alpha$和$\beta$的值均为0.5。</p>
 <p>通过这样的方式，可以把点积的结果从[-1, 1]映射到[0, 1]的范围内。这样，背光面也可以有明暗变化，不同的点积结果会映射到不同的值上。</p>
 
       

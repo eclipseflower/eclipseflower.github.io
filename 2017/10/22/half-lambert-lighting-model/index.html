@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="无," />
+  <meta name="keywords" content="图形学,数学," />
 
 
 
@@ -84,46 +84,19 @@
 
 
 
-<meta name="description" content="本篇文章仅用来打卡。
-3月底： 立项
-4月1日： u3d tutorial 1
-4月2日： u3d tutorial 1 + 2
-4月3日： u3d tutorial 2
-4月4日： u3d tutorial 2
-4月5日： u3d tutorial 2
-4月6日： u3d tutorial 2（extended）
-4月7日： u3d tutorial 2（extended）
-4月8日： -
-4月">
+<meta name="description" content="在之前提到的基本漫反射光照模型中，可以注意到一个问题，即在光照无法到达的区域，模型的外观同通常是全黑的，没有任何明暗变化，这会使得模型的背光区域看起来就像一个平面一样，失去了模型细节表现。为此，有一种改善技术被提出来，这就是半兰伯特光照（Half Lambert）模型。
+广义的半兰伯特光照模型的公式如下：$$c{diffuse} = (c{light} \cdot m_{diffuse})(\al">
 <meta property="og:type" content="article">
-<meta property="og:title" content="还有3个月就要毕业了那我能做什么">
-<meta property="og:url" content="http://eclipseflower.github.io/2017/04/02/three-months-battle/index.html">
+<meta property="og:title" content="半兰伯特光照模型">
+<meta property="og:url" content="http://eclipseflower.github.io/2017/10/22/half-lambert-lighting-model/index.html">
 <meta property="og:site_name" content="おたくのスタジオ">
-<meta property="og:description" content="本篇文章仅用来打卡。
-3月底： 立项
-4月1日： u3d tutorial 1
-4月2日： u3d tutorial 1 + 2
-4月3日： u3d tutorial 2
-4月4日： u3d tutorial 2
-4月5日： u3d tutorial 2
-4月6日： u3d tutorial 2（extended）
-4月7日： u3d tutorial 2（extended）
-4月8日： -
-4月">
-<meta property="og:updated_time" content="2017-05-23T14:14:40.000Z">
+<meta property="og:description" content="在之前提到的基本漫反射光照模型中，可以注意到一个问题，即在光照无法到达的区域，模型的外观同通常是全黑的，没有任何明暗变化，这会使得模型的背光区域看起来就像一个平面一样，失去了模型细节表现。为此，有一种改善技术被提出来，这就是半兰伯特光照（Half Lambert）模型。
+广义的半兰伯特光照模型的公式如下：$$c{diffuse} = (c{light} \cdot m_{diffuse})(\al">
+<meta property="og:updated_time" content="2017-10-22T07:37:54.645Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="还有3个月就要毕业了那我能做什么">
-<meta name="twitter:description" content="本篇文章仅用来打卡。
-3月底： 立项
-4月1日： u3d tutorial 1
-4月2日： u3d tutorial 1 + 2
-4月3日： u3d tutorial 2
-4月4日： u3d tutorial 2
-4月5日： u3d tutorial 2
-4月6日： u3d tutorial 2（extended）
-4月7日： u3d tutorial 2（extended）
-4月8日： -
-4月">
+<meta name="twitter:title" content="半兰伯特光照模型">
+<meta name="twitter:description" content="在之前提到的基本漫反射光照模型中，可以注意到一个问题，即在光照无法到达的区域，模型的外观同通常是全黑的，没有任何明暗变化，这会使得模型的背光区域看起来就像一个平面一样，失去了模型细节表现。为此，有一种改善技术被提出来，这就是半兰伯特光照（Half Lambert）模型。
+广义的半兰伯特光照模型的公式如下：$$c{diffuse} = (c{light} \cdot m_{diffuse})(\al">
 
 
 
@@ -151,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://eclipseflower.github.io/2017/04/02/three-months-battle/"/>
+  <link rel="canonical" href="http://eclipseflower.github.io/2017/10/22/half-lambert-lighting-model/"/>
 
 
 
 
 
-  <title> 还有3个月就要毕业了那我能做什么 | おたくのスタジオ </title>
+  <title> 半兰伯特光照模型 | おたくのスタジオ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -278,7 +251,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2017/04/02/three-months-battle/">
+  <link itemprop="mainEntityOfPage" href="http://eclipseflower.github.io/2017/10/22/half-lambert-lighting-model/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="EclipseFlower">
@@ -302,7 +275,7 @@
             
             
               
-                还有3个月就要毕业了那我能做什么
+                半兰伯特光照模型
               
             
           </h1>
@@ -315,8 +288,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2017-04-02T23:13:06+08:00">
-                2017-04-02
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2017-10-22T15:36:43+08:00">
+                2017-10-22
               </time>
             
 
@@ -334,8 +307,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/无/" itemprop="url" rel="index">
-                    <span itemprop="name">无</span>
+                  <a href="/categories/图形学/" itemprop="url" rel="index">
+                    <span itemprop="name">图形学</span>
                   </a>
                 </span>
 
@@ -369,47 +342,9 @@
       
 
       
-        <p>本篇文章仅用来打卡。</p>
-<p>3月底： 立项</p>
-<p>4月1日： u3d tutorial 1</p>
-<p>4月2日： u3d tutorial 1 + 2</p>
-<p>4月3日： u3d tutorial 2</p>
-<p>4月4日： u3d tutorial 2</p>
-<p>4月5日： u3d tutorial 2</p>
-<p>4月6日： u3d tutorial 2（extended）</p>
-<p>4月7日： u3d tutorial 2（extended）</p>
-<p>4月8日： -</p>
-<p>4月9日： 2d-shooting-game</p>
-<p>4月10日： 2d-shooting-game</p>
-<p>4月11日： Splash Screen Tutorial</p>
-<p>4月12日： Development Start and Finish Splash Screen</p>
-<p>4月13日： -</p>
-<p>4月14日： main menu tutorial 1</p>
-<p>4月15日： main menu tutorial 2</p>
-<p>4月16日： main menu tutorial 3</p>
-<p>4月17日： Developing Main Menu</p>
-<p>4月18日： Developing Main Menu</p>
-<p>4月19日： Developing Main Menu</p>
-<p>4月20日： Developing Loading Screen</p>
-<p>4月21日： 2D Roguelike tutorial</p>
-<p>4月22日： 2D tutorial</p>
-<p>4月23日： Finish Main Menu</p>
-<p>4月24日： Developing Dialogue System</p>
-<p>4月25日： Developing Dialogue System</p>
-<p>4月26日： Developing Dialogue System</p>
-<p>4月27日： Dialogue System Complete</p>
-<p>4月28日： -</p>
-<p>4月29日： 2D Background</p>
-<p>4月30日： 2D Background</p>
-<p>5月1日： 2D Background</p>
-<p>5月2日： 2D Background</p>
-<p>5月3日～5月13日： Fuck</p>
-<p>5月14日： -</p>
-<p>5月15日～5月18日：2D Background</p>
-<p>5月19日： Player</p>
-<p>5月20日： — </p>
-<p>5月21日～5月22日：Red and Blue Bar</p>
-<p>5月23日: Player</p>
+        <p>在之前提到的基本漫反射光照模型中，可以注意到一个问题，即在光照无法到达的区域，模型的外观同通常是全黑的，没有任何明暗变化，这会使得模型的背光区域看起来就像一个平面一样，失去了模型细节表现。为此，有一种改善技术被提出来，这就是半兰伯特光照（Half Lambert）模型。</p>
+<p>广义的半兰伯特光照模型的公式如下：<br>$$<br>c<em>{diffuse} = (c</em>{light} \cdot m_{diffuse})(\alpha (\textbf{n} \cdot \textbf{I}) + \beta)<br>$$<br>可以看出，半兰伯特光照模型并没有使用max操作来避免点积为负值，而是对其结果进行了一个$\alpha$倍的缩放再加上一个$\beta$大小的偏移。绝大多数情况下，$\alpha$和$\beta$的值均为0.5。</p>
+<p>通过这样的方式，可以把点积的结果从[-1, 1]映射到[0, 1]的范围内。这样，背光面也可以有明暗变化，不同的点积结果会映射到不同的值上。</p>
 
       
     </div>
@@ -433,7 +368,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/无/" rel="tag"># 无</a>
+            <a href="/tags/图形学/" rel="tag"># 图形学</a>
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
           
         </div>
       
@@ -442,8 +379,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/15/rasterrulestriangle/" rel="next" title="三角形光栅化规则">
-                <i class="fa fa-chevron-left"></i> 三角形光栅化规则
+              <a href="/2017/09/26/Weiler-Atherton/" rel="next" title="Weiler Atherton算法">
+                <i class="fa fa-chevron-left"></i> Weiler Atherton算法
               </a>
             
           </div>
@@ -451,10 +388,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/21/WA2/" rel="prev" title="白色相簿2摘抄">
-                白色相簿2摘抄 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -521,7 +454,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -530,7 +463,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
